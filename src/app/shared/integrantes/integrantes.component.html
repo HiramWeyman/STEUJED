@@ -1,0 +1,94 @@
+
+<div class="container" id="content">
+    <div style="text-align: center;">
+        <h1>Comité Ejecutivo 2017 - 2021</h1>
+    </div>
+    <div style="text-align: center;">
+        <ng-container *ngFor="let integrante of integrantes | slice : 0 : 1"> 
+                <div class="card" style="text-align: center;">
+                        <p>
+                            <img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt="">
+                        </p>
+                        <div class="card-body">
+                        <h4>{{integrante.int_nombre}}</h4>
+                        <h5>{{integrante.int_puesto}}</h5>
+                    </div>
+                </div>
+        </ng-container>
+    </div>
+
+    <div style="text-align: center;">
+        <ng-container *ngFor="let integrante of integrantes | slice : 1"> 
+            <div style="float: left; width: 50%;">
+                <div class="card" style="text-align: center;">
+                        <p>
+                            <img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt="">
+                        </p>
+                        <div class="card-body">
+                        <h4>{{integrante.int_nombre}}</h4>
+                        <h5>{{integrante.int_puesto}}</h5>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <!--
+    <div class="row">
+        <ng-container *ngFor="let integrante of integrantes | slice : 1"> 
+            <div class="4u">
+                <div class="card" style="text-align: center;width: 34rem;">
+                        <p>
+                            <img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt="">
+                        </p>
+                        <div class="card-body">
+                        <h4>{{integrante.int_nombre}}</h4>
+                        <h5>{{integrante.int_puesto}}</h5>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    -->
+</div>
+
+<!-- Integrantes -->
+<!--
+<section id="testimonial">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+    
+            <div id="carousel-testimonial" class="carousel slide text-center" data-ride="carousel">
+
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active" *ngFor="let integrante of integrantes | slice:0:1" >
+                            <p><img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt=""></p>
+                            <h4>{{integrante.int_nombre}}</h4>
+                            <p>{{integrante.int_puesto}}</p>
+                        </div>
+
+                        <div class="item" *ngFor="let integrante of integrantes | slice:1">
+                            <p><img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt=""></p>
+                            <h4>{{integrante.int_nombre}}</h4>
+                            <p>{{integrante.int_puesto}}</p>
+                        </div>
+                    </div>
+    
+                    <div class="btns">
+                        <a class="btn btn-primary btn-sm" href="#carousel-testimonial" role="button" data-slide="prev">
+                            <span class="fa fa-angle-left" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="btn btn-primary btn-sm" href="#carousel-testimonial" role="button" data-slide="next">
+                            <span class="fa fa-angle-right" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+-->
+<!-- /Integrantes -->

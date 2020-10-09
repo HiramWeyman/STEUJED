@@ -1,0 +1,20 @@
+<app-header></app-header>
+
+<div id="main" class="row" style="text-align: center;">
+    <div class="3u">&nbsp;</div>
+        <div class="6u">
+            <section>
+                <h2>{{publicaciones.pub_titulo}}</h2>
+                <div class="fotorama"></div>
+                <div [innerHTML]="publicaciones.pub_texto" style="text-align: justify;"></div>
+            </section>
+
+        </div>
+    
+    <div class="3u">&nbsp;</div>
+</div>
+
+<button type="button" class="btn btn-secondary btn-lg" [routerLink]="['/noticias']">Regresar</button>
+
+    <app-footer></app-footer>
+    <app-copyright></app-copyright>

@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Footer -->
+<div id="footer">
+  <div class="container">
+      <div class="row">
+          <!--
+          <div class="3u">
+              <section>
+                  <ul class="style1">
+                      <li><img src="assets/images/pics05.jpg" width="78" height="78" alt="">
+                          <p>Nullam non wisi a sem eleifend. Donec mattis libero eget urna. </p>
+                      </li>
+                      <li><img src="assets/images/pics06.jpg" width="78" height="78" alt="">
+                          <p>Nullam non wisi a sem eleifend. Donec mattis libero eget urna. </p>
+                      </li>
+                      <li><img src="assets/images/pics07.jpg" width="78" height="78" alt="">
+                          <p>Nullam non wisi a sem eleifend. Donec mattis libero eget urna. </p>
+                      </li>
+                  </ul>
+              </section>
+          </div>
+          <div class="3u">
+              <section>
+                  <ul class="style1">
+                      <li class="first"><img src="assets/images/pics08.jpg" width="78" height="78" alt="">
+                          <p>Nullam non wisi a sem eleifend. Donec mattis libero eget urna. </p>
+                      </li>
+                      <li><img src="assets/images/pics09.jpg" width="78" height="78" alt="">
+                          <p>Nullam non wisi a sem eleifend. Donec mattis libero eget urna. </p>
+                      </li>
+                      <li><img src="assets/images/pics10.jpg" width="78" height="78" alt="">
+                          <p>Nullam non wisi a sem eleifend. Donec mattis libero eget urna. </p>
+                      </li>
+                  </ul>
+              </section>				
+          </div>
+            -->
+          <div class="12u" style="text-align: center;">
+              <section>
+                  <header>
+                      <h2>Contáctanos</h2>
+                  </header>
+                  <ul class="default" *ngFor="let contacto of this.contactanos">
+                      <li *ngIf="contacto.con_concepto == 'Telefono' && contacto.con_visible == 'S'"> <i class="fa fa-phone"></i>&nbsp;&nbsp;<span [innerHTML]="contacto.con_texto"></span></li>
+                      <li *ngIf="contacto.con_concepto == 'Email' && contacto.con_visible == 'S'"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span [innerHTML]="contacto.con_texto"></span></li>
+                      <li *ngIf="contacto.con_concepto == 'Direccion' && contacto.con_visible == 'S'"><i class="fa fa-address-card"></i>&nbsp;&nbsp;<span [innerHTML]="contacto.con_texto"></span></li>
+                      <!--
+                      <li *ngIf="contacto.con_concepto == 'Facebook' && contacto.con_visible == 'S'"><a href="{{contacto.con_link}}" target="_blank"><i class="fa fa-facebook-official"></i></a></li>
+                      <li *ngIf="contacto.con_concepto == 'Twitter' && contacto.con_visible == 'S'"><a href="{{contacto.con_link}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                      <li *ngIf="contacto.con_concepto == 'Youtube' && contacto.con_visible == 'S'"><a href="{{contacto.con_link}}" target="_blank"><i class="fa fa-youtube-play" style="color:red;"></i></a></li>
+                      -->
+                  </ul>
+              </section>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Footer -->

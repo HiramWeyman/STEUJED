@@ -1,0 +1,210 @@
+<app-header></app-header>
+
+<app-topbar></app-topbar>
+
+<!-- Main -->
+<div id="main">
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Sidebar -->
+                <div id="sidebar" class="3u">
+                    <section>
+                        <header>
+                            <h2>Archivos</h2>
+                        </header>
+                        <ul class="default">
+                            <ng-container *ngFor="let archivo of archivos">
+                                <li *ngIf="archivo.archivo_seccion == '1'">
+                                    <!--
+                                    <a href="{{archivo.archivo_ruta}}" target="_blank">
+                                        <button type="button" class="btn btn-outline-primary btn-sm">
+                                            <i class="fa fa-file"></i>
+                                        </button> {{ archivo.archivo_descrip }}</a>
+                                    -->
+                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset();rutaArchivo(archivo.archivo_ruta, archivo.archivo_descrip);'>
+                                        <i class="fa fa-file"></i>
+                                        {{ archivo.archivo_descrip }}
+                                    </button> 
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </section>
+                </div>
+            <!-- Sidebar -->
+        
+            <!-- Content -->
+                <div id="content" class="6u skel-cell-important" style="text-align: justify;">
+                    <section>
+                        <ng-container *ngFor="let publicacion_p of public_principal">  
+                            <header>
+                                <h2 *ngIf="publicacion_p.pub_id_categoria == 1">{{publicacion_p.pub_titulo}}</h2>
+                                <span style="text-align: center;" class="byline" *ngIf="publicacion_p.pub_id_categoria == 1">{{publicacion_p.pub_subtitulo}}</span>
+                            </header>
+                            <p><a href="#" class="image full" *ngIf="publicacion_p.pub_id_categoria == 1"><img src={{publicacion_p.pub_ruta}} alt=""></a></p>
+                            <div [innerHTML]="publicacion_p.pub_texto" *ngIf="publicacion_p.pub_id_categoria == 1"></div>
+                        </ng-container>
+                    </section>
+                </div>
+            <!-- /Content -->
+                
+            <!-- Sidebar -->
+            <ng-container *ngFor="let publicacion of this.publicaciones">  
+                <div id="sidebar" class="3u" *ngIf="publicacion.pub_id_categoria == 3">
+                    <section style="background: #f7c8c8; border-radius: 8px;">
+                        <header style="text-align: center;">
+                            <h2 *ngIf="publicacion.pub_id_categoria == 3">{{publicacion.pub_titulo}}</h2>
+                        </header>
+                        <hr style="border: 1px solid black; border-radius: 3px;">
+                        <div style="text-align: justify;" [innerHTML]="publicacion.pub_texto" *ngIf="publicacion.pub_id_categoria == 3"></div>
+                    </section>
+                </div>
+            </ng-container>
+            <!-- Sidebar -->
+        
+        </div>
+    
+    </div>
+    <div class="divider">&nbsp;</div>
+    <div class="container" id="content">
+        <header>
+            <h2>Noticias</h2>
+        </header>
+        <div class="row">
+            <ng-container *ngFor="let publicacion of this.publicaciones | slice : 0 : 4"> 
+                <div class="3u" *ngIf="publicacion.pub_id_categoria == 2">
+                    <section>
+                        <h2>{{publicacion.pub_titulo}}</h2>
+                        <a href="#/noticia/{{publicacion.pub_id}}" class="image full"><img src="{{publicacion.pub_ruta}}" alt=""></a>
+                        <div [innerHTML]="publicacion.pub_texto.substring(0,150)"></div>
+                        <a href="#/noticia/{{publicacion.pub_id}}" class="button">Leer más...</a>
+                    </section>
+                </div>
+            </ng-container>
+        </div>
+<br><br>
+<!-- Radio -->
+<section id="radio">
+<div class="container">
+    <div class="text-center">
+        <img class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms" src="assets/images/radio/radio_universidad.png" alt="">
+    </div>
+    <div>
+        <div class="text-center">
+            <video class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms" controls="" name="media"><source src="http://200.23.125.55:8000/;?type=http&amp;nocache=156" type="audio/mpeg"></video>
+        </div>
+    </div>
+</div>
+</section>
+<!-- /Radio -->
+
+<section style="background: #b7b7b7; color: #fff; padding: 50px 0; font-size: 35px; margin-bottom: 1em">
+    <div class="container">
+        <div class="text-center">
+            <a href="https://sistemas.ujed.mx/PersonalUJED/" target="_blank" style="text-decoration: none;">
+                <img src="assets/images/receipt.jpg">
+                Imprime tu recibo de nomina
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<section style="font-size: 35px;">
+    <div class="container">
+        <div class="text-center">
+            <a href="#/loginbase" target="_blank" style="text-decoration: none;">
+                <img src="assets/images/banner-servicios.jpg" style="width: 98%;">
+            </a>
+        </div>
+
+    </div>
+</section>
+
+      <!--  <div class="row">-->
+        
+            <!-- Content -->
+      <!--           <div class="8u skel-cell-important">
+                    <section id="content">
+                        <header>
+                            <h2>Integer gravida nibh quis urna</h2>
+                            <span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum</span>
+                        </header>
+                        <p><a href="#" class="image full"><img src="assets/images/pics02.jpg" alt=""></a></p>
+                        <p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem ultricies. Phasellus tempor vehicula justo</p>
+                        <a href="#" class="button">Leer más...</a>
+                    </section>
+                </div> -->
+            <!-- /Content -->
+                
+            <!-- Sidebar -->
+         <!--        <div id="sidebar" class="4u">
+                    <section>
+                        <header>
+                            <h2>Gravida praesent</h2>
+                            <span class="byline">Praesent lacus congue rutrum</span>
+                        </header>
+                        <p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Maecenas luctus lectus at sapien. Consectetuer adipiscing elit.</p>
+                        <ul class="default">
+                            <li><a href="#">Pellentesque quis lectus gravida blandit.</a></li>
+                            <li><a href="#">Lorem ipsum consectetuer adipiscing elit.</a></li>
+                            <li><a href="#">Phasellus nec nibh pellentesque congue.</a></li>
+                            <li><a href="#">Cras aliquam risus pellentesque pharetra.</a></li>
+                            <li><a href="#">Duis non metus commodo euismod lobortis.</a></li>
+                            <li><a href="#">Lorem ipsum dolor adipiscing elit.</a></li>
+                        </ul>
+                    </section>
+                </div> -->
+            <!-- Sidebar -->
+                
+       <!--  </div>-->
+    
+    </div>
+</div>
+
+<div class="divider">&nbsp;</div>
+
+<app-integrantes></app-integrantes>
+
+<!-- Main -->
+
+
+<app-footer></app-footer>
+
+<div style="text-align: center; padding-top: 50px;">
+    <img src="https://counter1.stat.ovh/private/contadorvisitasgratis.php?c=63m2aafy3rgqrgygy43lbth1prjx12bh" border="0">
+</div>
+
+<app-copyright></app-copyright>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel">Debe de ingresar su matricula y password para descargar este archivo</h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+                <input type="hidden" name="ub_ruta" class="form-control" value="{{this.ruta}}">
+                <label for="ub_user" class="col-form-label">Matricula:</label>
+                <input type="text" [(ngModel)]="userbase.ub_user" name="ub_user" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="ub_password" class="col-form-label">Password:</label>
+                <input type="password" [(ngModel)]="userbase.ub_password" name="ub_password" class="form-control" autocomplete="off">
+              </div>
+          </form>
+          <small>Si no tienes una cuenta, ingresa al apartado de SERVICIOS para darse de alta</small>
+        </div>
+      <div class="modal-footer">   
+          <button type="button" class="btn btn-primary btn-lg" role="button" id="send" data-dismiss="modal" (click)='login()'>Descargar Documento</button>
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+      </div>
+      </div>
+    </div>
+  </div>

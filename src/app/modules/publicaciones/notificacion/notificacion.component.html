@@ -1,0 +1,71 @@
+<div  class="tablediv">
+    <!--
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Crear Noticia</button>
+    -->
+    <br><br>
+    <table  class="table table-bordered table-sm"  fixed-header>
+                  <thead>
+                    <tr class="table-head" fixed-header >
+                      <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Titulo</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Texto</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Editar Textos</b></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-txt-blue" >
+                    <ng-container *ngFor="let publicacion of this.publicaciones">  
+                    <tr *ngIf="publicacion.pub_id_categoria == 3">
+                      <td>{{ publicacion.pub_id}}</td>
+                      <td>{{ publicacion.pub_titulo }}</td>
+                      <td><div [innerHTML]="publicacion.pub_texto"></div></td>
+                      <td align="center">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarPublicacion(publicacion.pub_id)'>Editar Textos</button>
+                      </td>
+                    </tr>
+                    </ng-container>
+                  </tbody>
+          </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+                <input [(ngModel)]="publicacion.pub_id" type="hidden" name="titulo" class="form-control" autocomplete="off">
+                <label for="titulo" class="col-form-label">Titulo:</label>
+                <input [(ngModel)]="publicacion.pub_titulo" name="titulo" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Texto:</label>
+              <textarea style="display: none;" [(ngModel)]='publicacion.pub_texto' rows="30" cols="77" name="message" #message='ngModel'></textarea>
+              
+
+                <angular-editor [(ngModel)]="publicacion.pub_texto" [config]="config" [ngModelOptions]="{standalone: true}"></angular-editor>
+                <div class="html">
+                  {{ htmlContent }}
+                </div>
+
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          
+          <button class="btn btn-primary btn-lg" role="button" (click)='create(usuario);LimpiarForm(myForm);' *ngIf="!publicacion.pub_id else elseBlock" id="send" data-dismiss="modal">Crear Noticia</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary btn-lg" role="button" (click)='update(usuario);' id="send" data-dismiss="modal">Editar Notificacion</button>
+          </ng-template>
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

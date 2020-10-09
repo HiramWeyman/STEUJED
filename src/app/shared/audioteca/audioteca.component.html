@@ -1,0 +1,14 @@
+<app-header></app-header>
+
+<div id="main" class="row">
+<div class="3u"></div>
+<div class="6u">
+    <mat-advanced-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
+                muted="muted" [displayPlaylist]="msaapDisplayPlayList" [pageSizeOptions]="msaapPageSizeOptions" 
+                    [expanded]="true" [displayVolumeControls]="true">
+    </mat-advanced-audio-player>
+</div>
+<div class="3u"></div>
+</div>
+<app-footer></app-footer>
+<app-copyright></app-copyright>

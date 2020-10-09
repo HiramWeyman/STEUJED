@@ -1,0 +1,15 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+#logo_header {
+    background: black;
+    background-size: cover;
+    color: #fff;
+    padding: 8px 0;
+}
+
+#menu {
+    background: #131313;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    text-transform: none;
+}

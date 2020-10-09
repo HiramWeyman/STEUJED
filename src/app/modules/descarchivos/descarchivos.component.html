@@ -1,0 +1,25 @@
+<script type="text/javascript" src="bower_components/angular-fixed-table-header/src/fixed-table-header.min.js"></script>
+
+<div  class="tablediv">
+    <table  class="table table-bordered table-sm"  fixed-header>
+        <thead>
+        <tr class="table-head" fixed-header >
+            <th class="table-head-font-weight-normal" ><b>ID</b></th>
+            <th class="table-head-font-weight-normal" ><b>Matricula</b></th>
+            <th class="table-head-font-weight-normal" ><b>Nombre</b></th>
+            <th class="table-head-font-weight-normal" ><b>Archivo</b></th>
+            <th class="table-head-font-weight-normal" ><b>Fecha</b></th>
+        </tr>
+        </thead>
+        <tbody class="table-txt-blue" >
+        <tr *ngFor="let descarga of this.descarga">
+            <td>{{descarga.da_id}}</td>
+            <td>{{descarga.da_matricula}}</td>
+            <td>{{descarga.da_nombre}}</td>
+            <td>{{descarga.da_descripcion}}</td>
+            <td>{{descarga.da_fecha | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

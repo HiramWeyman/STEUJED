@@ -1,0 +1,40 @@
+<h3 class="card-title">Archivos (PDF)</h3>
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/archivos-form']">
+          Nuevo Archivo
+        </button>
+      </div>
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+<div class="tableFixHead border-primary">
+    <table>
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Ruta</th>
+            <th>Archivo</th>
+            <!--<th>Editar</th>-->
+            <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let archivo of archivos">
+        <tr *ngIf="archivo.archivo_seccion == '1'">
+            
+            <td>{{ archivo.archivo_id }}</td>
+            <td>{{ archivo.archivo_descrip }}</td>
+            <td>{{ archivo.archivo_ruta }}</td>
+            <td><a href="{{archivo.archivo_ruta}}" target="_blank">
+                  <button type="button" class="btn btn-info btn-sm">
+                    Ver Archivo
+                  </button>
+                </a>
+            </td>
+            <!--<td><button type="button" class="btn btn-primary btn-sm" [routerLink]="['/archivos-form',archivo.archivo_id]">Editar</button></td>-->
+            <td><button type="button" class="btn btn-danger btn-sm"  (click)='delete(archivo)'>Eliminar</button></td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>

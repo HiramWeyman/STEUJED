@@ -1,0 +1,68 @@
+<div  class="tablediv">
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Agregar Servicio</button>
+
+    <br><br>
+    <table  class="table table-bordered table-sm"  fixed-header>
+                  <thead>
+                    <tr class="table-head" fixed-header >
+                      <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Servicio</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Cancelado</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Editar</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Eliminar</b></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-txt-blue" >
+                    <tr *ngFor="let catservicio of this.catservicios">
+                      <td style="width: 10%;">{{ catservicio.cats_id }}</td>
+                      <td style="width: 60%;">{{ catservicio.cats_descrip }}</td>
+                      <td style="width: 10%;">{{ catservicio.cats_status }}</td>
+                      <td align="center" style="width: 10%;">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarServicio(catservicio.cats_id)'>Editar</button>
+                      </td>
+                      <td align="center" style="width: 10%;">
+                        <button class="btn btn-danger btn-sm" (click)='delete(catservicio.cats_id)'>Eliminar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+          </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+                <input [(ngModel)]="catservicio.cats_id" type="hidden" name="titulo" class="form-control" autocomplete="off">
+                <label for="plaza" class="col-form-label">Plaza:</label>
+                <input [(ngModel)]="catservicio.cats_descrip" name="plaza" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="cancelar" class="col-form-label">Cancelado</label>
+                  <select  [(ngModel)]="catservicio.cats_status" name="cancelar" class="form-control">
+                      <option value="N" selected="selected">NO</option>
+                      <option value="S">SI</option>
+                  </select>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary btn-lg" role="button" (click)='create();' *ngIf="!catservicio.cats_id else elseBlock" id="send" data-dismiss="modal">Guardar Servicio</button>
+            <ng-template #elseBlock>
+                <button class="btn btn-primary btn-lg" role="button" (click)='update();' id="send" data-dismiss="modal">Editar Servicio</button>
+            </ng-template>
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

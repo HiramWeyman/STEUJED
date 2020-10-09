@@ -1,0 +1,36 @@
+
+<section id="redes_sociales" class="margen_top">
+    <div class="container">
+        <div class="row">
+            <div class="2u">&nbsp;</div>
+            <div class="8u">
+                <div class="text-center">
+                    <!--
+                    <span style="float:inline-start;" *ngIf="contacto.con_concepto == 'Facebook' && contacto.con_visible == 'S'"><a href="{{contacto.con_link}}" target="_blank"><img src="../../../assets/images/redes/facebook.jpg"></a></span>
+                    <span style="float:inline-start;" *ngIf="contacto.con_concepto == 'Twitter' && contacto.con_visible == 'S'"><a href="{{contacto.con_link}}" target="_blank"><img src="../../../assets/images/redes/twitter.jpg"></a></span>
+                    <span style="float:inline-start;" *ngIf="contacto.con_concepto == 'Youtube' && contacto.con_visible == 'S'"><a href="{{contacto.con_link}}" target="_blank"><img src="../../../assets/images/redes/youtube.jpg"></a></span>
+                    -->
+                    <ng-container *ngFor="let contacto of this.contactanos"> 
+                    <a class="img_margen_left" *ngIf="contacto.con_concepto == 'Facebook' && contacto.con_visible == 'S'" href="{{contacto.con_link}}" target="_blank"><img src="assets/images/redes/facebook.jpg"></a>
+                    <a class="img_margen_left" *ngIf="contacto.con_concepto == 'Twitter' && contacto.con_visible == 'S'" href="{{contacto.con_link}}" target="_blank"><img src="assets/images/redes/twitter.jpg"></a>
+                    <a class="img_margen_left" *ngIf="contacto.con_concepto == 'Youtube' && contacto.con_visible == 'S'" href="{{contacto.con_link}}" target="_blank"><img src="assets/images/redes/youtube.jpg"></a>
+                    <a class="img_margen_left" *ngIf="contacto.con_concepto == 'Instagram' && contacto.con_visible == 'S'" href="{{contacto.con_link}}" target="_blank"><img src="assets/images/redes/instagram.jpg"></a>
+                    <a class="img_margen_left" *ngIf="contacto.con_concepto == 'Messenger' && contacto.con_visible == 'S'" href="{{contacto.con_link}}" target="_blank"><img src="assets/images/redes/messenger.jpg"></a>
+                    <a class="img_margen_left" *ngIf="contacto.con_concepto == 'Whatsapp' && contacto.con_visible == 'S'" href="{{contacto.con_link}}" target="_blank"><img src="assets/images/redes/whatsapp.jpg"></a>
+                    <a class="img_margen_left" *ngIf="contacto.con_concepto == 'Email' && contacto.con_visible == 'S'" href="mailto:{{contacto.con_texto}}" target="_blank"><img src="assets/images/redes/email.jpg"></a>
+                    <a class="img_margen_left" *ngIf="contacto.con_concepto == 'Radio' && contacto.con_visible == 'S'" href="{{contacto.con_link}}" target="_blank"><img src="assets/images/redes/radio.jpg"></a>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="2u">&nbsp;
+                <!--
+                <div class="text-center">
+                    <audio class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms" controls="" name="media"><source src="http://200.23.125.55:8000/;?type=http&amp;nocache=156" type="audio/mpeg"></audio>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider">&nbsp;</div>
