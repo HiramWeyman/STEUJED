@@ -49,6 +49,7 @@ export class LoginService {
 		localStorage.removeItem(_TOKEN);
 		sessionStorage.removeItem('TipoUser');
 		sessionStorage.removeItem('LoginBase');
+		sessionStorage.removeItem('Situacion');
 		this.router.navigate(['/loginbase']);
 	}
 

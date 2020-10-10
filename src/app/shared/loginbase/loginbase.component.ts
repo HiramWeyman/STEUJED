@@ -95,34 +95,29 @@ export class LoginbaseComponent implements OnInit {
         this._ps.getPadronAdvo(data.ub_user)
         .subscribe((data2: any) =>{
           sessionStorage.Situacion = data2.pad_situacion;
+          sessionStorage.TipoUser = '4'  
+          
+          if ( data != null) {
+            swal.fire({
+              icon: 'success',
+              title: 'Usuario Logeado',
+              text: 'Bienvenido ' + data.ub_nombre,
+              timer: 2000
+            });
+            this.router.navigate(['/inicio']);
+          } else{
+            swal.fire({
+              icon: 'error',
+              title: 'Usuario y/o contraseña incorrecta'
+            });
+          }	
+
         },
         error => {
           //console.log(error.error.Message);
           swal.fire({title: 'ERROR!!!',text: error.error.Message,icon: 'error'});
         });
-
-        sessionStorage.TipoUser = '4'
-        if ( data != null) {
-          swal.fire({
-            icon: 'success',
-            title: 'Usuario Logeado',
-            text: 'Bienvenido ' + data.ub_nombre,
-            timer: 2000
-          });
-          this.router.navigate(['/inicio']);
-        } else{
-          swal.fire({
-            icon: 'error',
-            title: 'Usuario y/o contraseña incorrecta'
-          });
-        }	
-      },
-      error => {
-        //console.log(error.error.Message);
-        swal.fire({
-          title: 'ERROR!!!',
-          text: error.error.Message,
-          icon: 'error'});
+        
       });
     }
 
