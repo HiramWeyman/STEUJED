@@ -8,7 +8,7 @@ import { CatPlazas } from '../../interfaces/catplazas';
 @Injectable()
 export class CatPlazasService {
 
-    private urlEndPoint = `${environment.rutaAPI}/CatPlazas`;
+    public urlEndPoint = `${environment.rutaAPI}/CatPlazas`;
   	constructor(private http: HttpClient) { }
 
 	getCatPlazas(): Observable<CatPlazas[]> {
@@ -16,6 +16,8 @@ export class CatPlazasService {
 		  map(response => response as CatPlazas[])
 		);
 	}
+
+
 
 	getCatPlaza(ids: number): Observable<CatPlazas> {
 		// return this.http.get<Usuarios>(`${this.urlEndPoint+"/Usuarios"}/${ids}`, {headers: this.httpHeaders})

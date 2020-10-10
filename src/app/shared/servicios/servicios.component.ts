@@ -3,10 +3,13 @@ import { CatPlazasService } from '../../services/dasboard/catplazas.service';
 import { CatPlazas } from '../../interfaces/catplazas';
 import Swal from 'sweetalert2';
 import { ServiciosService } from '../../services/servicios/servicios.service';
+
+
 import { Advos } from '../../interfaces/advos';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import { environment} from '../../../environments/environment';
+
 //import { ReporteService } from '../../services/dasboard/reportesol.service';
 
 @Component({
@@ -48,18 +51,19 @@ export class ServiciosComponent implements OnInit {
   pad_num_contacto_: String;
   pad_observaciones_: String;
 
-  constructor( private _cp:CatPlazasService, private _serv:ServiciosService, private fb: FormBuilder, public router: Router ) { }
+  constructor( private _cp: CatPlazasService, private _serv: ServiciosService, private fb: FormBuilder, public router: Router ,) { }
 
   ngOnInit(): void {
 
     this.cargarCatServicio();
+    //console.log(this.cargarCatServicio());
 
     this.crearFormulario();
 
   }
 
   cargarCatServicio(){
-    this._cp.getCatPlazas().subscribe(
+/*     this._cp.getCatPlazas().subscribe(
       catplazas => {
         this.catplazas = catplazas;
         //console.log(this.catplazas);
@@ -67,7 +71,15 @@ export class ServiciosComponent implements OnInit {
       error => {
         //console.log(error);
         Swal.fire({title: 'ERROR!!!',text: error.message,icon: 'error'});
-      });
+      }); */
+      this._cp.getCatPlazas().subscribe(
+        catplazas => {
+          this.catplazas = catplazas;
+          console.log(this.catplazas);
+        },error => {
+          //console.log(error);
+          Swal.fire({title: 'ERROR!!!',text: error.message,icon: 'error'});
+        });
   }
 
   buscaAdvo(idCatPlaza){
@@ -149,6 +161,8 @@ export class ServiciosComponent implements OnInit {
         icon: 'error'});
     });
   }
+
+
 
   imprimirSolicitud() {
 

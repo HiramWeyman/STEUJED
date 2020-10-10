@@ -2,12 +2,21 @@
     <div  class="container">
         
         <div class="form-group">
-            <select formControlName="pad_plaza_id" class="form-control" (change)="buscaAdvo($event.target.value)">
+       <!--      <select formControlName="pad_plaza_id" class="form-control" (change)="buscaAdvo($event.target.value)">
                 <option value="" selected disabled> - Seleccione una plaza a concursar - </option>
-                <ng-container *ngFor="let catplaza of this.catplazas">
-                <option *ngIf="catplaza.catp_status == 'N'" value="{{ catplaza.catp_id }}">{{ catplaza.catp_descrip }}</option>
+                <ng-container *ngFor="let a of catplazas">
+                <option *ngIf="a.catp_status == 'N'" value="{{ a.catp_id }}">{{ a.catp_descrip }}</option>
             </ng-container>
-            </select>
+            </select> -->
+            <label for="nombre" class="col-form-label">Plaza:</label>
+            <select formControlName="pad_plaza_id" class="form-control" (change)="buscaAdvo($event.target.value)">
+                <option selected="selected" value="0">--Seleccione--</option>
+                <ng-container >
+                    <option *ngFor="let a of catplazas" value={{a.catp_id}}>
+                        {{a.catp_descrip}}
+                    </option>
+                </ng-container>
+               </select>
             <div class="form-group">
                 <label for="nombre" class="col-form-label">Categoria:</label>
                 <input class="form-control" formControlName="categoria" value="" readonly>
