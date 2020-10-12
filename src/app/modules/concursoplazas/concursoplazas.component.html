@@ -25,6 +25,7 @@
                       <th class="table-head-font-weight-normal" ><b>Situacion Base</b></th>
                       <th class="table-head-font-weight-normal" ><b>Num. Contacto</b></th>
                       <th class="table-head-font-weight-normal" ><b>Observaciones</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Acciones</b></th>
                     </tr>
                   </thead>
                   <tbody class="table-txt-blue" >
@@ -47,6 +48,10 @@
                       <td style="width: 10%;">{{ administrativo.pad_situacion_base }}</td>
                       <td style="width: 10%;">{{ administrativo.pad_num_contacto }}</td>
                       <td style="width: 10%;">{{ administrativo.pad_observaciones }}</td>
+                      <td>
+                        <button type="button" class="btn btn-danger btn-sm" (click)='reporte(administrativo.pad_id);'>Reimpresión</button>
+                        <button type="button" class="btn btn-success btn-sm" (click)='CancelarSol(administrativo);'>Cancelar Solicitud</button>                  
+                      </td>
                     </tr>
                   </tbody>
           </table>

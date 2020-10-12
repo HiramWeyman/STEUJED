@@ -45,6 +45,7 @@ import { PrestamoComponent } from './modules/solicitud/prestamo/prestamo.compone
 import { RetiroComponent } from './modules/solicitud/retiro/retiro.component';
 import { AdmRetiroComponent } from './modules/solicitud/adm-retiro/adm-retiro.component';
 import { AdmPrestamoComponent } from './modules/solicitud/adm-prestamo/adm-prestamo.component';
+import { ReimpresionsolComponent } from '../app/modules/reimpresionsol/reimpresionsol.component';
 
 // Set the fonts to use
 
@@ -79,7 +80,8 @@ import { AdmPrestamoComponent } from './modules/solicitud/adm-prestamo/adm-prest
     AdmRetiroComponent,
     AdmPrestamoComponent,
     AsistenciaComponent,
-    DescarchivosComponent
+    DescarchivosComponent,
+    ReimpresionsolComponent
   ],
   imports: [
     APP_ROUTING,

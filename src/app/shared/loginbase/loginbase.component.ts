@@ -91,11 +91,13 @@ export class LoginbaseComponent implements OnInit {
   login() {
     this.subscription = this._login.getLoginBase(this.userbase)
       .subscribe((data: any) => {
-
+        sessionStorage.Matricula=data.ub_user;
+        //console.log(data.ub_user+"x");
         this._ps.getPadronAdvo(data.ub_user)
         .subscribe((data2: any) =>{
           sessionStorage.Situacion = data2.pad_situacion;
-          sessionStorage.TipoUser = '4'  
+          
+          sessionStorage.TipoUser = '4';
           
           if ( data != null) {
             swal.fire({

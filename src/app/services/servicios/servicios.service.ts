@@ -11,8 +11,9 @@ export class ServiciosService {
 
 	private urlEndPoint = `${environment.rutaAPI}/PadronAdvo`;
 	private urlConsurso = `${environment.rutaAPI}/ConcursoPlazas`;
+	private urlReimpresion = `${environment.rutaAPI}/GetSolicitudesReimpresion`;
 	private urlUsersBase = `${environment.rutaAPI}/UsersBase`;
-
+	private urlCancelarSol = `${environment.rutaAPI}/CancelarSol`;
   	constructor(private http: HttpClient) { }
 
 	getPadronAdvo(): Observable<Advos[]> {
@@ -37,6 +38,12 @@ export class ServiciosService {
 		);
 	}
 
+	getAdministrativosReimp(ids): Observable<Advos[]> {
+		return this.http.get(this.urlReimpresion+ "/" +ids).pipe(
+		  map(response => response as Advos[])
+		);
+	}
+
 	create(administrativo: Advos): Observable<Advos> {
 		return this.http.post<Advos>(`${this.urlConsurso}`, administrativo);
 	}
@@ -48,5 +55,10 @@ export class ServiciosService {
 				  })
 		  );
 	}
+
+	update(administrativo: Advos): Observable<Advos> {
+		// return this.http.put<Usuarios>(`${this.urlEndPoint+"/Usuarios"}/${usuario.id}`, usuario, {headers: this.httpHeaders})
+		return this.http.put<Advos>(`${this.urlCancelarSol}/${administrativo.pad_id}`, administrativo);
+	  }
 
 }

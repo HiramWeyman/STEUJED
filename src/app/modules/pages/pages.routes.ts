@@ -34,6 +34,7 @@ import { PrestamoComponent } from '../solicitud/prestamo/prestamo.component';
 import { RetiroComponent } from '../solicitud/retiro/retiro.component';
 import { AdmPrestamoComponent } from '../solicitud/adm-prestamo/adm-prestamo.component';
 import { AdmRetiroComponent } from '../solicitud/adm-retiro/adm-retiro.component';
+import { ReimpresionsolComponent } from '../reimpresionsol/reimpresionsol.component';
 
 
 
@@ -76,7 +77,8 @@ const pagesRoutes: Routes = [
 			{ path: 'prestamo', component: PrestamoComponent },
 			{ path: 'retiro', component: RetiroComponent },
 			{ path: 'AdmPrestamo', component: AdmPrestamoComponent },
-			{ path: 'AdmRetiro', component: AdmRetiroComponent }
+			{ path: 'AdmRetiro', component: AdmRetiroComponent },
+			{ path: 'reimpresionsol', component: ReimpresionsolComponent  }
 		]
 	}
 ];
