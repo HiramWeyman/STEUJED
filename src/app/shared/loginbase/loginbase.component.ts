@@ -107,7 +107,9 @@ export class LoginbaseComponent implements OnInit {
               timer: 2000
             });
             this.router.navigate(['/inicio']);
-          } else{
+          }
+          
+          else{
             swal.fire({
               icon: 'error',
               title: 'Usuario y/o contraseña incorrecta'
@@ -116,8 +118,8 @@ export class LoginbaseComponent implements OnInit {
 
         },
         error => {
-          //console.log(error.error.Message);
-          swal.fire({title: 'ERROR!!!',text: error.error.Message,icon: 'error'});
+          console.log(error);
+          swal.fire({title: 'ERROR!!!',text: error.error.Mensaje,icon: 'error'});
         });
         
       });
@@ -135,17 +137,18 @@ export class LoginbaseComponent implements OnInit {
             swal.fire('Registro Guardado', `Administrativo ${admin.ub_user} guardado con éxito!`, 'success');
           },
           error => {
-            //console.log(error);
+            console.log(error);
             swal.fire({
               title: 'ERROR!!!',
-              text: error.message,
+              text: error.error,
               icon: 'error'});
           });
 
         },
         error => {
           console.log(error);
-          swal.fire({title: 'ERROR!!!',text: error.error.Message ,icon: 'error'});
+          console.log(error.error);
+          swal.fire({title: 'ERROR!!!', text: error.error.error , icon: 'error'});
         });
     }
 
