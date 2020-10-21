@@ -35,6 +35,7 @@ import { NoticiaComponent } from './noticias/noticia/noticia.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { LoginbaseComponent } from './loginbase/loginbase.component';
+import { VideosFLComponent } from './videos-fl/videos-fl.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { LoginbaseComponent } from './loginbase/loginbase.component';
     NoticiaComponent,
     TopbarComponent,
     ServiciosComponent,
-    LoginbaseComponent
+    LoginbaseComponent,
+    VideosFLComponent
   ],
   exports:[
     EncabezadoComponent,

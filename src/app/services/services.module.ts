@@ -17,6 +17,7 @@ import { CatServiciosService } from './dasboard/catservicios.service';
 import { ServiciosService } from './servicios/servicios.service';
 import { DescargaService } from './descarga/descarga.service';
 import { CajaAhorroService } from './cajaAhorro/cajaAhorro.service';
+import { VideosFLService } from './videosfl/videosfl.service';
 
 @NgModule({
   declarations: [],
@@ -39,7 +40,8 @@ import { CajaAhorroService } from './cajaAhorro/cajaAhorro.service';
     CatServiciosService,
     ServiciosService,
     DescargaService,
-    CajaAhorroService
+    CajaAhorroService,
+    VideosFLService
   ]
 })
 export class ServicesModule { }

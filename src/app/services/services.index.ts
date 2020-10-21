@@ -13,3 +13,5 @@ export { CatServiciosService } from './dasboard/catservicios.service';
 export { ServiciosService } from './servicios/servicios.service';
 export { DescargaService } from './descarga/descarga.service';
 export { CajaAhorroService } from './cajaAhorro/cajaAhorro.service';
+export { VideosFLService } from './videosfl/videosfl.service';
+

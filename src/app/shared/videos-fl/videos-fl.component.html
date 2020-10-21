@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div id="main" class="row" style="text-align: center;" *ngFor="let video of this.videosFL | paginate: { itemsPerPage: 7, currentPage: p }">
+    <div class="3u">&nbsp;</div>
+    <div class="6u">
+        <section>
+            <h2>{{video.vid_titulo}}</h2>
+            <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(video.vid_src)" width="{{video.vid_largo}}" height="{{video.vid_ancho}}" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>
+        </section>
+    </div>
+    <div class="3u">&nbsp;</div>
+</div>
+
+<div style="text-align: center;">
+    <pagination-controls
+        (pageChange)="p = $event"
+        responsive="true"
+        previousLabel="Anterior"
+        nextLabel="Siguiente">
+    </pagination-controls>
+</div>
+
+<!--
+<button type="button" class="btn btn-secondary btn-lg" [routerLink]="['/noticias']">Regresar</button>
+-->
+
+    <app-footer></app-footer>
+    <app-copyright></app-copyright>

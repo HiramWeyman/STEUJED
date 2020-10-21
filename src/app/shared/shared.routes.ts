@@ -8,6 +8,7 @@ import { NoticiaComponent } from './noticias/noticia/noticia.component';
 import { ConcursoplazasComponent } from '../modules/concursoplazas/concursoplazas.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { LoginbaseComponent } from './loginbase/loginbase.component';
+import { VideosFLComponent } from './videos-fl/videos-fl.component';
 
 
 const sharedRoutes: Routes = [
@@ -18,7 +19,8 @@ const sharedRoutes: Routes = [
   { path: 'noticia', component: NoticiaComponent},
   { path: 'noticia/:id', component: NoticiaComponent},
   { path: 'concursoplazas', component: ConcursoplazasComponent},
-  { path: 'loginbase', component: LoginbaseComponent}
+  { path: 'loginbase', component: LoginbaseComponent},
+  { path: 'videosFL', component: VideosFLComponent }
   //{ path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
