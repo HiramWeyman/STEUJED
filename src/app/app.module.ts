@@ -47,6 +47,8 @@ import { AdmRetiroComponent } from './modules/solicitud/adm-retiro/adm-retiro.co
 import { AdmPrestamoComponent } from './modules/solicitud/adm-prestamo/adm-prestamo.component';
 import { ReimpresionsolComponent } from '../app/modules/reimpresionsol/reimpresionsol.component';
 import { safeUrlPipe } from './shared/videos-fl/safeUrlPipe';
+import { AdmVideosflComponent } from './modules/publicaciones/adm-videosfl/adm-videosfl.component';
+
 
 // Set the fonts to use
 
@@ -83,7 +85,8 @@ import { safeUrlPipe } from './shared/videos-fl/safeUrlPipe';
     AsistenciaComponent,
     DescarchivosComponent,
     ReimpresionsolComponent,
-    safeUrlPipe
+    safeUrlPipe,
+    AdmVideosflComponent
   ],
   imports: [
     APP_ROUTING,

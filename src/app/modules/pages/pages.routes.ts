@@ -35,7 +35,7 @@ import { RetiroComponent } from '../solicitud/retiro/retiro.component';
 import { AdmPrestamoComponent } from '../solicitud/adm-prestamo/adm-prestamo.component';
 import { AdmRetiroComponent } from '../solicitud/adm-retiro/adm-retiro.component';
 import { ReimpresionsolComponent } from '../reimpresionsol/reimpresionsol.component';
-
+import { AdmVideosflComponent } from '../publicaciones/adm-videosfl/adm-videosfl.component';
 
 
 const pagesRoutes: Routes = [
@@ -78,7 +78,8 @@ const pagesRoutes: Routes = [
 			{ path: 'retiro', component: RetiroComponent },
 			{ path: 'AdmPrestamo', component: AdmPrestamoComponent },
 			{ path: 'AdmRetiro', component: AdmRetiroComponent },
-			{ path: 'reimpresionsol', component: ReimpresionsolComponent  }
+			{ path: 'reimpresionsol', component: ReimpresionsolComponent  },
+			{ path: 'admvideosfl', component: AdmVideosflComponent  }
 		]
 	}
 ];

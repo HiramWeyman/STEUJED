@@ -11,34 +11,27 @@ export class VideosFLService {
     private urlEndPoint = `${environment.rutaAPI}/VideosFL`;
   	constructor(private http: HttpClient) { }
 
-	  getVideosFL(): Observable<VideosFL[]> {
-		return this.http.get(this.urlEndPoint).pipe(
-		  map(response => response as VideosFL[])
-		);
-	  }
-
-	  getVideo(ids: number): Observable<VideosFL> {
-		// return this.http.get<Usuarios>(`${this.urlEndPoint+"/Usuarios"}/${ids}`, {headers: this.httpHeaders})
-		return this.http.get<VideosFL>(`${this.urlEndPoint}/${ids}`);
-	  }
-
-    /*
-	create(archivos: Publicaciones, nombreArchivo: string, Usuario: string): Observable<Publicaciones> {
-		// return this.http.post<Usuarios>(this.urlEndPoint+"/Usuarios", usuario, {headers: this.httpHeaders})
-		// return this.http.post<Archivos>(this.urlEndPoint, archivos)	
-		return this.http.post<Publicaciones>(`${this.urlEndPoint + '?nombreArchivo=' + nombreArchivo + '&IDCategoria=' + 2 + '&IDUsuario=' + Usuario}`, archivos);
-	  }
-
-	update(publicaciones: Publicaciones): Observable<Publicaciones> {
-		return this.http.put<Publicaciones>(`${this.urlEndPoint}/${publicaciones.pub_id}`, publicaciones);
+	getVideosFL(): Observable<VideosFL[]> {
+	return this.http.get(this.urlEndPoint).pipe(
+		map(response => response as VideosFL[])
+	);
 	}
 
-	updateNombreArchivo(publicacion: Publicaciones, nombreArchivo: string): Observable<Publicaciones>{
-		return this.http.put<Publicaciones>(`${this.urlEndPoint}/${publicacion.pub_id}?nombreArchivo=`+nombreArchivo, publicacion)
+	getVideo(ids: number): Observable<VideosFL> {
+	// return this.http.get<Usuarios>(`${this.urlEndPoint+"/Usuarios"}/${ids}`, {headers: this.httpHeaders})
+	return this.http.get<VideosFL>(`${this.urlEndPoint}/${ids}`);
+	}
+    
+	create(videos: VideosFL, Usuario: string): Observable<VideosFL> {
+		return this.http.post<VideosFL>(`${this.urlEndPoint + '?usuario==' + Usuario}`, videos);
+	  }
+
+	update(videos: VideosFL): Observable<VideosFL> {
+		return this.http.put<VideosFL>(`${this.urlEndPoint}/${videos.vid_id}`, videos);
 	}
 
-	delete(id: number): Observable<Publicaciones> {
-		return this.http.delete<Publicaciones>(`${this.urlEndPoint}/${id}`);
+	delete(id: number): Observable<VideosFL> {
+		return this.http.delete<VideosFL>(`${this.urlEndPoint}/${id}`);
 	}
-    */
+    
 }
