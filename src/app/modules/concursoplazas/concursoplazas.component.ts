@@ -23,14 +23,26 @@ export class ConcursoplazasComponent implements OnInit {
 
   ngOnInit(): void {
     //this.cargarConcursoPlazas();
-    this.cargarCatPlazas();
+   // this.cargarCatPlazas();
+    this.cargarCatPlazasAdmin();
   }
 
   cargarCatPlazas(){
     this._cp.getCatPlazas().subscribe(
       catplazas => {
         this.catplazas = catplazas;
-        console.log(this.catplazas);
+        //console.log(this.catplazas);
+      },error => {
+        //console.log(error);
+        Swal.fire({title: 'ERROR!!!',text: error.message,icon: 'error'});
+      });
+  }
+
+  cargarCatPlazasAdmin(){
+    this._cp.getCatPlazasAdmin().subscribe(
+      catplazas => {
+        this.catplazas = catplazas;
+       // console.log(this.catplazas);
       },error => {
         //console.log(error);
         Swal.fire({title: 'ERROR!!!',text: error.message,icon: 'error'});
@@ -42,7 +54,7 @@ export class ConcursoplazasComponent implements OnInit {
     this._serv.getAdministrativosCat(ids).subscribe(
       administrativos => {
         this.administrativos = administrativos;
-        console.log(this.administrativos);
+        //console.log(this.administrativos);
       },
       error => {
         //console.log(error);

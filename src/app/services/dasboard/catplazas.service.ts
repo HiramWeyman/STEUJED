@@ -8,7 +8,8 @@ import { CatPlazas } from '../../interfaces/catplazas';
 @Injectable()
 export class CatPlazasService {
 
-    public urlEndPoint = `${environment.rutaAPI}/CatPlazas`;
+	public urlEndPoint = `${environment.rutaAPI}/CatPlazas`;
+	public urlEndPoint2 = `${environment.rutaAPI}/CatPlazasAdmin`;
   	constructor(private http: HttpClient) { }
 
 	getCatPlazas(): Observable<CatPlazas[]> {
@@ -16,6 +17,14 @@ export class CatPlazasService {
 		  map(response => response as CatPlazas[])
 		);
 	}
+
+	getCatPlazasAdmin(): Observable<CatPlazas[]> {
+		return this.http.get(this.urlEndPoint2).pipe(
+		  map(response => response as CatPlazas[])
+		);
+	}
+
+	
 
 
 
