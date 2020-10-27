@@ -72,10 +72,10 @@ export class ServiciosComponent implements OnInit {
         //console.log(error);
         Swal.fire({title: 'ERROR!!!',text: error.message,icon: 'error'});
       }); */
-      this._cp.getCatPlazas().subscribe(
+      this._cp.getCatPlazasAdmin1().subscribe(
         catplazas => {
           this.catplazas = catplazas;
-          console.log(this.catplazas);
+          //console.log(this.catplazas);
         },error => {
           //console.log(error);
           Swal.fire({title: 'ERROR!!!',text: error.message,icon: 'error'});
@@ -136,6 +136,7 @@ export class ServiciosComponent implements OnInit {
       pad_situacion_base: [''],
       pad_num_contacto: [''],
       pad_observaciones: [''],
+      pad_sueldo: [''],
 
       plaza_descrip: [''],
       categoria: [''],

@@ -13,6 +13,12 @@ export class CatPlazasService {
   	constructor(private http: HttpClient) { }
 
 	getCatPlazas(): Observable<CatPlazas[]> {
+		return this.http.get(this.urlEndPoint2).pipe(
+		  map(response => response as CatPlazas[])
+		);
+	}
+
+	getCatPlazasAdmin1(): Observable<CatPlazas[]> {
 		return this.http.get(this.urlEndPoint).pipe(
 		  map(response => response as CatPlazas[])
 		);
