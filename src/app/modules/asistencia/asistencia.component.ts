@@ -15,7 +15,7 @@ export class AsistenciaComponent implements OnInit {
   constructor(private usuarioService: UsuariosService) { }
 
   ngOnInit(): void {
-    console.log(this.fec.valor);
+    console.log(this.fec);
     this.cargarUsers();
   }
 
@@ -29,12 +29,12 @@ export class AsistenciaComponent implements OnInit {
 
     if (fechas != null){
 
-      if(fechas.fecha2 === undefined){
+    /*   if(fechas.fecha2 === undefined){
         fechas.fecha2 = null;
       }
       else if(fechas.trabajador === undefined){
         fechas.fecha2 = null;
-      }
+      } */
       window.open(`${environment.rutaAPI}` + '/Asistenciaeventuales?fecha1='
       + fechas.fecha1
       + '&fecha2=' + fechas.fecha2
@@ -43,6 +43,16 @@ export class AsistenciaComponent implements OnInit {
 
       }
       fechas = null;
+    }
+
+    recibeValores(valor){
+     // console.log(valor);
+      this.fec.valor = valor;
+    }
+
+    recibeFecha(fecha){
+     // console.log(fecha);
+      this.fec.fecha2=fecha;
     }
   }
 
