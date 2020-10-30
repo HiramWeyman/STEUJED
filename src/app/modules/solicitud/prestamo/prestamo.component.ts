@@ -103,7 +103,7 @@ window.open(`${environment.rutaAPI}` + '/ReporPrestamos?id='
   onUpload(){
     const fd = new FormData();
     fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post(`${this.urlEndPoint+"/Prestamos"}/${this.IDRegistro}?bandera=${this.valorBandera}`,fd,{
+    this.http.post(`${this.urlEndPoint}`+"/Prestamos/"+this.IDRegistro+"?bandera="+this.valorBandera,fd,{
       reportProgress: true,
       observe: 'events'
     })
@@ -113,7 +113,7 @@ window.open(`${environment.rutaAPI}` + '/ReporPrestamos?id='
           this.progress = Math.round (event.loaded * 100 / event.total );
         }else if (event.type === HttpEventType.Response){
           //console.log(event);
-          if (event.status == 201){
+          if (event.status == 200){
             this.router.navigate(['/prestamo']).then(() => {
               window.location.reload();
             });
@@ -124,7 +124,6 @@ window.open(`${environment.rutaAPI}` + '/ReporPrestamos?id='
               icon: 'success'});
           } 
         }
-        
       },
       error => {
         console.log(error);

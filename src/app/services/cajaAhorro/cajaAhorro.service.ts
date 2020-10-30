@@ -8,7 +8,9 @@ import { CajaAhorro } from '../../interfaces/cajaAhorro';
 @Injectable()
 export class CajaAhorroService {
 
-    private urlEndPoint = `${environment.rutaAPI}/CajaAhorro`;
+	private urlEndPoint = `${environment.rutaAPI}/CajaAhorro`;
+	private urlPrestamos = `${environment.rutaAPI}/Prestamos`;
+
   	constructor(private http: HttpClient) { }
 
 	getCajaAhorro(): Observable<CajaAhorro[]> {
@@ -33,11 +35,12 @@ export class CajaAhorroService {
 		return this.http.post<CajaAhorro>(`${this.urlEndPoint + '?matricula='+matricula+'&nombre='+nombre+'&adscripcion='+adscripcion+'&tipo='+tipo}`, cajaAhorro);
 	  }
 
-    /*
-	update(publicaciones: Publicaciones): Observable<Publicaciones> {
-		return this.http.put<Publicaciones>(`${this.urlEndPoint}/${publicaciones.pub_id}`, publicaciones);
+    
+	update(valorSelect: string, ID: number){
+		return this.http.put(`${this.urlPrestamos}/${ID}?valor=`+valorSelect, CajaAhorro);
 	}
 
+	/*
 	updateNombreArchivo(publicacion: Publicaciones, nombreArchivo: string): Observable<Publicaciones>{
 		return this.http.put<Publicaciones>(`${this.urlEndPoint}/${publicacion.pub_id}?nombreArchivo=`+nombreArchivo, publicacion)
 	}

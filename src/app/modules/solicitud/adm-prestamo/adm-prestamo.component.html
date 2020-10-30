@@ -13,6 +13,8 @@
             <th>Banco</th>
             <th>Teléfono</th>
             <th>Monto</th>
+            <th>Recibo</th>
+            <th>INE</th>
             <th>Estatus</th>
         </tr>
       </thead>
@@ -27,10 +29,25 @@
             <td>{{cajaAhorro.pre_telefono}}</td>
             <td>{{cajaAhorro.pre_cantidad}}</td>
             <td>
-                <select>
-                    <option>- Seleccionar -</option>
-                    <option>ACEPTADA</option>
-                    <option>RECHAZADA</option>
+                <a href="{{cajaAhorro.pre_recibo}}" target="_blank">
+                    <button type="button" class="btn btn-primary btn-sm">
+                      Ver Archivo
+                    </button>
+                </a>
+            </td>
+            <td>
+                <a href="{{cajaAhorro.pre_ine}}" target="_blank">
+                    <button type="button" class="btn btn-primary btn-sm">
+                      Ver Archivo
+                    </button>
+                </a>
+            </td>
+            <td>
+                <select (change)="update($event.target.value,cajaAhorro.pre_id)">
+                    <option [selected]="cajaAhorro.pre_estatus=='ACEPTADA'" value="ACEPTADA">ACEPTADA</option>
+                    <option [selected]="cajaAhorro.pre_estatus=='ATENDIDA'" value="ATENDIDA">ATENDIDA</option>
+                    <option [selected]="cajaAhorro.pre_estatus=='PENDIENTE'" value="PENDIENTE">PENDIENTE</option>
+                    <option [selected]="cajaAhorro.pre_estatus=='RECHAZADA'" value="RECHAZADA">RECHAZADA</option>
                 </select>
             </td>
         </tr>

@@ -35,7 +35,7 @@
             <td>{{cajaAhorro.pre_cantidad}}</td>
             <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo" (click)="valorID(cajaAhorro.pre_id,'RECIBO')">Subir recibo</button></td>
             <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo" (click)="valorID(cajaAhorro.pre_id,'INE')">Subir INE</button></td>
-            <td></td>
+            <td>{{cajaAhorro.pre_estatus}}</td>
             <td><button type="button" class="btn btn-primary btn-sm" (click)='reporte(cajaAhorro.pre_id,1);'>Imprimir</button></td>
         </tr>
       </tbody>
@@ -116,7 +116,7 @@
                         #fileInput>
                     <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar Imagen</button> 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button id="uploadButton" class="btn btn-primary" type="button" (click)="onUpload()" [disabled]="ToggleButton">Subir Imagen</button> 
+                    <button id="uploadButton" class="btn btn-primary" type="button" (click)="onUpload()" [disabled]="ToggleButton">Subir Archivo</button> 
                 </mat-card-actions> 
                 <mat-card-content>
                     <ul>  

@@ -41,14 +41,30 @@ export class AdmPrestamoComponent implements OnInit {
       this._ca.getCaja(sessionStorage.getItem('LoginBase'), 'PRESTAMO').subscribe(
         (cajaAhorros) => {
           this.cajaAhorros = cajaAhorros;
-          
-          //console.log(this.cajaAhorros);
         }
       )
       Swal.fire('Guardado', `Solicitud de Prestamo enviada con éxito!`, 'success');
     },
     error => {
       console.log(error);
+      Swal.fire({
+        title: 'ERROR!!!',
+        text: error.message,
+        icon: 'error'});
+    });
+  }
+
+  update(valorSelect,ID){
+    this._ca.update(valorSelect,ID).subscribe(usr =>{
+      this._ca.getCajaTipo('PRESTAMO').subscribe(
+        (cajaAhorros) => {
+          this.cajaAhorros = cajaAhorros;
+        }
+      )
+        Swal.fire('Actualizado', 'Registro actualizado con exito', 'success');
+    },
+    error => {
+      //console.log(error);
       Swal.fire({
         title: 'ERROR!!!',
         text: error.message,
