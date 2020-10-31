@@ -29,18 +29,22 @@
             <td>{{cajaAhorro.pre_telefono}}</td>
             <td>{{cajaAhorro.pre_cantidad}}</td>
             <td>
-                <a href="{{cajaAhorro.pre_recibo}}" target="_blank">
-                    <button type="button" class="btn btn-primary btn-sm">
-                      Ver Archivo
-                    </button>
-                </a>
+                <ng-container *ngIf="cajaAhorro.pre_recibo != null">
+                    <a href="{{cajaAhorro.pre_recibo}}" target="_blank">
+                        <button type="button" class="btn btn-primary btn-sm">
+                        Ver Archivo
+                        </button>
+                    </a>
+                </ng-container>
             </td>
             <td>
-                <a href="{{cajaAhorro.pre_ine}}" target="_blank">
-                    <button type="button" class="btn btn-primary btn-sm">
-                      Ver Archivo
-                    </button>
-                </a>
+                <ng-container *ngIf="cajaAhorro.pre_ine != null">
+                    <a href="{{cajaAhorro.pre_ine}}" target="_blank">
+                        <button type="button" class="btn btn-primary btn-sm">
+                        Ver Archivo
+                        </button>
+                    </a>
+                </ng-container>
             </td>
             <td>
                 <select (change)="update($event.target.value,cajaAhorro.pre_id)">

@@ -35,6 +35,25 @@ export class AdmRetiroComponent implements OnInit {
 
   }
 
+  update(valorSelect,ID){
+    this._ca.update(valorSelect,ID).subscribe(usr =>{
+      this._ca.getCajaTipo('RETIRO').subscribe(
+        (cajaAhorros) => {
+          this.cajaAhorros = cajaAhorros;
+        }
+      )
+        Swal.fire('Actualizado', 'Registro actualizado con exito', 'success');
+    },
+    error => {
+      //console.log(error);
+      Swal.fire({
+        title: 'ERROR!!!',
+        text: error.message,
+        icon: 'error'});
+    });
+  }
+
+  /*
   create(){
     //console.log(datos.form.value);
     this._ca.create(this.matricula, this.nombre, this.adscripcion, 'RETIRO', this.cajaAhorro).subscribe(cajaAhorro =>{
@@ -55,5 +74,5 @@ export class AdmRetiroComponent implements OnInit {
         icon: 'error'});
     });
   }
-
+  */
 }

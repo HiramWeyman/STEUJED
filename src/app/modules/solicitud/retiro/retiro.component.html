@@ -17,6 +17,8 @@
             <th>Banco</th>
             <th>Teléfono</th>
             <th>Monto</th>
+            <th>Recibo</th>
+            <th>INE</th>
             <th>Estatus</th>
             <th>Recibo</th>
         </tr>
@@ -31,7 +33,9 @@
             <td>{{cajaAhorro.pre_banco}}</td>
             <td>{{cajaAhorro.pre_telefono}}</td>
             <td>{{cajaAhorro.pre_cantidad}}</td>
-            <td></td>
+            <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo" (click)="valorID(cajaAhorro.pre_id,'RECIBO')">Subir recibo</button></td>
+            <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo" (click)="valorID(cajaAhorro.pre_id,'INE')">Subir INE</button></td>
+            <td>{{cajaAhorro.pre_estatus}}</td>
             <td><button type="button" class="btn btn-primary btn-sm" (click)='reporte(cajaAhorro.pre_id,2);'>Imprimir</button></td>
         </tr>
       </tbody>
@@ -85,6 +89,46 @@
                 <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
             </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="imagenUploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="imagenUploadModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <div style="text-align:-webkit-center; margin-top: 20px; ">
+            <mat-card style="margin-top:10px; width: 50%;"> 
+                <h1>Subir Imagen</h1> 
+                <mat-card-actions>  
+                    <input 
+                        style="display: none;" 
+                        type="file" 
+                        class="custom-file-input" 
+                        (change)="onFileSelected($event)" 
+                        accept="image/jpeg,image/jpg,image/png,application/pdf"
+                        #fileInput>
+                    <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar Imagen</button> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="uploadButton" class="btn btn-primary" type="button" (click)="onUpload()" [disabled]="ToggleButton">Subir Archivo</button> 
+                </mat-card-actions> 
+                <mat-card-content>
+                    <ul>  
+                        <li>  
+                            <mat-progress-bar [value]="this.progress"></mat-progress-bar>  
+                            <span id="file-label">{{this.mensaje}}</span>  
+                        </li>  
+                    </ul> 
+                </mat-card-content>
+            </mat-card>
+        </div>
+        </div>
       </div>
     </div>
   </div>
