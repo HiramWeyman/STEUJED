@@ -105,6 +105,7 @@
         </div>
         <p><strong>NOTA: La información que se muestra fue proporcionada por el departamento de Recursos Humanos.</strong></p>
         <div class="col-sm-12">
+         
             <button *ngIf="!isHiddenEnvio" class="btn btn-primary pr-2" role="button" (click)='enviarSolicitud()' [disabled]="!forma.valid">Enviar Solicitud</button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button *ngIf="!isHidden" class="btn btn-danger pr-2" role="button" (click)='imprimirSolicitud()'>Imprimir Solicitud</button>

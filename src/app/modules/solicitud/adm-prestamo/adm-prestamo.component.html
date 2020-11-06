@@ -15,6 +15,7 @@
             <th>Monto</th>
             <th>Recibo</th>
             <th>INE</th>
+            <th>Solicitud</th>
             <th>Estatus</th>
         </tr>
       </thead>
@@ -45,6 +46,11 @@
                         </button>
                     </a>
                 </ng-container>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" (click)='reporte(cajaAhorro.pre_id,1);'>
+                    Ver Solicitud
+                    </button>
             </td>
             <td>
                 <select (change)="update($event.target.value,cajaAhorro.pre_id)">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { CatPlazasService } from '../../services/dasboard/catplazas.service';
 import { CatPlazas } from '../../interfaces/catplazas';
 import Swal from 'sweetalert2';
@@ -50,7 +50,7 @@ export class ServiciosComponent implements OnInit {
   pad_situacion_base_: String;
   pad_num_contacto_: String;
   pad_observaciones_: String;
-
+  idx:Number;
   constructor( private _cp: CatPlazasService, private _serv: ServiciosService, private fb: FormBuilder, public router: Router ,) { }
 
   ngOnInit(): void {
@@ -151,6 +151,9 @@ export class ServiciosComponent implements OnInit {
         Swal.fire('Datos Enviados!!!', `Ya puedes imprimir su solicutud!`, 'success');
         //this.cargarCatServicio();
         //this.crearFormulario();
+        this.idx = plaza.pad_id;
+       // alert(plaza.pad_id);
+       // console.log(plaza.pad_id+"x");
         this.isHidden = false;
         this.isHiddenEnvio = true;
     },
@@ -166,8 +169,11 @@ export class ServiciosComponent implements OnInit {
 
 
   imprimirSolicitud() {
-
-    this.plaza = this.forma.controls['plaza_descrip'].value;
+   console.log(this.idx+"y");
+   window.open(`${environment.rutaAPI}` + '/ReporteSol?id='
+   + this.idx
+   );
+/*     this.plaza = this.forma.controls['plaza_descrip'].value;
     this.categoria = this.forma.controls['categoria'].value;
     this.funcion = this.forma.controls['funcion'].value;
     this.adscripcion = this.forma.controls['adscripcion'].value;
@@ -187,9 +193,9 @@ export class ServiciosComponent implements OnInit {
     this.pad_funcion_base_ = this.forma.controls['pad_funcion_base'].value;
     this.pad_situacion_base_ = this.forma.controls['pad_situacion_base'].value;
     this.pad_num_contacto_ = this.forma.controls['pad_num_contacto'].value;
-    this.pad_observaciones_ = this.forma.controls['pad_observaciones'].value;
+    this.pad_observaciones_ = this.forma.controls['pad_observaciones'].value; */
  
-    window.open(`${environment.rutaAPI}` + '/ReporteSol?plaza_descrip='
+ /*    window.open(`${environment.rutaAPI}` + '/ReporteSol?plaza_descrip='
     + this.plaza
     + '&categoria=' + this.categoria
     + '&funcion=' + this.funcion
@@ -210,7 +216,7 @@ export class ServiciosComponent implements OnInit {
     + '&pad_situacion_base=' + this.pad_situacion_base_
     + '&pad_num_contacto=' + this.pad_num_contacto_
     + '&pad_observaciones=' + this.pad_observaciones_
-    );
+    ); */
     //this.serv.getReport(this.solrep).subscribe();
   }
 

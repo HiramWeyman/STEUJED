@@ -40,7 +40,7 @@
                         <ng-container *ngFor="let publicacion_p of public_principal">  
                             <header>
                                 <h2 *ngIf="publicacion_p.pub_id_categoria == 1">{{publicacion_p.pub_titulo}}</h2>
-                                <span style="text-align: center;" class="byline" *ngIf="publicacion_p.pub_id_categoria == 1">{{publicacion_p.pub_subtitulo}}</span>
+                                <span style="text-align: center;" class="byline" *ngIf="publicacion_p.pub_id_categoria == 1"><b>{{publicacion_p.pub_subtitulo}}</b></span>
                             </header>
                             <p><a href="#" class="image full" *ngIf="publicacion_p.pub_id_categoria == 1"><img src={{publicacion_p.pub_ruta}} alt=""></a></p>
                             <div [innerHTML]="publicacion_p.pub_texto" *ngIf="publicacion_p.pub_id_categoria == 1"></div>
@@ -85,6 +85,7 @@
         </div>
 <br><br>
 <!-- Radio -->
+<div class="divider">&nbsp;</div>
 <section id="radio">
 <div class="container">
     <div class="text-center">
@@ -99,6 +100,7 @@
 </section>
 <!-- /Radio -->
 
+<div class="divider">&nbsp;</div>
 <!--background: #b7b7b7; color: #fff;-->
 <section style="padding: 50px 0; font-size: 35px; margin-bottom: 1em">
     <div class="container">
@@ -112,6 +114,7 @@
     </div>
 </section>
 
+<div class="divider">&nbsp;</div>
 <section style="font-size: 35px;">
     <div class="container">
         <div class="text-center">
@@ -209,3 +212,48 @@
       </div>
     </div>
   </div>
+
+  <div class="social">
+    <ul>
+        <li><a href="https://www.facebook.com/Steujed" target="_blank" class="icon-facebook"><i class="fa fa-facebook-official"></i></a></li>
+        <li><a href="http://www.twitter.com/@steujedoficial" target="_blank" class="icon-twitter"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="https://www.youtube.com/watch?v=reIUTHUrsg0&t=3s&ab_channel=NoticiasGG" target="_blank" class="icon-pinterest"><i class="fa fa-youtube-square"></i></a></li>
+        <li><a href="http://www.googleplus.com/@steujedoficial" target="_blank" class="icon-googleplus"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="http://www.pinterest.com/@steujedoficia" class="icon-mail"><i class="fa fa-pinterest-p"></i></a></li>
+    </ul>
+</div>
+<style>
+    .social {
+	position: fixed; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
+	left: 0; /* Establecemos la barra en la izquierda */
+	top: 200px; /* Bajamos la barra 200px de arriba a abajo */
+	z-index: 2000; /* Utilizamos la propiedad z-index para que no se superponga algún otro elemento como sliders, galerías, etc */
+}
+ 
+	.social ul {
+		list-style: none;
+	}
+ 
+	.social ul li a {
+		display: inline-block;
+		color:#fff;
+		background: #000;
+		padding: 10px 15px;
+        width: 44px;
+		text-decoration: none;
+		-webkit-transition:all 500ms ease;
+		-o-transition:all 500ms ease;
+		transition:all 500ms ease; /* Establecemos una transición a todas las propiedades */
+	}
+ 
+	.social ul li .icon-facebook {background:#3b5998;} /* Establecemos los colores de cada red social, aprovechando su class */
+	.social ul li .icon-twitter {background: #00abf0;}
+	.social ul li .icon-googleplus {background: #d95232;}
+	.social ul li .icon-pinterest {background: #ae181f;}
+	.social ul li .icon-mail {background: #666666;}
+ 
+	.social ul li a:hover {
+		background: #000; /* Cambiamos el fondo cuando el usuario pase el mouse */
+		padding: 10px 30px; /* Hacemos mas grande el espacio cuando el usuario pase el mouse */
+	}
+</style>

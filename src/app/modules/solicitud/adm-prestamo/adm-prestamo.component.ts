@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ServiciosService } from '../../../services/servicios/servicios.service';
 import { CajaAhorroService } from '../../../services/cajaAhorro/cajaAhorro.service';
 import { CajaAhorro } from '../../../interfaces/cajaAhorro';
+import { environment} from '../../../../environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -26,12 +27,15 @@ export class AdmPrestamoComponent implements OnInit {
 
   ngOnInit(): void {
 
+    
     this._ca.getCajaTipo('PRESTAMO').subscribe(
       (cajaAhorros) => {
         this.cajaAhorros = cajaAhorros;
         //console.log(this.cajaAhorros);
       }
     )
+
+    console.log(sessionStorage.getItem('LoginBase'));
 
   }
 
@@ -71,5 +75,14 @@ export class AdmPrestamoComponent implements OnInit {
         icon: 'error'});
     });
   }
+
+
+  reporte(id:number,tipo:number){
+
+    window.open(`${environment.rutaAPI}` + '/ReporPrestamos?id='
+    + id
+    + '&tipo=' + tipo
+    );
+      }
 
 }

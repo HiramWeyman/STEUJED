@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ServiciosService } from '../../../services/servicios/servicios.service';
 import { CajaAhorroService } from '../../../services/cajaAhorro/cajaAhorro.service';
 import { CajaAhorro } from '../../../interfaces/cajaAhorro';
+import { environment} from '../../../../environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -53,6 +54,13 @@ export class AdmRetiroComponent implements OnInit {
     });
   }
 
+  reporte(id:number,tipo:number){
+
+    window.open(`${environment.rutaAPI}` + '/ReporPrestamos?id='
+    + id
+    + '&tipo=' + tipo
+    );
+      }
   /*
   create(){
     //console.log(datos.form.value);
