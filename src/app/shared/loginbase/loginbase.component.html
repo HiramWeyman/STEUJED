@@ -7,7 +7,7 @@
         <form>
             <div class="form-group row">
               <div class="col-sm-12">
-                <input [(ngModel)]="userbase.ub_user" name="ub_user" class="form-control" autocomplete="off" placeholder="Usuario">
+                <input [(ngModel)]="userbase.ub_user" name="ub_user" class="form-control" autocomplete="off" placeholder="Matricula">
                 <input type="password" [(ngModel)]="userbase.ub_password" name="ub_password" class="form-control" autocomplete="off" placeholder="Password"><br><br>
                 <div class="col-sm-12">
                    <button class="btn btn-primary" role="button" (click)='login()' ><i class="fa fa-key"></i> Ingresar</button>
@@ -52,6 +52,20 @@
                 </small>
             </div>
             <div class="form-group">
+                <label for="Nombre" class="col-form-label">CURP:</label>
+                <input maxlength="250" formControlName="ub_curp" class="form-control" autocomplete="off" placeholder="Nombre" oninput="this.value = this.value.toUpperCase()" [class.is-invalid]="curpNovalido">
+                <small *ngIf="curpNovalido" class="text-danger">
+                    Ingrese su CURP
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="Nombre" class="col-form-label">RFC:</label>
+                <input maxlength="250" formControlName="ub_rfc" class="form-control" autocomplete="off" placeholder="Nombre" oninput="this.value = this.value.toUpperCase()" [class.is-invalid]="rfcNovalido">
+                <small *ngIf="rfcNovalido" class="text-danger">
+                    Ingrese su RFC
+                </small>
+            </div>
+            <div class="form-group">
                 <label for="Password" class="col-form-label">Password:</label>
                 <input type="password" formControlName="ub_password" class="form-control" autocomplete="off" placeholder="Password">
             </div>
@@ -65,7 +79,6 @@
           </div>
           </form>
         </div>
-
         <div class="modal-footer">
             <button class="btn btn-primary btn-lg" [disabled]="!forma.valid" (click)="create()" data-dismiss="modal">Registrar</button>
             <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>

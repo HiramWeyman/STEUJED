@@ -44,6 +44,14 @@ export class LoginbaseComponent implements OnInit {
     return this.forma.get('ub_nombre').invalid && this.forma.get('ub_nombre').touched
   }
 
+  get curpNovalido(){
+    return this.forma.get('ub_curp').invalid && this.forma.get('ub_curp').touched
+  }
+
+  get rfcNovalido(){
+    return this.forma.get('ub_rfc').invalid && this.forma.get('ub_rfc').touched
+  }
+
   get repasswordNovalido(){
     //return this.forma.get('repassword').invalid && this.forma.get('repassword').touched
     const pass1 = this.forma.get('ub_password').value;
@@ -57,6 +65,8 @@ export class LoginbaseComponent implements OnInit {
     this.forma = this.fb.group({
       ub_user: ['', [Validators.required,Validators.maxLength(50)]],
       ub_nombre: ['', [Validators.required,Validators.maxLength(250)]],
+      ub_curp:  ['', [Validators.required,Validators.maxLength(50)]],
+      ub_rfc: ['', [Validators.required,Validators.maxLength(50)]],
       ub_password: ['', Validators.required],
       conf_password: ['', Validators.required]
     },{
@@ -118,10 +128,14 @@ export class LoginbaseComponent implements OnInit {
 
         },
         error => {
-          console.log(error);
-          swal.fire({title: 'ERROR!!!',text: error.error.Mensaje,icon: 'error'});
+          //console.log(error);
+          swal.fire({title: 'ERROR!!!',text: error.error.Message,icon: 'error'});
         });
         
+      },
+      error => {
+        console.log(error);
+        swal.fire({title: 'ERROR!!!',text: error.error.Message,icon: 'error'});
       });
     }
 

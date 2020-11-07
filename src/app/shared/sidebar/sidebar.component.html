@@ -130,8 +130,8 @@
   <mat-nav-list>
 
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/inicio"><mat-icon>dashboard</mat-icon>Inicio</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/servicios"><mat-icon>import_contacts</mat-icon> Concurso a plazas</a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/reimpresionsol"><mat-icon>print</mat-icon> Reimpresión de Solicitud</a>
+    <a *ngIf="this.situacion_user == 'A'" mat-list-item routerLinkActive="list-item-active" routerLink="/servicios"><mat-icon>import_contacts</mat-icon> Concurso a plazas</a>
+    <a *ngIf="this.situacion_user == 'A'" mat-list-item routerLinkActive="list-item-active" routerLink="/reimpresionsol"><mat-icon>print</mat-icon> Reimpresión de Solicitud</a>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
