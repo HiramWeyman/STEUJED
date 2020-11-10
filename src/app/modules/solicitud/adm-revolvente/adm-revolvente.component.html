@@ -1,0 +1,64 @@
+<h2>Solicitud de Préstamo Revolvente</h2>
+<br>
+
+<div class="tableFixHead border-primary">
+    <table>
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>Matricula</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Tipo</th>
+            <th>Ingreso</th>
+            <th>Modificación</th>
+            <th>T. Cheque</th>
+            <th>INE</th>
+            <th>Recibo</th>
+            <th>Estatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let revolvente of this.revolventes">
+            <td>{{revolvente.pr_id}}</td>
+            <td>{{revolvente.pr_matricula}}</td>
+            <td>{{revolvente.pr_nombre}}</td>
+            <td>{{revolvente.pr_telefono}}</td>
+            <td>{{revolvente.pr_ingreso}}</td>
+            <td>{{revolvente.pr_modificacion}}</td>
+            <td>{{revolvente.pr_tipo}}</td>
+            <td>
+                <ng-container *ngIf="revolvente.pr_recibo != null">
+                    <a href="{{revolvente.pr_recibo}}" target="_blank">
+                        <button type="button" class="btn btn-primary btn-sm">
+                        Ver Archivo
+                        </button>
+                    </a>
+                </ng-container>
+            </td>
+            <td>
+                <ng-container *ngIf="revolvente.pr_ine != null">
+                    <a href="{{revolvente.pr_ine}}" target="_blank">
+                        <button type="button" class="btn btn-primary btn-sm">
+                        Ver Archivo
+                        </button>
+                    </a>
+                </ng-container>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" (click)='reporte();'>
+                    Ver Solicitud
+                    </button>
+            </td>
+            <td>
+                <select class="form-control" (change)="update($event.target.value,revolvente.pr_id)">
+                    <option [selected]="revolvente.pr_estatus=='ACEPTADA'" value="ACEPTADA">ACEPTADA</option>
+                    <option [selected]="revolvente.pr_estatus=='ATENDIDA'" value="ATENDIDA">ATENDIDA</option>
+                    <option [selected]="revolvente.pr_estatus=='PENDIENTE'" value="PENDIENTE">PENDIENTE</option>
+                    <option [selected]="revolvente.pr_estatus=='RECHAZADA'" value="RECHAZADA">RECHAZADA</option>
+                </select>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

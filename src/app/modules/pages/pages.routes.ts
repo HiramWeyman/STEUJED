@@ -36,6 +36,8 @@ import { AdmPrestamoComponent } from '../solicitud/adm-prestamo/adm-prestamo.com
 import { AdmRetiroComponent } from '../solicitud/adm-retiro/adm-retiro.component';
 import { ReimpresionsolComponent } from '../reimpresionsol/reimpresionsol.component';
 import { AdmVideosflComponent } from '../publicaciones/adm-videosfl/adm-videosfl.component';
+import { RevolventeComponent } from '../solicitud/revolvente/revolvente.component';
+import { AdmRevolventeComponent } from '../solicitud/adm-revolvente/adm-revolvente.component';
 
 
 const pagesRoutes: Routes = [
@@ -79,7 +81,9 @@ const pagesRoutes: Routes = [
 			{ path: 'AdmPrestamo', component: AdmPrestamoComponent },
 			{ path: 'AdmRetiro', component: AdmRetiroComponent },
 			{ path: 'reimpresionsol', component: ReimpresionsolComponent  },
-			{ path: 'admvideosfl', component: AdmVideosflComponent  }
+			{ path: 'admvideosfl', component: AdmVideosflComponent  },
+			{ path: 'revolvente', component: RevolventeComponent  },
+			{ path: 'AdmRevolvente', component: AdmRevolventeComponent  }
 		]
 	}
 ];

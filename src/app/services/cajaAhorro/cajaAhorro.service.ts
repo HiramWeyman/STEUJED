@@ -4,12 +4,14 @@ import { Observable } from 'rxjs/Observable';
 import { environment, _TOKEN } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { CajaAhorro } from '../../interfaces/cajaAhorro';
+import { Revolvente } from '../../interfaces/revolvente';
 
 @Injectable()
 export class CajaAhorroService {
 
 	private urlEndPoint = `${environment.rutaAPI}/CajaAhorro`;
 	private urlPrestamos = `${environment.rutaAPI}/Prestamos`;
+	private urlRevolvente = `${environment.rutaAPI}/PreRevolvente`;
 
   	constructor(private http: HttpClient) { }
 
@@ -49,4 +51,24 @@ export class CajaAhorroService {
 		return this.http.delete<Publicaciones>(`${this.urlEndPoint}/${id}`);
 	}
     */
+
+   getRevolventes(): Observable<Revolvente[]> {
+	return this.http.get(this.urlRevolvente).pipe(
+		map(response => response as Revolvente[])
+	);
+	}
+
+	getRevolvente(matricula: string): Observable<Revolvente[]> {
+	return this.http.get(`${this.urlRevolvente}?matricula=${matricula}`).pipe(
+		map(response => response as Revolvente[])
+		);
+	}
+
+	createRevolvente(matricula:string, nombre: string, revolvente: Revolvente): Observable<Revolvente> {
+		return this.http.post<Revolvente>(`${this.urlRevolvente + '?matricula='+matricula+'&nombre='+nombre}`, revolvente);
+	}
+
+	updateRevolvente(valorSelect: string, ID: number){
+		return this.http.put(`${this.urlRevolvente}/${ID}?valor=`+valorSelect, CajaAhorro);
+	}
 }

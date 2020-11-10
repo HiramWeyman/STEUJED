@@ -53,7 +53,7 @@
                     </button>
             </td>
             <td>
-                <select (change)="update($event.target.value,cajaAhorro.pre_id)">
+                <select class="form-control" (change)="update($event.target.value,cajaAhorro.pre_id)">
                     <option [selected]="cajaAhorro.pre_estatus=='ACEPTADA'" value="ACEPTADA">ACEPTADA</option>
                     <option [selected]="cajaAhorro.pre_estatus=='ATENDIDA'" value="ATENDIDA">ATENDIDA</option>
                     <option [selected]="cajaAhorro.pre_estatus=='PENDIENTE'" value="PENDIENTE">PENDIENTE</option>

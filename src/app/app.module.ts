@@ -48,6 +48,8 @@ import { AdmPrestamoComponent } from './modules/solicitud/adm-prestamo/adm-prest
 import { ReimpresionsolComponent } from '../app/modules/reimpresionsol/reimpresionsol.component';
 import { safeUrlPipe } from './shared/videos-fl/safeUrlPipe';
 import { AdmVideosflComponent } from './modules/publicaciones/adm-videosfl/adm-videosfl.component';
+import { RevolventeComponent } from './modules/solicitud/revolvente/revolvente.component';
+import { AdmRevolventeComponent } from './modules/solicitud/adm-revolvente/adm-revolvente.component';
 
 
 // Set the fonts to use
@@ -86,7 +88,9 @@ import { AdmVideosflComponent } from './modules/publicaciones/adm-videosfl/adm-v
     DescarchivosComponent,
     ReimpresionsolComponent,
     safeUrlPipe,
-    AdmVideosflComponent
+    AdmVideosflComponent,
+    RevolventeComponent,
+    AdmRevolventeComponent
   ],
   imports: [
     APP_ROUTING,

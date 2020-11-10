@@ -75,9 +75,9 @@
             <ng-container *ngFor="let publicacion of this.publicaciones | slice : 0 : 4"> 
                 <div class="3u" *ngIf="publicacion.pub_id_categoria == 2">
                     <section>
-                        <h2 style="text-align: center;">{{publicacion.pub_titulo}}</h2>
+                        <h2 style="text-align: center;">{{publicacion.pub_titulo.substring(0,35)}}</h2>
                         <a href="#/noticia/{{publicacion.pub_id}}" class="image full"><img src="{{publicacion.pub_ruta}}" alt=""></a>
-                        <div [innerHTML]="publicacion.pub_texto.substring(0,150)" style="text-align: justify;"></div>
+                        <div [innerHTML]="publicacion.pub_texto.substring(0,100)" style="text-align: justify;"></div>
                         <a href="#/noticia/{{publicacion.pub_id}}" class="button">Leer más...</a>
                     </section>
                 </div>
