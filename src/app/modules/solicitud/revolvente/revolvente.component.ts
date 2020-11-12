@@ -143,7 +143,12 @@ export class RevolventeComponent implements OnInit {
       this.ToggleButton = true;
   }
 
-  reporte(){
-  }
+  reporte(id:number,tipo:number){
+
+    window.open(`${environment.rutaAPI}` + '/ReporPrestamos?id='
+    + id
+    + '&tipo=' + tipo
+    );
+      }
 
 }

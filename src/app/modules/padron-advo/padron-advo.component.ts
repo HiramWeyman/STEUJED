@@ -210,4 +210,44 @@ for(var i = range.s.r + 1; i <= range.e.r; ++i) {
     /* console.log(this.data2); */
   }
 
+  borrar2(){
+    this.padronService.delete(this.array).subscribe(usr => {
+      Swal.fire('Trabajadores Activos Borrados con Exito', `El archivo se ha borrado con éxito!`, 'success');
+      this.loading = false;
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in component');
+      console.log(error);
+      this.errorMessage = error.error.ExceptionMessage;
+      this.loading = false;
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'A ocurrido un error probablemente tengas celdas vacias!',
+        footer: this.errorMessage
+      });
+      //throw error;   //You can also throw the error to a global error handler
+    });
+  }
+
+  borrar3(){
+    this.padronService.delete(this.array).subscribe(usr => {
+      Swal.fire('Trabajadores Jubilados Borrados con Exito', `El archivo se ha borrado con éxito!`, 'success');
+      this.loading = false;
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in component');
+      console.log(error);
+      this.errorMessage = error.error.ExceptionMessage;
+      this.loading = false;
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'A ocurrido un error probablemente tengas celdas vacias!',
+        footer: this.errorMessage
+      });
+      //throw error;   //You can also throw the error to a global error handler
+    });
+  }
+
 }

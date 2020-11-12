@@ -25,6 +25,19 @@ export class PadronService {
     // return this.http.delete<Usuarios>("/api/Usuarios/"+id)
   }
 
+
+  deleteAct(pad: any[]): Observable<Padron> {
+    return this.http.post<Padron>(`${environment.rutaAPI + '/PadDeleteAct'}`, pad);
+    // return this.http.delete<Usuarios>("/api/Usuarios/"+id)
+  }
+
+  deleteJub(pad: any[]): Observable<Padron> {
+    return this.http.post<Padron>(`${environment.rutaAPI + '/PadDeleteJub'}`, pad);
+    // return this.http.delete<Usuarios>("/api/Usuarios/"+id)
+  }
+
+  
+
   getPadronAdvos(): Observable<Padron[]> {
 		return this.http.get(this.urlPadronAdvos).pipe(
 		  map(response => response as Padron[])
