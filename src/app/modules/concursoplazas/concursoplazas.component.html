@@ -4,6 +4,7 @@
     <option *ngFor="let cp of catplazas" value="{{ cp.catp_id }}">{{cp.catp_descrip}}</option>
    </select>
     <br><br>
+    <button type="button" class="btn btn-success btn-sm" (click)='ExportarExcel();'>Exportar a Excel</button>  
     <table  class="table table-bordered table-sm"  fixed-header>
                   <thead>
                     <tr class="table-head" fixed-header >

@@ -71,6 +71,14 @@ export class ConcursoplazasComponent implements OnInit {
     );
   }
 
+  ExportarExcel(){
+    
+    window.open(`${environment.rutaAPI}` + '/SolExcel?id='
+    + this.idglobal
+
+    );
+  }
+
   CancelarSol(advo: Advos){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
