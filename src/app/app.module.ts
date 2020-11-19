@@ -50,6 +50,9 @@ import { safeUrlPipe } from './shared/videos-fl/safeUrlPipe';
 import { AdmVideosflComponent } from './modules/publicaciones/adm-videosfl/adm-videosfl.component';
 import { RevolventeComponent } from './modules/solicitud/revolvente/revolvente.component';
 import { AdmRevolventeComponent } from './modules/solicitud/adm-revolvente/adm-revolvente.component';
+import { CambiapasswordComponent } from './modules/solicitud/cambiapassword/cambiapassword.component';
+import { ActualizaDatosComponent } from './modules/solicitud/actualiza-datos/actualiza-datos.component';
+import { UsuariosbaseComponent } from './modules/usuariosbase/usuariosbase.component';
 
 
 // Set the fonts to use
@@ -90,7 +93,10 @@ import { AdmRevolventeComponent } from './modules/solicitud/adm-revolvente/adm-r
     safeUrlPipe,
     AdmVideosflComponent,
     RevolventeComponent,
-    AdmRevolventeComponent
+    AdmRevolventeComponent,
+    CambiapasswordComponent,
+    ActualizaDatosComponent,
+    UsuariosbaseComponent
   ],
   imports: [
     APP_ROUTING,

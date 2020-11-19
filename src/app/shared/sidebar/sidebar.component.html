@@ -52,7 +52,7 @@
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/usuarios"><mat-icon>label_important</mat-icon>Lista de Empleados Eventuales</a>
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/asistencia"><mat-icon>label_important</mat-icon>Reporte de Asistencia</a>
   </mat-expansion-panel>
-
+  <a *ngIf="usuario.role_id === 1" mat-list-item routerLinkActive="list-item-active" routerLink="/usuariosbase"><mat-icon>supervisor_account</mat-icon>Trabajadores de base</a>
     <a *ngIf="usuario.role_id === 1" mat-list-item routerLinkActive="list-item-active" routerLink="/concursopla"><mat-icon>person_pin_circle</mat-icon> Concurso de Plazas</a>
     
     <mat-expansion-panel *ngIf="usuario.role_id === 1">
@@ -133,6 +133,10 @@
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/inicio"><mat-icon>dashboard</mat-icon>Inicio</a>
     <a *ngIf="this.situacion_user == 'A'" mat-list-item routerLinkActive="list-item-active" routerLink="/servicios"><mat-icon>import_contacts</mat-icon> Concurso a plazas</a>
     <a *ngIf="this.situacion_user == 'A'" mat-list-item routerLinkActive="list-item-active" routerLink="/reimpresionsol"><mat-icon>print</mat-icon> Reimpresión de Solicitud</a>
+    <a *ngIf="this.situacion_user == 'A'||this.situacion_user == 'J'" mat-list-item routerLinkActive="list-item-active" routerLink="/cambiapassword">	<mat-icon>lock</mat-icon>Cambiar password</a>
+    <a *ngIf="this.situacion_user == 'A'||this.situacion_user == 'J'" mat-list-item routerLinkActive="list-item-active" routerLink="/actualiza-datos">	<mat-icon>face</mat-icon>Actualizar datos</a>
+
+    
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>

@@ -18,6 +18,8 @@ import { ServiciosService } from './servicios/servicios.service';
 import { DescargaService } from './descarga/descarga.service';
 import { CajaAhorroService } from './cajaAhorro/cajaAhorro.service';
 import { VideosFLService } from './videosfl/videosfl.service';
+import { UpdatepassService } from './updatepass/updatepass.service';
+import { UsuariosbaseService } from './usuariosbase/usuariosbase.service';
 
 @NgModule({
   declarations: [],
@@ -41,7 +43,9 @@ import { VideosFLService } from './videosfl/videosfl.service';
     ServiciosService,
     DescargaService,
     CajaAhorroService,
-    VideosFLService
+    VideosFLService,
+    UpdatepassService,
+    UsuariosbaseService
   ]
 })
 export class ServicesModule { }

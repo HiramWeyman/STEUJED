@@ -38,6 +38,9 @@ import { ReimpresionsolComponent } from '../reimpresionsol/reimpresionsol.compon
 import { AdmVideosflComponent } from '../publicaciones/adm-videosfl/adm-videosfl.component';
 import { RevolventeComponent } from '../solicitud/revolvente/revolvente.component';
 import { AdmRevolventeComponent } from '../solicitud/adm-revolvente/adm-revolvente.component';
+import { CambiapasswordComponent } from '../solicitud/cambiapassword/cambiapassword.component';
+import { ActualizaDatosComponent } from '../solicitud/actualiza-datos/actualiza-datos.component';
+import { UsuariosbaseComponent } from '../usuariosbase/usuariosbase.component';
 
 
 const pagesRoutes: Routes = [
@@ -83,7 +86,10 @@ const pagesRoutes: Routes = [
 			{ path: 'reimpresionsol', component: ReimpresionsolComponent  },
 			{ path: 'admvideosfl', component: AdmVideosflComponent  },
 			{ path: 'revolvente', component: RevolventeComponent  },
-			{ path: 'AdmRevolvente', component: AdmRevolventeComponent  }
+			{ path: 'AdmRevolvente', component: AdmRevolventeComponent  },
+			{ path: 'cambiapassword', component: CambiapasswordComponent  },
+			{ path: 'actualiza-datos', component: ActualizaDatosComponent  },
+			{ path: 'usuariosbase', component: UsuariosbaseComponent  }
 		]
 	}
 ];

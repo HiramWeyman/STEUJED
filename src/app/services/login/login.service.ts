@@ -7,10 +7,11 @@ import { Usuarios } from '../../modules/usuarios/usuarios';
 import { Login } from '../../shared/login/login';
 import { Router } from '@angular/router';
 import { UserBase } from '../../interfaces/userbase';
+import { Password } from '../../modules/solicitud/cambiapassword/password';
 
 @Injectable()
 export class LoginService {
-
+	private user:string;
 	  constructor(private http: HttpClient, public router: Router) { }
 	  public urlEndPoint = `${environment.rutaAPI}`;
 
@@ -62,4 +63,10 @@ export class LoginService {
 			// return (sessionStorage.getItem(_TOKEN).length>5);
 		}
 	}
+
+	update(pass: Password): Observable<Password> {
+		// return this.http.put<Usuarios>(`${this.urlEndPoint+"/Usuarios"}/${usuario.id}`, usuario, {headers: this.httpHeaders})
+		this.user = sessionStorage.Matricula;
+		return this.http.put<Password>(`${environment.rutaAPI}` + '/Pass' + `/${this.user}`, pass.pass1);
+	  }
 }
