@@ -53,6 +53,9 @@ import { AdmRevolventeComponent } from './modules/solicitud/adm-revolvente/adm-r
 import { CambiapasswordComponent } from './modules/solicitud/cambiapassword/cambiapassword.component';
 import { ActualizaDatosComponent } from './modules/solicitud/actualiza-datos/actualiza-datos.component';
 import { UsuariosbaseComponent } from './modules/usuariosbase/usuariosbase.component';
+import { AdmGaleriaComponent } from './modules/adm-galeria/adm-galeria.component';
+import { VGaleriaComponent } from './modules/adm-galeria/v-galeria/v-galeria.component';
+import { EGaleriaComponent } from './modules/adm-galeria/e-galeria/e-galeria.component';
 
 
 // Set the fonts to use
@@ -96,7 +99,10 @@ import { UsuariosbaseComponent } from './modules/usuariosbase/usuariosbase.compo
     AdmRevolventeComponent,
     CambiapasswordComponent,
     ActualizaDatosComponent,
-    UsuariosbaseComponent
+    UsuariosbaseComponent,
+    AdmGaleriaComponent,
+    VGaleriaComponent,
+    EGaleriaComponent
   ],
   imports: [
     APP_ROUTING,

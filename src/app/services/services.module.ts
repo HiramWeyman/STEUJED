@@ -20,6 +20,8 @@ import { CajaAhorroService } from './cajaAhorro/cajaAhorro.service';
 import { VideosFLService } from './videosfl/videosfl.service';
 import { UpdatepassService } from './updatepass/updatepass.service';
 import { UsuariosbaseService } from './usuariosbase/usuariosbase.service';
+import { GaleriaService } from './dasboard/galeria.service';
+
 
 @NgModule({
   declarations: [],
@@ -45,7 +47,8 @@ import { UsuariosbaseService } from './usuariosbase/usuariosbase.service';
     CajaAhorroService,
     VideosFLService,
     UpdatepassService,
-    UsuariosbaseService
+    UsuariosbaseService,
+    GaleriaService
   ]
 })
 export class ServicesModule { }

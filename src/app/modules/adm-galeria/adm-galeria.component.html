@@ -1,0 +1,85 @@
+<script type="text/javascript" src="bower_components/angular-fixed-table-header/src/fixed-table-header.min.js"></script>
+
+<div  class="tablediv">
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Crear Galería</button>
+
+    <br><br>
+    <table  class="table table-bordered table-sm"  fixed-header>
+                  <thead>
+                    <tr class="table-head" fixed-header >
+                      <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Titulo</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Editar Titulo</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Ver Galería</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Editar Galería</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Eliminar</b></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-txt-blue" > 
+                    <tr *ngFor="let galeria of this.galerias">
+                      <td>{{ galeria.gal_id }}</td>
+                      <td>{{ galeria.gal_titulo }}</td>
+                      <td align="center">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarPublicacion(galeria.gal_id)'>Editar Textos</button>
+                      </td>
+                      <td align="center">
+                        <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/v_galeria', galeria.gal_id]">Ver Galería</button>
+                      </td>
+                      <td align="center">
+                        <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/e_galeria',galeria.gal_id]">Editar Galería</button>
+                      </td>
+                      <td align="center">
+                        <button class="btn btn-danger btn-sm"  (click)='delete(galeria)'>Eliminar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+          </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+              <input [(ngModel)]="galeria.gal_id" type="hidden" name="titulo" class="form-control" autocomplete="off">
+              <label for="titulo" class="col-form-label">Titulo:</label>
+              <input [(ngModel)]="galeria.gal_titulo" name="titulo" class="form-control" autocomplete="off">
+            </div>
+          </form>
+        </div>
+      <div class="modal-footer">   
+          <button class="btn btn-primary btn-lg" role="button" (click)='create();' *ngIf="!galeria.gal_id else elseBlock" id="send" data-dismiss="modal">Crear Galería</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary btn-lg" role="button" (click)='update(usuario);' id="send" data-dismiss="modal">Editar Titulo</button>
+          </ng-template>
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="galeriaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="imagenUploadModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <div style="text-align:-webkit-center; margin-top: 20px; ">
+            <div class="fotorama"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

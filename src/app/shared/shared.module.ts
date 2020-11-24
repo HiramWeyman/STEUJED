@@ -36,6 +36,8 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { LoginbaseComponent } from './loginbase/loginbase.component';
 import { VideosFLComponent } from './videos-fl/videos-fl.component';
+import { NGaleriaComponent } from './n-galeria/n-galeria.component';
+import { VnGaleriaComponent } from './n-galeria/vn-galeria/vn-galeria.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { VideosFLComponent } from './videos-fl/videos-fl.component';
     TopbarComponent,
     ServiciosComponent,
     LoginbaseComponent,
-    VideosFLComponent
+    VideosFLComponent,
+    NGaleriaComponent,
+    VnGaleriaComponent
   ],
   exports:[
     EncabezadoComponent,

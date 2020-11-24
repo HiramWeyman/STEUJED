@@ -9,6 +9,8 @@ import { ConcursoplazasComponent } from '../modules/concursoplazas/concursoplaza
 import { ServiciosComponent } from './servicios/servicios.component';
 import { LoginbaseComponent } from './loginbase/loginbase.component';
 import { VideosFLComponent } from './videos-fl/videos-fl.component';
+import { NGaleriaComponent } from './n-galeria/n-galeria.component';
+import { VnGaleriaComponent } from './n-galeria/vn-galeria/vn-galeria.component';
 
 
 const sharedRoutes: Routes = [
@@ -20,7 +22,10 @@ const sharedRoutes: Routes = [
   { path: 'noticia/:id', component: NoticiaComponent},
   { path: 'concursoplazas', component: ConcursoplazasComponent},
   { path: 'loginbase', component: LoginbaseComponent},
-  { path: 'videosFL', component: VideosFLComponent }
+  { path: 'videosFL', component: VideosFLComponent },
+  { path: 'n_galeria', component: NGaleriaComponent },
+  { path: 'vn_galeria', component: VnGaleriaComponent },
+  { path: 'vn_galeria/:id', component: VnGaleriaComponent }
   //{ path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 

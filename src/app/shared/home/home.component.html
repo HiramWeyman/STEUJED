@@ -26,8 +26,8 @@
                                     -->
                                     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset();rutaArchivo(archivo.archivo_ruta, archivo.archivo_descrip);'>
                                         <i class="fa fa-file"></i>
-                                        {{ archivo.archivo_descrip }}
                                     </button> 
+                                    {{ archivo.archivo_descrip }}
                                 </li>
                             </ng-container>
                         </ul>
@@ -53,12 +53,17 @@
             <!-- Sidebar -->
             <ng-container *ngFor="let publicacion of this.publicaciones">  
                 <div id="sidebar" class="3u" *ngIf="publicacion.pub_id_categoria == 3">
-                    <section style="background: #f7c8c8; border-radius: 8px;">
+                    <section style="background: #d7eef6; border-radius: 8px;">
                         <header style="text-align: center;">
-                            <h2 *ngIf="publicacion.pub_id_categoria == 3">{{publicacion.pub_titulo}}</h2>
+                            <!--
+                                <h2 *ngIf="publicacion.pub_id_categoria == 3">{{publicacion.pub_titulo}}</h2>
+                            -->
                         </header>
+                        <!--
                         <hr style="border: 1px solid black; border-radius: 3px;">
-                        <div style="text-align: justify;" [innerHTML]="publicacion.pub_texto" *ngIf="publicacion.pub_id_categoria == 3"></div>
+                        -->
+                        <p style="text-align: center; text-decoration: solid;" *ngIf="publicacion.pub_id_categoria == 3"><strong>{{publicacion.pub_titulo}}</strong></p> 
+                        <div style="text-align: center;" [innerHTML]="publicacion.pub_texto" *ngIf="publicacion.pub_id_categoria == 3"></div>
                     </section>
                 </div>
             </ng-container>

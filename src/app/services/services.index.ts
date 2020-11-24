@@ -14,4 +14,4 @@ export { ServiciosService } from './servicios/servicios.service';
 export { DescargaService } from './descarga/descarga.service';
 export { CajaAhorroService } from './cajaAhorro/cajaAhorro.service';
 export { VideosFLService } from './videosfl/videosfl.service';
-
+export { GaleriaService } from './dasboard/galeria.service';

@@ -41,6 +41,9 @@ import { AdmRevolventeComponent } from '../solicitud/adm-revolvente/adm-revolven
 import { CambiapasswordComponent } from '../solicitud/cambiapassword/cambiapassword.component';
 import { ActualizaDatosComponent } from '../solicitud/actualiza-datos/actualiza-datos.component';
 import { UsuariosbaseComponent } from '../usuariosbase/usuariosbase.component';
+import { AdmGaleriaComponent } from '../adm-galeria/adm-galeria.component';
+import { VGaleriaComponent } from '../adm-galeria/v-galeria/v-galeria.component';
+import { EGaleriaComponent } from '../adm-galeria/e-galeria/e-galeria.component';
 
 
 const pagesRoutes: Routes = [
@@ -89,7 +92,10 @@ const pagesRoutes: Routes = [
 			{ path: 'AdmRevolvente', component: AdmRevolventeComponent  },
 			{ path: 'cambiapassword', component: CambiapasswordComponent  },
 			{ path: 'actualiza-datos', component: ActualizaDatosComponent  },
-			{ path: 'usuariosbase', component: UsuariosbaseComponent  }
+			{ path: 'usuariosbase', component: UsuariosbaseComponent  },
+			{ path: 'adm-galeria', component: AdmGaleriaComponent  },
+			{ path: 'v_galeria/:id', component: VGaleriaComponent  },
+			{ path: 'e_galeria/:id', component: EGaleriaComponent  }
 		]
 	}
 ];
