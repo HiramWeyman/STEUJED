@@ -17,14 +17,14 @@
                         </header>
                         <ul class="default">
                             <ng-container *ngFor="let archivo of archivos">
-                                <li *ngIf="archivo.archivo_seccion == '1'">
+                                <li *ngIf="archivo.archivo_seccion == '1'" class="fondoguinda">
                                     <!--
                                     <a href="{{archivo.archivo_ruta}}" target="_blank">
                                         <button type="button" class="btn btn-outline-primary btn-sm">
                                             <i class="fa fa-file"></i>
                                         </button> {{ archivo.archivo_descrip }}</a>
                                     -->
-                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset();rutaArchivo(archivo.archivo_ruta, archivo.archivo_descrip);'>
+                                    <button class="fondoguinda" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset();rutaArchivo(archivo.archivo_ruta, archivo.archivo_descrip);'>
                                         <i class="fa fa-file"></i>
                                     </button> 
                                     {{ archivo.archivo_descrip }}
@@ -73,6 +73,65 @@
     
     </div>
     <div class="divider">&nbsp;</div>
+
+    <div class="container" id="content">
+        <header>
+            <h2>Galería</h2>
+        </header>
+        <div class="row" class="text-center" style="padding-left: 100px;">    
+            <section>
+                <h2>{{titulo}}</h2>
+                <div class="fotorama"></div>
+            </section>
+        </div>
+    </div>
+
+    <div class="divider">&nbsp;</div>
+
+    <div class="container" id="content">
+        <header>
+            <h2>Noticias</h2>
+        </header>
+        <div>
+            <div class="tab">
+                <button #myButton class="tablinks" onclick="openCity(event, '0')" (click)="myButton.click()" id="defaultOpen">{{this.Titulox0}}</button>
+                <button class="tablinks" onclick="openCity(event, '1')">{{this.Titulox1}}</button>
+                <button class="tablinks" onclick="openCity(event, '2')">{{this.Titulox2}}</button>
+                <button class="tablinks" onclick="openCity(event, '3')">{{this.Titulox3}}</button>
+            </div>
+
+            <div id="0" class="tabcontent">
+                <h3>{{this.Titulox0}}</h3>
+                <div [innerHTML]="this.Textox0.substring(0,100)" style="text-align: justify;"></div>
+                <a href="#/noticia/{{this.idx0}}"><img style="display: block; width: 15%;" src="{{this.Rutax0}}" alt=""></a>
+                <a href="#/noticia/{{this.idx0}}" class="button">Leer más...</a>
+            </div>
+              
+            <div id="1" class="tabcontent">
+                <h3>{{this.Titulox1}}</h3>
+                <div [innerHTML]="this.Textox1.substring(0,100)" style="text-align: justify;"></div>
+                <a href="#/noticia/{{this.idx1}}"><img  style="display: block; width: 15%;" src="{{this.Rutax1}}" alt=""></a>
+                <a href="#/noticia/{{this.idx1}}" class="button">Leer más...</a>
+            </div>
+              
+            <div id="2" class="tabcontent">
+                <h3>{{this.Titulox2}}</h3>
+                <div [innerHTML]="this.Textox2.substring(0,100)" style="text-align: justify;"></div>
+                <a href="#/noticia/{{this.idx2}}"><img style="display: block; width: 15%;" src="{{this.Rutax2}}" alt=""></a>
+                <a href="#/noticia/{{this.idx2}}" class="button">Leer más...</a>
+            </div>
+            <div id="3" class="tabcontent">
+                <h3>{{this.Titulox3}}</h3>
+                <div [innerHTML]="this.Textox3.substring(0,100)" style="text-align: justify;"></div>
+                <a href="#/noticia/{{this.idx3}}"><img style="display: block; width: 15%;" src="{{this.Rutax3}}" alt=""></a>
+                <a href="#/noticia/{{this.idx3}}" class="button">Leer más...</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider">&nbsp;</div>
+
+    <!--
     <div class="container" id="content">
         <header>
             <h2>Noticias</h2>
@@ -89,48 +148,9 @@
                 </div>
             </ng-container>
         </div>
-<br><br>
-
-
-      <!--  <div class="row">-->
-        
-            <!-- Content -->
-      <!--           <div class="8u skel-cell-important">
-                    <section id="content">
-                        <header>
-                            <h2>Integer gravida nibh quis urna</h2>
-                            <span class="byline">Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum</span>
-                        </header>
-                        <p><a href="#" class="image full"><img src="assets/images/pics02.jpg" alt=""></a></p>
-                        <p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem ultricies. Phasellus tempor vehicula justo</p>
-                        <a href="#" class="button">Leer más...</a>
-                    </section>
-                </div> -->
-            <!-- /Content -->
-                
-            <!-- Sidebar -->
-         <!--        <div id="sidebar" class="4u">
-                    <section>
-                        <header>
-                            <h2>Gravida praesent</h2>
-                            <span class="byline">Praesent lacus congue rutrum</span>
-                        </header>
-                        <p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum. Maecenas luctus lectus at sapien. Consectetuer adipiscing elit.</p>
-                        <ul class="default">
-                            <li><a href="#">Pellentesque quis lectus gravida blandit.</a></li>
-                            <li><a href="#">Lorem ipsum consectetuer adipiscing elit.</a></li>
-                            <li><a href="#">Phasellus nec nibh pellentesque congue.</a></li>
-                            <li><a href="#">Cras aliquam risus pellentesque pharetra.</a></li>
-                            <li><a href="#">Duis non metus commodo euismod lobortis.</a></li>
-                            <li><a href="#">Lorem ipsum dolor adipiscing elit.</a></li>
-                        </ul>
-                    </section>
-                </div> -->
-            <!-- Sidebar -->
-                
-       <!--  </div>-->
-    
+        <br><br>
     </div>
+    -->
 </div>
 <!--Division-->
 <!-- Radio -->
@@ -336,3 +356,6 @@
 
 
 </style>
+
+
+
