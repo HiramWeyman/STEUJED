@@ -63,7 +63,7 @@ export class NotificacionComponent implements OnInit {
   update(){
     this._publicaciones.update(this.publicacion).subscribe(usr =>{
       this.router.navigate(['/notificacion']).then(() => {
-        window.location.reload();
+        //window.location.reload();
       });
         Swal.fire('Actualizada', 'Notificación actualizada con exito', 'success');
     },

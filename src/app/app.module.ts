@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // rutas
 import { APP_ROUTING } from './app.routes';
 
@@ -56,6 +56,7 @@ import { UsuariosbaseComponent } from './modules/usuariosbase/usuariosbase.compo
 import { AdmGaleriaComponent } from './modules/adm-galeria/adm-galeria.component';
 import { VGaleriaComponent } from './modules/adm-galeria/v-galeria/v-galeria.component';
 import { EGaleriaComponent } from './modules/adm-galeria/e-galeria/e-galeria.component';
+import { NotasformComponent } from './modules/publicaciones/notas/notasform/notasform.component';
 
 
 // Set the fonts to use
@@ -102,7 +103,8 @@ import { EGaleriaComponent } from './modules/adm-galeria/e-galeria/e-galeria.com
     UsuariosbaseComponent,
     AdmGaleriaComponent,
     VGaleriaComponent,
-    EGaleriaComponent
+    EGaleriaComponent,
+    NotasformComponent
   ],
   imports: [
     APP_ROUTING,
@@ -111,6 +113,7 @@ import { EGaleriaComponent } from './modules/adm-galeria/e-galeria/e-galeria.com
     BrowserModule,
     ServicesModule,
     FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatProgressBarModule,
     AngularEditorModule,

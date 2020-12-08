@@ -22,6 +22,15 @@ export class PublicacionesService {
 		return this.http.get<Publicaciones>(`${this.urlEndPoint}/${ids}`);
 	  }
 
+	  getNota(ids: number){
+		return this.http.get(`${this.urlEndPoint}/${ids}`).pipe(
+			map((response: any) => {
+				return response;
+				})
+		);
+	
+	  }
+
 	getPublicacionNotaPrincipal(): Observable<Publicaciones> {
 		return this.http.get<Publicaciones>(`${this.urlEndPoint}/?notaPrincipal=1`);
 		/*

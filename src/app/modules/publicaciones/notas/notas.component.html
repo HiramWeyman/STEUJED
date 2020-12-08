@@ -2,8 +2,10 @@
 
 <div  class="tablediv">
 
+  <!--
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Crear Noticia</button>
-
+-->
+  <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/notasform', 0]">Nueva Nota</button>
     <br><br>
     <table  class="table table-bordered table-sm"  fixed-header>
                   <thead>
@@ -30,7 +32,10 @@
                       <td>{{ publicacion.pub_titulo }}</td>
                       <td><div [innerHTML]="publicacion.pub_texto"></div></td>
                       <td align="center">
+                        <!--
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarPublicacion(publicacion.pub_id)'>Editar Textos</button>
+                        -->
+                        <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/notasform', publicacion.pub_id]">Editar Textos</button>
                       </td>
                       <td align="center">
                         <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/vergaleria', publicacion.pub_id]">Ver Galería</button>

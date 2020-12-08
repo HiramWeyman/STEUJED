@@ -186,6 +186,7 @@ export class NotasComponent implements OnInit {
   }
 
   update(){
+    /*
     this._publicaciones.update(this.publicacion).subscribe(usr =>{
       this._publicaciones.getPublicaciones().subscribe(
         (publicaciones) => {
@@ -201,9 +202,11 @@ export class NotasComponent implements OnInit {
         text: error.message,
         icon: 'error'});
     });
+    */
   }
 
   create(){
+    /*
     const Usuario = sessionStorage.Login.replace("_", "");
     this._publicaciones.create(this.publicacion,'assets',Usuario).subscribe(publicacion =>{
       this._publicaciones.getPublicaciones().subscribe(
@@ -220,6 +223,7 @@ export class NotasComponent implements OnInit {
         text: error.message,
         icon: 'error'});
     });
+    */
   }
 
   /*

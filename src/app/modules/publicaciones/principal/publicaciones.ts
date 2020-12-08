@@ -8,4 +8,5 @@ export class Publicaciones {
     pub_cancela: string;
     pub_id_categoria: Number;
     pub_ruta: string;
+    Pub_Categoria: string;
 }

@@ -44,6 +44,7 @@ import { UsuariosbaseComponent } from '../usuariosbase/usuariosbase.component';
 import { AdmGaleriaComponent } from '../adm-galeria/adm-galeria.component';
 import { VGaleriaComponent } from '../adm-galeria/v-galeria/v-galeria.component';
 import { EGaleriaComponent } from '../adm-galeria/e-galeria/e-galeria.component';
+import { NotasformComponent } from '../publicaciones/notas/notasform/notasform.component';
 
 
 const pagesRoutes: Routes = [
@@ -64,6 +65,7 @@ const pagesRoutes: Routes = [
 			{ path: 'principal', component: PrincipalComponent },
 			{ path: 'integrantes', component: IntegrantesComponent },
 			{ path: 'notas', component: NotasComponent },
+			{ path: 'notasform/:id', component: NotasformComponent },
 			{ path: 'galeria/:id', component: GaleriaComponent },
 			{ path: 'vergaleria/:id', component: VergaleriaComponent },
 			{ path: 'notificacion', component: NotificacionComponent },
