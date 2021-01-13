@@ -2,7 +2,8 @@
 <script type="text/javascript" src="bower_components/angular-fixed-table-header/src/fixed-table-header.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-<div class="col-center"><h4><b>Lista de Trabajadores de Base</b></h4></div>
+<div class="col-center"><h4><b>Lista de Trabajadores del Padron Administrativo</b></h4></div>
+
   <div  class="tablediv">
     <br>
 
@@ -45,20 +46,24 @@
         
             <th class="table-head-font-weight-normal" ><b>Matricula</b></th>
             <th class="table-head-font-weight-normal" ><b>Nombre Completo</b></th>
-            <th class="table-head-font-weight-normal" ><b>CURP</b></th>
-            <th class="table-head-font-weight-normal" ><b>RFC</b></th>
+            <th class="table-head-font-weight-normal" ><b>Adscripcion</b></th>
+            <th class="table-head-font-weight-normal" ><b>Categoria</b></th>
+            <th class="table-head-font-weight-normal" ><b>Funcion</b></th>
+            <th class="table-head-font-weight-normal" ><b>Estatus</b></th>
             <th class="table-head-font-weight-normal" ><b>Editar</b></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let usuario of this.usuarios">
-            <td  width=25px;>{{ usuario.ub_user}}</td> 
-            <td>{{ usuario.ub_nombre}}</td>
-            <td>{{ usuario.ub_curp }}</td>
-            <td>{{ usuario.ub_rfc }}</td>
+            <td  width=25px;>{{ usuario.pad_mat}}</td> 
+            <td>{{ usuario.pad_nombre}}</td>
+            <td>{{ usuario.pad_adscripcion }}</td>
+            <td>{{ usuario.pad_categoria }}</td>
+            <td>{{ usuario.pad_funcion }}</td>
+            <td>{{ usuario.pad_situacion }}</td>
             <td align="center">
              
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)='cargarUsuario(usuario.ub_user)'>Editar</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)='cargarUsuario(usuario.pad_mat)'>Editar</button>
 
             </td>
    
@@ -82,31 +87,36 @@
             
             <div class="form-group">
                 <label for="matricula">Matricula</label>
-                <input type="text" [(ngModel)]="x.ub_user" name="matricula" id="matricula" class="form-control"  disabled >
+                <input type="text" [(ngModel)]="usuario.pad_mat" name="matricula" id="matricula" class="form-control"  disabled >
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" [(ngModel)]="x.ub_nombre" name="matricula" id="matricula" class="form-control"  placeholder="Ingrese su matricula" >
+                <input type="text" [(ngModel)]="usuario.pad_nombre" name="matricula" id="matricula" class="form-control"  disabled >
             </div>
             <div class="form-group">
-                <label for="curp">CURP</label>
-                <input type="text" [(ngModel)]="x.ub_curp" name="curp" id="curp" class="form-control"  placeholder="Ingrese su curp" >
+                <label for="curp">Adscripcion</label>
+                <input type="text" [(ngModel)]="usuario.pad_adscripcion" name="adscripcion" id="adscripcion" class="form-control"  disabled >
             </div>
             <div class="form-group">
-              <label for="rfc">RFC</label>
-              <input type="text" [(ngModel)]="x.ub_rfc" name="rfc"  id="rfc" class="form-control"   placeholder="Ingrese su rfc" >
+              <label for="rfc">Categiria</label>
+              <input type="text" [(ngModel)]="usuario.pad_categoria" name="categoria"  id="categoria" class="form-control"  disabled >
             </div>
             <div class="form-group">
-                <label for="rfc">Password</label>
-                <input type="password" [(ngModel)]="x.ub_password" name="rfc"  id="rfc" class="form-control"   placeholder="Ingrese su nuevo password" >
-              </div>
+                <label for="rfc">Funcion</label>
+                <input type="text" [(ngModel)]="usuario.pad_funcion" name="funcion"  id="funcion" class="form-control"  disabled >
+            </div>
+            <div class="form-group">
+                <label for="rfc">Estatus</label>
+                <input type="text" [(ngModel)]="usuario.pad_situacion" name="estatus"  id="estatus" class="form-control"   placeholder="Estatus" maxlength="1" >
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrarmodal">Cerrar</button>
-          <button type="button" class="btn btn-primary" (click)='update(x);'>Guardar Cambios</button>
+          <button type="button" class="btn btn-primary" (click)='update(usuario);'>Guardar Cambios</button>
         </div>
       </div>
     </div>
   </div>
+
 
 

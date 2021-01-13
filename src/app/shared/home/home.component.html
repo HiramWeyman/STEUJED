@@ -88,7 +88,6 @@
 
     <div class="divider">&nbsp;</div>
 
-    <!--
     <div class="container" id="content">
         <header>
             <h2>Noticias</h2>
@@ -102,35 +101,87 @@
             </div>
 
             <div id="0" class="tabcontent">
-                <h3>{{this.Titulox0}}</h3>
-                <div [innerHTML]="this.Textox0.substring(0,100)" style="text-align: justify;"></div>
-                <a href="#/noticia/{{this.idx0}}"><img style="display: block; width: 15%;" src="{{this.Rutax0}}" alt=""></a>
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="width:40%" rowspan="2">
+                            <a href="#/noticia/{{this.idx0}}">
+                                <img style="width: 50%; padding-top: 7px;" src="{{this.Rutax0}}" alt="">
+                            </a>
+                        </td>
+                        <td style="width:60%">
+                            <h3>{{this.Titulox0}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><div [innerHTML]="this.Textox0.substring(0,100)" style="text-align: justify;"></div></td>
+                    </tr>
+                </table>
+                
                 <a href="#/noticia/{{this.idx0}}" class="button">Leer más...</a>
             </div>
               
             <div id="1" class="tabcontent">
-                <h3>{{this.Titulox1}}</h3>
-                <div [innerHTML]="this.Textox1.substring(0,100)" style="text-align: justify;"></div>
-                <a href="#/noticia/{{this.idx1}}"><img  style="display: block; width: 15%;" src="{{this.Rutax1}}" alt=""></a>
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="width:40%" rowspan="2">
+                            <a href="#/noticia/{{this.idx1}}"><img  style="width: 50%; padding-top: 7px;" src="{{this.Rutax1}}" alt=""></a>
+                        </td>
+                        <td style="width:60%">
+                            <h3>{{this.Titulox1}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div [innerHTML]="this.Textox1.substring(0,100)" style="text-align: justify;"></div>
+                        </td>
+                    </tr>
+                </table>
+
                 <a href="#/noticia/{{this.idx1}}" class="button">Leer más...</a>
             </div>
               
             <div id="2" class="tabcontent">
-                <h3>{{this.Titulox2}}</h3>
-                <div [innerHTML]="this.Textox2.substring(0,100)" style="text-align: justify;"></div>
-                <a href="#/noticia/{{this.idx2}}"><img style="display: block; width: 15%;" src="{{this.Rutax2}}" alt=""></a>
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="width:40%" rowspan="2">
+                            <a href="#/noticia/{{this.idx2}}"><img style="width: 50%; padding-top: 7px;" src="{{this.Rutax2}}" alt=""></a>
+                        </td>
+                        <td style="width:60%">
+                            <h3>{{this.Titulox2}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div [innerHTML]="this.Textox2.substring(0,100)" style="text-align: justify;"></div>
+                        </td>
+                    </tr>
+                </table>
+                
                 <a href="#/noticia/{{this.idx2}}" class="button">Leer más...</a>
             </div>
             <div id="3" class="tabcontent">
-                <h3>{{this.Titulox3}}</h3>
-                <div [innerHTML]="this.Textox3.substring(0,100)" style="text-align: justify;"></div>
-                <a href="#/noticia/{{this.idx3}}"><img style="display: block; width: 15%;" src="{{this.Rutax3}}" alt=""></a>
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="width:40%" rowspan="2">
+                            <a href="#/noticia/{{this.idx3}}"><img style="width: 50%; padding-top: 7px;" src="{{this.Rutax3}}" alt=""></a>
+                        </td>
+                        <td style="width:60%">
+                            <h3>{{this.Titulox3}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div [innerHTML]="this.Textox3.substring(0,100)" style="text-align: justify;"></div>
+                        </td>
+                    </tr>
+                </table>
+
                 <a href="#/noticia/{{this.idx3}}" class="button">Leer más...</a>
             </div>
         </div>
     </div>
-    -->
 
+<!--
     <div class="container" id="content">
         <header>
             <h2>Noticias</h2>
@@ -150,6 +201,7 @@
         <br><br>
     </div>
 </div>
+-->
 <!--Division-->
 <!-- Radio -->
 <div class="divider">&nbsp;</div>

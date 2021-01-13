@@ -19,5 +19,11 @@ export class Advos {
     pad_situacion_base: String;
     pad_num_contacto: String;
     pad_observaciones: String;
+    pad_cancelado:String;
+    pad_user_cancela:String;
+    pad_user_restablece:String;
+    pad_fecha_cancelacion:String;
+    pad_fecha_restablece:String;
+
 
 }

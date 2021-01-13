@@ -45,6 +45,8 @@ import { AdmGaleriaComponent } from '../adm-galeria/adm-galeria.component';
 import { VGaleriaComponent } from '../adm-galeria/v-galeria/v-galeria.component';
 import { EGaleriaComponent } from '../adm-galeria/e-galeria/e-galeria.component';
 import { NotasformComponent } from '../publicaciones/notas/notasform/notasform.component';
+import { PlazasCanceladasComponent } from '../plazas-canceladas/plazas-canceladas.component';
+import { ListaPadronComponent } from '../padron-advo/listaPadron/lista-padron/lista-padron.component';
 
 
 const pagesRoutes: Routes = [
@@ -97,7 +99,10 @@ const pagesRoutes: Routes = [
 			{ path: 'usuariosbase', component: UsuariosbaseComponent  },
 			{ path: 'adm-galeria', component: AdmGaleriaComponent  },
 			{ path: 'v_galeria/:id', component: VGaleriaComponent  },
-			{ path: 'e_galeria/:id', component: EGaleriaComponent  }
+			{ path: 'e_galeria/:id', component: EGaleriaComponent  },
+			{ path: 'plazas-canceladas', component: PlazasCanceladasComponent  },
+			{path:'lista-padron',component:ListaPadronComponent},
+			
 		]
 	}
 ];

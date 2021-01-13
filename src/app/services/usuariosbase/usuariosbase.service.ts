@@ -14,7 +14,8 @@ export class UsuariosbaseService {
   constructor(private http: HttpClient) { }
 
   getUsuariosNombre(nombre: any): Observable<Usuariosbase[]> {
-    const urlEndPoint = `${environment.rutaAPI}` + '/usuariosbaseNombre' + `/${nombre}`;
+    nombre=nombre.toUpperCase();
+    const urlEndPoint = `${environment.rutaAPI + '/usuariosbaseNombre?nombre=' + nombre}`;
     return this.http.get(urlEndPoint).pipe(
       map(response => response as Usuariosbase[])
     );
@@ -22,6 +23,13 @@ export class UsuariosbaseService {
 
   getUsuarios(): Observable<Usuariosbase[]> {
     const urlEndPoint = `${environment.rutaAPI}` + '/getUserBase';
+    return this.http.get(urlEndPoint).pipe(
+      map(response => response as Usuariosbase[])
+    );
+  }
+
+  getBuscaMat(matricula: string): Observable<Usuariosbase[]> {
+    const urlEndPoint = `${environment.rutaAPI + '/getUserBaseMat?matricula=' + matricula}`;
     return this.http.get(urlEndPoint).pipe(
       map(response => response as Usuariosbase[])
     );

@@ -57,6 +57,8 @@ import { AdmGaleriaComponent } from './modules/adm-galeria/adm-galeria.component
 import { VGaleriaComponent } from './modules/adm-galeria/v-galeria/v-galeria.component';
 import { EGaleriaComponent } from './modules/adm-galeria/e-galeria/e-galeria.component';
 import { NotasformComponent } from './modules/publicaciones/notas/notasform/notasform.component';
+import { PlazasCanceladasComponent } from './modules/plazas-canceladas/plazas-canceladas.component';
+import { ListaPadronComponent } from './modules/padron-advo/listaPadron/lista-padron/lista-padron.component';
 
 
 // Set the fonts to use
@@ -104,7 +106,9 @@ import { NotasformComponent } from './modules/publicaciones/notas/notasform/nota
     AdmGaleriaComponent,
     VGaleriaComponent,
     EGaleriaComponent,
-    NotasformComponent
+    NotasformComponent,
+    PlazasCanceladasComponent,
+    ListaPadronComponent
   ],
   imports: [
     APP_ROUTING,

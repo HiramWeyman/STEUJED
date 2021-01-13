@@ -11,9 +11,11 @@ export class ServiciosService {
 
 	private urlEndPoint = `${environment.rutaAPI}/PadronAdvo`;
 	private urlConsurso = `${environment.rutaAPI}/ConcursoPlazas`;
+	private urlConsursoCancel = `${environment.rutaAPI}/SolCancel`;
 	private urlReimpresion = `${environment.rutaAPI}/GetSolicitudesReimpresion`;
 	private urlUsersBase = `${environment.rutaAPI}/UsersBase`;
 	private urlCancelarSol = `${environment.rutaAPI}/CancelarSol`;
+	private urlRestablecerSol = `${environment.rutaAPI}/RestablecerSol`;
   	constructor(private http: HttpClient) { }
 
 	getPadronAdvo(): Observable<Advos[]> {
@@ -38,6 +40,12 @@ export class ServiciosService {
 		);
 	}
 
+	getAdministrativosCatCancel(ids): Observable<Advos[]> {
+		return this.http.get(this.urlConsursoCancel+"/"+ids).pipe(
+		  map(response => response as Advos[])
+		);
+	}
+
 	getAdministrativosReimp(ids): Observable<Advos[]> {
 		return this.http.get(this.urlReimpresion+ "/" +ids).pipe(
 		  map(response => response as Advos[])
@@ -58,7 +66,24 @@ export class ServiciosService {
 
 	update(administrativo: Advos): Observable<Advos> {
 		// return this.http.put<Usuarios>(`${this.urlEndPoint+"/Usuarios"}/${usuario.id}`, usuario, {headers: this.httpHeaders})
-		return this.http.put<Advos>(`${this.urlCancelarSol}/${administrativo.pad_id}`, administrativo);
+		const user = sessionStorage.Login;
+		administrativo.pad_user_cancela=user;
+		//console.log(user);
+		//console.log(administrativo);
+		if(user!=null){
+			return this.http.put<Advos>(`${this.urlCancelarSol}/${administrativo.pad_id}`, administrativo);
+		}
+		
+	  }
+
+
+	  updateRestablece(administrativo: Advos): Observable<Advos> {
+		// return this.http.put<Usuarios>(`${this.urlEndPoint+"/Usuarios"}/${usuario.id}`, usuario, {headers: this.httpHeaders})
+		const user = sessionStorage.Login;
+		administrativo.pad_user_restablece=user;
+		//console.log(user);
+		//console.log(administrativo);
+		return this.http.put<Advos>(`${this.urlRestablecerSol}/${administrativo.pad_id}`, administrativo);
 	  }
 
 }

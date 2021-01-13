@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosbaseService } from '../../services/usuariosbase/usuariosbase.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Usuariosbase } from '../usuariosbase/usuariosbase';
+import {Matnom } from '../usuariosbase/busqueda';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-usuariosbase',
@@ -11,6 +12,7 @@ import Swal from 'sweetalert2';
 export class UsuariosbaseComponent implements OnInit {
   usuarios: Usuariosbase[];
   public x: Usuariosbase = new Usuariosbase();
+  public busca: Matnom = new Matnom();
   user: any;
   constructor(
     private usuarioService: UsuariosbaseService,
@@ -59,6 +61,26 @@ export class UsuariosbaseComponent implements OnInit {
         this.cargarUsers();
     }); 
   }
+
+buscar(matnom:any,param:number){
+  if(matnom){
+    switch(param){
+      case 1:
+        this.usuarioService.getBuscaMat(matnom).subscribe(
+        usuarios => this.usuarios = usuarios
+        );
+       break;
+      case 2:
+        this.usuarioService.getUsuariosNombre(matnom).subscribe(
+        usuarios => this.usuarios = usuarios
+        );
+       break;
+        }
+}
+else{
+  this.cargarUsers();
+}
+}
 
   
 

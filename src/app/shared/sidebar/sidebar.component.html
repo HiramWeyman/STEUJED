@@ -16,13 +16,13 @@
 
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/inicio"><mat-icon>dashboard</mat-icon>Inicio</a>
     
-    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5"  mat-list-item routerLinkActive="list-item-active" routerLink="/uploadbanner"><mat-icon>image</mat-icon>Baner Principal</a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5 || usuario.role_id === 11"  mat-list-item routerLinkActive="list-item-active" routerLink="/uploadbanner"><mat-icon>image</mat-icon>Baner Principal</a>
     
-    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5" mat-list-item routerLinkActive="list-item-active" routerLink="/menu"><mat-icon>menu</mat-icon>Menu</a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5 || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/menu"><mat-icon>menu</mat-icon>Menu</a>
     
-    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5" mat-list-item routerLinkActive="list-item-active" routerLink="/archivos"><mat-icon> insert_drive_file</mat-icon>Archivos (PDF)</a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/archivos"><mat-icon> insert_drive_file</mat-icon>Archivos (PDF)</a>
 
-    <mat-expansion-panel *ngIf="usuario.role_id === 1">
+    <mat-expansion-panel *ngIf="usuario.role_id === 1  || usuario.role_id === 11">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <mat-icon>move_to_inboxd</mat-icon>Archivos
@@ -32,7 +32,7 @@
         <a mat-list-item routerLinkActive="list-item-active" routerLink="/descarchivos"><mat-icon>label_important</mat-icon>Archivos Descargados</a>
     </mat-expansion-panel>
     
-    <mat-expansion-panel *ngIf="usuario.role_id === 1">
+    <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 7  || usuario.role_id === 11">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>account_balance_wallet</mat-icon>Caja de ahorro 
@@ -43,7 +43,7 @@
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/AdmRevolvente"><mat-icon>label_important</mat-icon>Revolvente</a>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="usuario.role_id === 1">
+    <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 8  || usuario.role_id === 11">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>assignment_ind</mat-icon>Eventuales
@@ -52,10 +52,20 @@
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/usuarios"><mat-icon>label_important</mat-icon>Lista de Empleados Eventuales</a>
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/asistencia"><mat-icon>label_important</mat-icon>Reporte de Asistencia</a>
   </mat-expansion-panel>
-  <a *ngIf="usuario.role_id === 1" mat-list-item routerLinkActive="list-item-active" routerLink="/usuariosbase"><mat-icon>supervisor_account</mat-icon>Trabajadores de base</a>
-    <a *ngIf="usuario.role_id === 1" mat-list-item routerLinkActive="list-item-active" routerLink="/concursopla"><mat-icon>person_pin_circle</mat-icon> Concurso de Plazas</a>
+  <a *ngIf="usuario.role_id === 1||usuario.role_id === 8" mat-list-item routerLinkActive="list-item-active" routerLink="/usuariosbase"><mat-icon>supervisor_account</mat-icon>Trabajadores de base</a>
+
+  <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 8">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>person_pin_circle</mat-icon>Plazas
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/concursopla"><mat-icon>label_important</mat-icon> Concurso de Plazas</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/plazas-canceladas"><mat-icon>label_important</mat-icon>Plazas canceladas</a>
+</mat-expansion-panel>
     
-    <mat-expansion-panel *ngIf="usuario.role_id === 1">
+    
+    <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 8  || usuario.role_id === 11">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>supervised_user_circle</mat-icon>Sustituciones
@@ -65,7 +75,7 @@
       <a mat-list-item routerLinkActive="list-item-active" routerLink="/perfil"><mat-icon>label_important</mat-icon>Reporte de Sutituciones</a>
   </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="usuario.role_id === 1">
+    <mat-expansion-panel *ngIf="usuario.role_id === 1  || usuario.role_id === 11">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <mat-icon>folder_open</mat-icon>Catalogos
@@ -80,7 +90,7 @@
     </mat-expansion-panel>
 
 
-    <mat-expansion-panel *ngIf="usuario.role_id === 1 || usuario.role_id === 5 || usuario.role_id === 6">
+    <mat-expansion-panel *ngIf="usuario.role_id === 1 || usuario.role_id === 5 || usuario.role_id === 6  || usuario.role_id === 11">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <mat-icon>folder_open</mat-icon>Publicaciones
@@ -93,23 +103,25 @@
         <a mat-list-item routerLinkActive="list-item-active" routerLink="/admvideosfl"><mat-icon>label_important</mat-icon>Videos Facebook</a>
     </mat-expansion-panel>
 
-    <mat-expansion-panel *ngIf="usuario.role_id === 1 || usuario.role_id === 5">
+    <mat-expansion-panel *ngIf="usuario.role_id === 1 || usuario.role_id === 5 ||usuario.role_id === 8  || usuario.role_id === 11">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>perm_identity</mat-icon>Integrantes (STEUJED)
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5"mat-list-item routerLinkActive="list-item-active" routerLink="/integrantes"><mat-icon>label_important</mat-icon>Integrantes (STEUJED)</a>
-      <a *ngIf="usuario.role_id === 1"mat-list-item routerLinkActive="list-item-active" routerLink="/integrantes-user"><mat-icon>label_important</mat-icon>Crear Usuario</a>
+      <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5 ||usuario.role_id === 8 || usuario.role_id === 11"mat-list-item routerLinkActive="list-item-active" routerLink="/integrantes"><mat-icon>label_important</mat-icon>Integrantes (STEUJED)</a>
+      <a *ngIf="usuario.role_id === 1 || usuario.role_id === 8 || usuario.role_id === 11"mat-list-item routerLinkActive="list-item-active" routerLink="/integrantes-user"><mat-icon>label_important</mat-icon>Crear Usuario</a>
   </mat-expansion-panel>
 
-  <mat-expansion-panel *ngIf="usuario.role_id === 1">
+  <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 8  || usuario.role_id === 11">
     <mat-expansion-panel-header>
       <mat-panel-title>
         <mat-icon>assignment</mat-icon>Padron Administrativo 
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5"mat-list-item routerLinkActive="list-item-active" routerLink="/padron-advo"><mat-icon>assignment_ind</mat-icon>Subir archivo Excel </a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5||usuario.role_id === 8  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/padron-advo"><mat-icon>assignment_ind</mat-icon>Subir archivo Excel </a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5||usuario.role_id === 8  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/lista-padron"><mat-icon>list_alt</mat-icon>Lista de padron administrativo </a>
+
 </mat-expansion-panel>
   <!--
     <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5" mat-list-item routerLinkActive="list-item-active" routerLink="/integrantes"><mat-icon>perm_identity</mat-icon>Integrantes (STEUJED)</a>
@@ -121,8 +133,8 @@
     <!--
     <h2 matSubheader>Tools</h2>
     -->
-    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5" mat-list-item routerLinkActive="list-item-active" routerLink="/audios"><mat-icon>audiotrack</mat-icon> Audios</a>
-    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5" mat-list-item routerLinkActive="list-item-active" routerLink="/contactanos"><mat-icon>import_contacts</mat-icon> Contactanos</a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/audios"><mat-icon>audiotrack</mat-icon> Audios</a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/contactanos"><mat-icon>import_contacts</mat-icon> Contactanos</a>
     
 </mat-nav-list>
 

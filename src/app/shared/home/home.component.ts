@@ -12,6 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DescargaService } from '../../services/descarga/descarga.service';
 import { GaleriaService } from '../../services/dasboard/galeria.service';
 import { Galeria } from '../../interfaces/galeria';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 
 @Component({
   selector: 'app-home',
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit {
   imagenes: any[];
   array: string = "";
   data: any;
+  str: any;
   id: any;
   titulo:string="";
 
@@ -105,14 +108,25 @@ export class HomeComponent implements OnInit {
         publicaciones => {
           this.publicaciones = publicaciones;
           console.log(this.publicaciones);
-          this.idx0 = this.publicaciones[0].pub_id;this.Titulox0 = this.publicaciones[0].pub_titulo;this.Textox0 = this.publicaciones[0].pub_texto;this.Rutax0 = 'http://www.steujed.org.mx/assets/images/noticias/'+this.publicaciones[0].pub_id+"/"+this.publicaciones[0].pub_ruta;
-          this.idx1 = this.publicaciones[1].pub_id;this.Titulox1 = this.publicaciones[1].pub_titulo;this.Textox1 = this.publicaciones[1].pub_texto;this.Rutax1 = 'http://www.steujed.org.mx/assets/images/noticias/'+this.publicaciones[1].pub_id+"/"+this.publicaciones[1].pub_ruta;
-          this.idx2 = this.publicaciones[2].pub_id;this.Titulox2 = this.publicaciones[2].pub_titulo;this.Textox2 = this.publicaciones[2].pub_texto;this.Rutax2 = 'http://www.steujed.org.mx/assets/images/noticias/'+this.publicaciones[2].pub_id+"/"+this.publicaciones[2].pub_ruta;
-          this.idx3 = this.publicaciones[3].pub_id;this.Titulox3 = this.publicaciones[3].pub_titulo;this.Textox3 = this.publicaciones[3].pub_texto;this.Rutax3 = 'http://www.steujed.org.mx/assets/images/noticias/'+this.publicaciones[3].pub_id+"/"+this.publicaciones[3].pub_ruta;
-          this.Rutax0 = this.Rutax0.substring(0,this.Rutax0.length - 2);
-          this.Rutax1 = this.Rutax1.substring(0,this.Rutax1.length - 2);
-          this.Rutax2 = this.Rutax2.substring(0,this.Rutax2.length - 2);
-          this.Rutax3 = this.Rutax3.substring(0,this.Rutax3.length - 2);
+          
+          this.idx0 = this.publicaciones[0].pub_id;this.Titulox0 = this.publicaciones[0].pub_titulo;this.Textox0 = this.publicaciones[0].pub_texto;this.Rutax0 = "http://www.steujed.org.mx/assets/images/noticias/"+this.publicaciones[0].pub_id+"/"+this.publicaciones[0].pub_ruta;
+          this.idx1 = this.publicaciones[1].pub_id;this.Titulox1 = this.publicaciones[1].pub_titulo;this.Textox1 = this.publicaciones[1].pub_texto;this.Rutax1 = "http://www.steujed.org.mx/assets/images/noticias/"+this.publicaciones[1].pub_id+"/"+this.publicaciones[1].pub_ruta;
+          this.idx2 = this.publicaciones[2].pub_id;this.Titulox2 = this.publicaciones[2].pub_titulo;this.Textox2 = this.publicaciones[2].pub_texto;this.Rutax2 = "http://www.steujed.org.mx/assets/images/noticias/"+this.publicaciones[2].pub_id+"/"+this.publicaciones[2].pub_ruta;
+          this.idx3 = this.publicaciones[3].pub_id;this.Titulox3 = this.publicaciones[3].pub_titulo;this.Textox3 = this.publicaciones[3].pub_texto;this.Rutax3 = "http://www.steujed.org.mx/assets/images/noticias/"+this.publicaciones[3].pub_id+"/"+this.publicaciones[3].pub_ruta;
+          
+          this.str = this.Rutax0.split(",,");
+          this.Rutax0 = this.str[0];
+          this.str = this.Rutax1.split(",,");
+          this.Rutax1 = this.str[0];
+          this.str = this.Rutax2.split(",,");
+          this.Rutax2 = this.str[0];
+          this.str = this.Rutax3.split(",,");
+          this.Rutax3 = this.str[0];
+          
+          console.log("Ruta 0: "+this.Rutax0);
+          console.log("Ruta 1: "+this.Rutax1);
+          console.log("Ruta 2: "+this.Rutax2);
+          console.log("Ruta 3: "+this.Rutax3);
           this.publicaciones = this.publicaciones.map( item => {
             var splitter = item.pub_ruta.split(",,");
             item.pub_ruta = item.pub_ruta ? '' || 'http://www.steujed.org.mx/assets/images/noticias/'+item.pub_id+'/'+splitter[0] : 'MyVAL'

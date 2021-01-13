@@ -33,6 +33,7 @@ export class SidebarComponent implements OnInit {
     }else{
       this.rol_user = Number(sessionStorage.getItem('TipoUser'));
       this.situacion_user = sessionStorage.getItem('Situacion');
+      console.log(this.situacion_user);
     }
     
   }
