@@ -1,50 +1,46 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServiciosService } from '../../../services/servicios/servicios.service';
 import { CajaAhorroService } from '../../../services/cajaAhorro/cajaAhorro.service';
-import { Revolvente } from '../../../interfaces/revolvente';
+import { CajaAhorro } from '../../../interfaces/cajaAhorro';
 import Swal from 'sweetalert2';
 import { environment} from '../../../../environments/environment';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-revolvente',
-  templateUrl: './revolvente.component.html',
-  styleUrls: ['./revolvente.component.scss']
+  selector: 'app-revolvente2',
+  templateUrl: './revolvente2.component.html',
+  styleUrls: ['./revolvente2.component.scss']
 })
-export class RevolventeComponent implements OnInit {
+export class Revolvente2Component implements OnInit {
 
   public urlEndPoint: string = `${environment.rutaAPI}`;
 
-  @ViewChild('closeModal') private closeModal: ElementRef;
-
-  public revolvente: Revolvente = new Revolvente();
+  public cajaAhorro: CajaAhorro = new CajaAhorro();
 
   advos: any;
   public nombre: string;
   public matricula: string;
   public adscripcion: string;
 
-  revolventes: Revolvente[];
+  cajaAhorros:CajaAhorro[];
 
   selectedFile: File = null;
   progress : any;
   mensaje : any;
   ToggleButton: boolean = true;
-  ToggleButtonA: boolean = true;
-  ToggleButtonM: boolean = true;
 
   IDRegistro: any;
   valorBandera: any;
 
   constructor( private _serv:ServiciosService, private _ca: CajaAhorroService, private http: HttpClient,
-    public router: Router ) { }
+               public router: Router ) { }
 
   ngOnInit(): void {
-    this._ca.getRevolvente(sessionStorage.getItem('LoginBase')).subscribe(
-      (revolventes) => {
-        this.revolventes = revolventes;
-        console.log(this.revolventes);
+    this._ca.getCaja(sessionStorage.getItem('LoginBase'), 'REVOLVENTE').subscribe(
+      (cajaAhorros) => {
+        this.cajaAhorros = cajaAhorros;
+        //console.log(this.cajaAhorros);
       }
     )
 
@@ -56,11 +52,36 @@ export class RevolventeComponent implements OnInit {
         this.adscripcion = this.advos.pad_adscripcion;
       },
       error => {
-        console.log(error);
-        Swal.fire({title: 'ERROR!!!',text: error.error.Message ,icon: 'error'});
-      });
+      console.log(error);
+      Swal.fire({title: 'ERROR!!!',text: error.error.Message ,icon: 'error'});
+    });
+  }
 
+  create(){
+    //console.log(datos.form.value);
+    this._ca.create(this.matricula, this.nombre, this.adscripcion, 'REVOLVENTE', this.cajaAhorro).subscribe(cajaAhorro =>{
+      this._ca.getCaja(sessionStorage.getItem('LoginBase'), 'REVOLVENTE').subscribe(
+        (cajaAhorros) => {
+          this.cajaAhorros = cajaAhorros;
+          //console.log(this.cajaAhorros);
+        }
+      )
+      Swal.fire('Guardado', `Solicitud de Revolvente enviada con éxito!`, 'success');
+    },
+    error => {
+      console.log(error);
+      Swal.fire({
+        title: 'ERROR!!!',
+        text: error.message,
+        icon: 'error'});
+    });
+  }
 
+  reporte(id:number,tipo:number){
+    window.open(`${environment.rutaAPI}` + '/ReporPrestamos?id='
+    + id
+    + '&tipo=' + tipo
+    );
   }
 
   valorID(ID,bandera){
@@ -73,47 +94,10 @@ export class RevolventeComponent implements OnInit {
     this.ToggleButton = false;
   }
 
-  inputCantidad(valorSelect){
-    if(valorSelect === 'ALTA'){ 
-      this.ToggleButtonA = false;
-      this.ToggleButtonM = true;
-    }else if(valorSelect === 'BAJA'){
-      this.ToggleButtonA = true;
-      this.ToggleButtonM = true;
-    }else if(valorSelect === 'MODIFICACION'){
-      this.ToggleButtonA = true;
-      this.ToggleButtonM = false;
-    }else{
-      this.ToggleButtonA = true;
-      this.ToggleButtonM = true;
-    }
-  }
-
-  createRevolvente(){
-    console.log(this.revolvente);
-    
-    this._ca.createRevolvente(this.matricula, this.nombre, this.revolvente).subscribe(cajaAhorro =>{
-      this._ca.getRevolvente(sessionStorage.getItem('LoginBase')).subscribe(
-        (revolventes) => {
-          this.revolventes = revolventes;
-        }
-      )
-      Swal.fire('Guardado', `Solicitud de Ingresos enviada con éxito!`, 'success');
-    },
-    error => {
-      console.log(error);
-      Swal.fire({
-        title: 'ERROR!!!',
-        text: error.message,
-        icon: 'error'});
-    });
-    
-  }
-
   onUpload(){
     const fd = new FormData();
     fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post(`${this.urlEndPoint}`+"/Revolvente/"+this.IDRegistro+"?bandera="+this.valorBandera,fd,{
+    this.http.post(`${this.urlEndPoint}`+"/Prestamos/"+this.IDRegistro+"?bandera="+this.valorBandera,fd,{
       reportProgress: true,
       observe: 'events'
     })
@@ -122,10 +106,10 @@ export class RevolventeComponent implements OnInit {
           console.log("Progreso: " + Math.round (event.loaded / event.total * 100)  + "%");
           this.progress = Math.round (event.loaded * 100 / event.total );
         }else if (event.type === HttpEventType.Response){
-          console.log(event);
+          //console.log(event);
           if (event.status == 200){
-            this.router.navigate(['/revolvente']).then(() => {
-              //window.location.reload();
+            this.router.navigate(['/revolvente2']).then(() => {
+              window.location.reload();
             });
             this.mensaje = "Archivo " +this.selectedFile.name+ " subido correctamente.";
             Swal.fire({
@@ -144,13 +128,5 @@ export class RevolventeComponent implements OnInit {
       });
       this.ToggleButton = true;
   }
-
-  reporte(id:number,tipo:number){
-
-    window.open(`${environment.rutaAPI}` + '/ReporPrestamos?id='
-    + id
-    + '&tipo=' + tipo
-    );
-      }
 
 }

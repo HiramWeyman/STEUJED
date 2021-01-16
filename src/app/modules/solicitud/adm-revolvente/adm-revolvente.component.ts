@@ -20,7 +20,7 @@ export class AdmRevolventeComponent implements OnInit {
     this._ca.getRevolventes().subscribe(
       (revolventes) => {
         this.revolventes = revolventes;
-        //console.log(this.revolventes);
+        console.log(this.revolventes);
       }
     )
   }
@@ -30,6 +30,7 @@ export class AdmRevolventeComponent implements OnInit {
       this._ca.getRevolventes().subscribe(
         (revolventes) => {
           this.revolventes = revolventes;
+          
         }
       )
         Swal.fire('Actualizado', 'Registro actualizado con exito', 'success');

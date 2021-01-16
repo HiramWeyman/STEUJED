@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Nueva Solicitud de Préstamo Revolvente</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Nueva Solicitud de Ingresos</button>
 &nbsp; &nbsp; &nbsp; 
 <a href="https://sistemas.ujed.mx/PersonalUJED/" class="btn btn-success" target="_blank" style="text-decoration: none;">
     Imprime tu recibo de nomina
@@ -12,6 +12,9 @@
             <th>ID</th>
             <th>Matricula</th>
             <th>Nombre</th>
+            <!--<th>Adscripción</th>-->
+            <th>No. Cuenta / Tarjeta</th>
+            <th>Banco</th>
             <th>Teléfono</th>
             <th>Tipo</th>
             <th>Ingreso</th>
@@ -27,6 +30,9 @@
             <td>{{revolvente.pr_id}}</td>
             <td>{{revolvente.pr_matricula}}</td>
             <td>{{revolvente.pr_nombre}}</td>
+            <!--<td>{{revolvente.pr_adscripcioon}}</td>-->
+            <td>{{revolvente.pre_tarjeta_cuenta}}</td>
+            <td>{{revolvente.pre_banco}}</td>
             <td>{{revolvente.pr_telefono}}</td>
             <td>{{revolvente.pr_tipo}}</td>
             <td>{{revolvente.pr_ingreso}}</td>
@@ -59,6 +65,18 @@
                 <div class="form-group">
                     <label for="Nombre" class="col-form-label">Nombre</label>
                     <input name="pr_nombre" class="form-control" value="{{this.nombre}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Adscripción</label>
+                    <input name="pre_adscripcioon" class="form-control" value="{{this.adscripcion}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">No. Cuenta / Tarjeta</label>
+                    <input [(ngModel)]="revolvente.pre_tarjeta_cuenta" name="pre_tarjeta_cuenta" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Banco</label>
+                    <input [(ngModel)]="revolvente.pre_banco" name="pre_banco" class="form-control" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="Telefono" class="col-form-label">Telefono</label>

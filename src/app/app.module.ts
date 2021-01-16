@@ -59,6 +59,8 @@ import { EGaleriaComponent } from './modules/adm-galeria/e-galeria/e-galeria.com
 import { NotasformComponent } from './modules/publicaciones/notas/notasform/notasform.component';
 import { PlazasCanceladasComponent } from './modules/plazas-canceladas/plazas-canceladas.component';
 import { ListaPadronComponent } from './modules/padron-advo/listaPadron/lista-padron/lista-padron.component';
+import { Revolvente2Component } from './modules/solicitud/revolvente2/revolvente2.component';
+import { AdmRevolvente2Component } from './modules/solicitud/adm-revolvente2/adm-revolvente2.component';
 
 
 // Set the fonts to use
@@ -108,7 +110,9 @@ import { ListaPadronComponent } from './modules/padron-advo/listaPadron/lista-pa
     EGaleriaComponent,
     NotasformComponent,
     PlazasCanceladasComponent,
-    ListaPadronComponent
+    ListaPadronComponent,
+    Revolvente2Component,
+    AdmRevolvente2Component
   ],
   imports: [
     APP_ROUTING,

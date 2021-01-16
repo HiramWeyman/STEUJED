@@ -47,6 +47,8 @@ import { EGaleriaComponent } from '../adm-galeria/e-galeria/e-galeria.component'
 import { NotasformComponent } from '../publicaciones/notas/notasform/notasform.component';
 import { PlazasCanceladasComponent } from '../plazas-canceladas/plazas-canceladas.component';
 import { ListaPadronComponent } from '../padron-advo/listaPadron/lista-padron/lista-padron.component';
+import { Revolvente2Component } from '../solicitud/revolvente2/revolvente2.component';
+import { AdmRevolvente2Component } from '../solicitud/adm-revolvente2/adm-revolvente2.component';
 
 
 const pagesRoutes: Routes = [
@@ -94,6 +96,8 @@ const pagesRoutes: Routes = [
 			{ path: 'admvideosfl', component: AdmVideosflComponent  },
 			{ path: 'revolvente', component: RevolventeComponent  },
 			{ path: 'AdmRevolvente', component: AdmRevolventeComponent  },
+			{ path: 'revolvente2', component: Revolvente2Component  },
+			{ path: 'AdmRevolvente2', component: AdmRevolvente2Component  },
 			{ path: 'cambiapassword', component: CambiapasswordComponent  },
 			{ path: 'actualiza-datos', component: ActualizaDatosComponent  },
 			{ path: 'usuariosbase', component: UsuariosbaseComponent  },
