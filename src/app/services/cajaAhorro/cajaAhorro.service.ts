@@ -5,6 +5,7 @@ import { environment, _TOKEN } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { CajaAhorro } from '../../interfaces/cajaAhorro';
 import { Revolvente } from '../../interfaces/revolvente';
+import { Buscaprestamo } from '../../interfaces/buscaprestamo';
 
 @Injectable()
 export class CajaAhorroService {
@@ -70,5 +71,63 @@ export class CajaAhorroService {
 
 	updateRevolvente(valorSelect: string, ID: number){
 		return this.http.put(`${this.urlRevolvente}/${ID}?valor=`+valorSelect, CajaAhorro);
+	}
+
+	getBuscaMat(matricula: string): Observable<CajaAhorro[]> {
+		const urlEndPoint = `${environment.rutaAPI + '/GetCajaAhorroMat?matricula=' + matricula}`;
+		return this.http.get(urlEndPoint).pipe(
+		  map(response => response as CajaAhorro[])
+		);
+	  }
+
+	  getBuscaMatEstatus(matestatus: Buscaprestamo): Observable<CajaAhorro[]> {
+		const urlEndPoint = `${environment.rutaAPI + '/GetCajaAhorroMatEstatus?matricula=' + matestatus.matricula2+'&estatus='+matestatus.estatus}`;
+		return this.http.get(urlEndPoint).pipe(
+		  map(response => response as CajaAhorro[])
+		);
+	  }
+
+	  getBuscaMatIng(matricula: string): Observable<Revolvente[]> {
+		const urlEndPoint = `${environment.rutaAPI + '/GetIngresoMat?matricula=' + matricula}`;
+		return this.http.get(urlEndPoint).pipe(
+		  map(response => response as Revolvente[])
+		);
+	  }
+
+	  getBuscaMatEstatusIng(matestatus: Buscaprestamo): Observable<Revolvente[]> {
+		const urlEndPoint = `${environment.rutaAPI + '/GetIngresoMatEstatus?matricula=' + matestatus.matricula2+'&estatus='+matestatus.estatus}`;
+		return this.http.get(urlEndPoint).pipe(
+		  map(response => response as Revolvente[])
+		);
+	  }
+
+	  getBuscaMatRev(matricula: string): Observable<CajaAhorro[]> {
+		  console.log(matricula);
+		const urlEndPoint = `${environment.rutaAPI + '/GetRevMat?matricula=' + matricula}`;
+		return this.http.get(urlEndPoint).pipe(
+		  map(response => response as CajaAhorro[])
+		);
+	  }
+
+	  getBuscaMatEstatusRev(matestatus: Buscaprestamo): Observable<CajaAhorro[]> {
+		const urlEndPoint = `${environment.rutaAPI + '/GetRevMatEstatus?matricula=' + matestatus.matricula2+'&estatus='+matestatus.estatus}`;
+		return this.http.get(urlEndPoint).pipe(
+		  map(response => response as CajaAhorro[])
+		);
+	  }
+
+	  getBuscaMatRetiro(matricula: string): Observable<CajaAhorro[]> {
+		console.log(matricula);
+	  const urlEndPoint = `${environment.rutaAPI + '/GetRetiroMat?matricula=' + matricula}`;
+	  return this.http.get(urlEndPoint).pipe(
+		map(response => response as CajaAhorro[])
+	  );
+	}
+
+	getBuscaMatEstatusRetiro(matestatus: Buscaprestamo): Observable<CajaAhorro[]> {
+	  const urlEndPoint = `${environment.rutaAPI + '/GetRetiroMatEstatus?matricula=' + matestatus.matricula2+'&estatus='+matestatus.estatus}`;
+	  return this.http.get(urlEndPoint).pipe(
+		map(response => response as CajaAhorro[])
+	  );
 	}
 }

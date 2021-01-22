@@ -3,6 +3,7 @@ import { ServiciosService } from '../../../services/servicios/servicios.service'
 import { CajaAhorroService } from '../../../services/cajaAhorro/cajaAhorro.service';
 import { Revolvente } from '../../../interfaces/revolvente';
 import { environment} from '../../../../environments/environment';
+import { Buscaprestamo } from '../../../interfaces/buscaprestamo';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,6 +14,7 @@ import Swal from 'sweetalert2';
 export class AdmRevolventeComponent implements OnInit {
 
   revolventes:Revolvente[];
+  public busca: Buscaprestamo = new Buscaprestamo();
 
   constructor( private _serv:ServiciosService, private _ca: CajaAhorroService ) { }
 
@@ -20,7 +22,7 @@ export class AdmRevolventeComponent implements OnInit {
     this._ca.getRevolventes().subscribe(
       (revolventes) => {
         this.revolventes = revolventes;
-        console.log(this.revolventes);
+        //console.log(this.revolventes);
       }
     )
   }
@@ -50,6 +52,54 @@ export class AdmRevolventeComponent implements OnInit {
     + id
     + '&tipo=' + tipo
     );
+      }
+
+      buscar(matnom:any,param:number){
+        if(matnom){
+          console.log(matnom);
+          switch(param){
+            case 1:
+              if(this.busca.matricula){
+                this._ca.getBuscaMatIng(matnom).subscribe(
+                  usuarios => this.revolventes = usuarios
+                  );
+              }
+              else{
+                this._ca.getRevolventes().subscribe(
+                  (revolventes) => {
+                    this.revolventes = revolventes;
+                    //console.log(this.revolventes);
+                  }
+                )
+              }
+             break;
+            case 2:
+              if(this.busca.matricula2){
+                this._ca.getBuscaMatEstatusIng(matnom).subscribe(
+                  usuarios => this.revolventes = usuarios
+                  );
+              }
+              else{
+                this._ca.getRevolventes().subscribe(
+                  (revolventes) => {
+                    this.revolventes = revolventes;
+                   // console.log(this.revolventes);
+                  }
+                )
+              }
+            
+             break;
+              }
+      }
+      
+      else{
+        this._ca.getRevolventes().subscribe(
+          (revolventes) => {
+            this.revolventes = revolventes;
+           // console.log(this.revolventes);
+          }
+        )
+      }
       }
 
 }

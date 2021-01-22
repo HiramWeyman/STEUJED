@@ -2,6 +2,45 @@
 <br>
 
 <div class="tableFixHead border-primary">
+    <div clasa="row">
+        <div class="col-sm-4">
+          <div class="input-group">
+            <input type="number" class="form-control sm" placeholder="Buscar por Matricula" [(ngModel)]="busca.matricula">
+            <span class="input-group-btn">
+              <button class="btn btn-primary sm" type="button" id="busca1"><i class="fa fa-search" aria-hidden="true"  (click)='buscar(busca.matricula,1)'></i></button>
+            </span>
+          </div><!-- /input-group -->
+        </div>
+    
+        <div class="col-sm-8">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td> <input type="number" class="form-control sm" placeholder="Buscar por Matricula" [(ngModel)]="busca.matricula2"></td>
+                        <td>
+                            <select class="form-control sm" [(ngModel)]="busca.estatus">
+                                <option value="1">--Seleccionar Estatus--</option>
+                                <option value="ACEPTADA">ACEPTADA</option>
+                                <option value="ATENDIDA">ATENDIDA</option>
+                                <option value="PENDIENTE">PENDIENTE</option>
+                                <option value="RECHAZADA">RECHAZADA</option>
+                            </select>
+                            
+                        </td>
+                        <td><button class="btn btn-primary sm" type="button" id="busca2"><i class="fa fa-search" aria-hidden="true" (click)='buscar(busca,2)'></i></button></td>
+                    </tr>
+                  </tbody>
+            </table>
+        </div>
+      </div>
     <table>
       <thead>
         <tr>
@@ -48,7 +87,7 @@
                 </ng-container>
             </td>
             <td>
-                <button type="button" class="btn btn-danger btn-sm" (click)='reporte(cajaAhorro.pre_id,1);'>
+                <button type="button" class="btn btn-danger btn-sm" (click)='reporte(cajaAhorro.pre_id,4);'>
                     Ver Solicitud
                     </button>
             </td>
