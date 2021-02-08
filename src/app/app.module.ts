@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // rutas
@@ -62,6 +62,10 @@ import { ListaPadronComponent } from './modules/padron-advo/listaPadron/lista-pa
 import { Revolvente2Component } from './modules/solicitud/revolvente2/revolvente2.component';
 import { AdmRevolvente2Component } from './modules/solicitud/adm-revolvente2/adm-revolvente2.component';
 
+import localeEsMx from '@angular/common/locales/es-MX';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEsMx, 'es-Mx');
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 // Set the fonts to use
 
@@ -128,7 +132,7 @@ import { AdmRevolvente2Component } from './modules/solicitud/adm-revolvente2/adm
     NgxPaginationModule,
     AngularFileUploaderModule
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: 'es-MX' }, {provide: LocationStrategy, useClass: HashLocationStrategy} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

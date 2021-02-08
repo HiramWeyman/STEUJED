@@ -1,4 +1,31 @@
 
+<div id="team" class="section wb">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>Comité Ejecutivo 2021 - 2023</h3>
+        </div><!-- end title -->
+    
+        <div class="row">
+
+            <div class="col-md-2 col-sm-6" *ngFor="let integrante of integrantes">
+                <div class="our-team">
+                    <div class="pic">
+                        <img src="{{integrante.int_ruta_imagen}}">
+                    </div>
+                    <div class="team-content">
+                        <h4 class="title">{{integrante.int_nombre}}</h4>
+                        <span class="post">{{integrante.int_puesto}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!--
 <div class="container" id="content">
     <div style="text-align: center;">
         <h1>Comité Ejecutivo 2021 - 2023</h1>
@@ -33,62 +60,5 @@
         </ng-container>
     </div>
 
-    <!--
-    <div class="row">
-        <ng-container *ngFor="let integrante of integrantes | slice : 1"> 
-            <div class="4u">
-                <div class="card" style="text-align: center;width: 34rem;">
-                        <p>
-                            <img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt="">
-                        </p>
-                        <div class="card-body">
-                        <h4>{{integrante.int_nombre}}</h4>
-                        <h5>{{integrante.int_puesto}}</h5>
-                    </div>
-                </div>
-            </div>
-        </ng-container>
-    </div>
-    -->
 </div>
-
-<!-- Integrantes -->
-<!--
-<section id="testimonial">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-    
-            <div id="carousel-testimonial" class="carousel slide text-center" data-ride="carousel">
-
-                    <div class="carousel-inner" role="listbox">
-                        <div class="item active" *ngFor="let integrante of integrantes | slice:0:1" >
-                            <p><img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt=""></p>
-                            <h4>{{integrante.int_nombre}}</h4>
-                            <p>{{integrante.int_puesto}}</p>
-                        </div>
-
-                        <div class="item" *ngFor="let integrante of integrantes | slice:1">
-                            <p><img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt=""></p>
-                            <h4>{{integrante.int_nombre}}</h4>
-                            <p>{{integrante.int_puesto}}</p>
-                        </div>
-                    </div>
-    
-                    <div class="btns">
-                        <a class="btn btn-primary btn-sm" href="#carousel-testimonial" role="button" data-slide="prev">
-                            <span class="fa fa-angle-left" aria-hidden="true"></span>
-                            <span class="sr-only">Anterior</span>
-                        </a>
-                        <a class="btn btn-primary btn-sm" href="#carousel-testimonial" role="button" data-slide="next">
-                            <span class="fa fa-angle-right" aria-hidden="true"></span>
-                            <span class="sr-only">Siguiente</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
 -->
-<!-- /Integrantes -->

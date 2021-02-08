@@ -96,7 +96,7 @@ export class HomeComponent implements OnInit {
       this._publicaciones.getPublicaciones().subscribe(
         publicaciones => {
           this.public_principal = publicaciones;
-          console.log(this.public_principal);
+          //console.log(this.public_principal);
           
         },
         error => {
@@ -123,10 +123,10 @@ export class HomeComponent implements OnInit {
           this.str = this.Rutax3.split(",,");
           this.Rutax3 = this.str[0];
           
-          console.log("Ruta 0: "+this.Rutax0);
-          console.log("Ruta 1: "+this.Rutax1);
-          console.log("Ruta 2: "+this.Rutax2);
-          console.log("Ruta 3: "+this.Rutax3);
+          //console.log("Ruta 0: "+this.Rutax0);
+          //console.log("Ruta 1: "+this.Rutax1);
+          //console.log("Ruta 2: "+this.Rutax2);
+          //console.log("Ruta 3: "+this.Rutax3);
           this.publicaciones = this.publicaciones.map( item => {
             var splitter = item.pub_ruta.split(",,");
             item.pub_ruta = item.pub_ruta ? '' || 'http://www.steujed.org.mx/assets/images/noticias/'+item.pub_id+'/'+splitter[0] : 'MyVAL'
@@ -141,7 +141,7 @@ export class HomeComponent implements OnInit {
 
       this.cargarGaleria();
 
-      this.myButton.nativeElement.dispatchEvent(new MouseEvent('click'));
+      //this.myButton.nativeElement.dispatchEvent(new MouseEvent('click'));
 
   }
 

@@ -14,7 +14,7 @@ export class TopbarComponent implements OnInit {
   constructor( private _contactanos : ContactanosService ) { }
 
   ngOnInit(): void {
-
+    /*
     this._contactanos.getContactanos().subscribe(
       contactanos => {
         this.contactanos = contactanos;
@@ -24,7 +24,7 @@ export class TopbarComponent implements OnInit {
         console.log(error);
       }
     );
-
+    */
 
   }
 

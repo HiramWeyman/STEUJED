@@ -1,0 +1,412 @@
+<app-header></app-header>
+
+<app-topbar></app-topbar>
+<!-- <link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="main.css"> -->
+<!-- Main -->
+<div id="main">
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Sidebar -->
+                <div id="sidebar" class="3u">
+                    <section>
+                        <header>
+                            <h2>Archivos</h2>
+                        </header>
+                        <ul class="default">
+                            <ng-container *ngFor="let archivo of archivos">
+                                <li *ngIf="archivo.archivo_seccion == '1'" class="fondoguinda">
+                                    <!--
+                                    <a href="{{archivo.archivo_ruta}}" target="_blank">
+                                        <button type="button" class="btn btn-outline-primary btn-sm">
+                                            <i class="fa fa-file"></i>
+                                        </button> {{ archivo.archivo_descrip }}</a>
+                                    -->
+                                    <button class="fondoguinda" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset();rutaArchivo(archivo.archivo_ruta, archivo.archivo_descrip);'>
+                                        <i class="fa fa-file"></i>
+                                    </button> 
+                                    {{ archivo.archivo_descrip }}
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </section>
+                </div>
+            <!-- Sidebar -->
+        
+            <!-- Content -->
+                <div id="content" class="6u skel-cell-important" style="text-align: justify;">
+                    <section>
+                        <ng-container *ngFor="let publicacion_p of public_principal">  
+                            <header>
+                                <h2 *ngIf="publicacion_p.pub_id_categoria == 1">{{publicacion_p.pub_titulo}}</h2>
+                                <span style="text-align: center;" class="byline" *ngIf="publicacion_p.pub_id_categoria == 1"><b>{{publicacion_p.pub_subtitulo}}</b></span>
+                            </header>
+                            <p><a href="#" class="image full" *ngIf="publicacion_p.pub_id_categoria == 1"><img src={{publicacion_p.pub_ruta}} alt=""></a></p>
+                            <div [innerHTML]="publicacion_p.pub_texto" *ngIf="publicacion_p.pub_id_categoria == 1"></div>
+                        </ng-container>
+                    </section>
+                </div>
+            <!-- /Content -->
+                
+            <!-- Sidebar -->
+            <ng-container *ngFor="let publicacion of this.publicaciones">  
+                <div id="sidebar" class="3u" *ngIf="publicacion.pub_id_categoria == 3">
+                    <section style="background: #d7eef6; border-radius: 8px;">
+                        <header style="text-align: center;">
+                            <!--
+                                <h2 *ngIf="publicacion.pub_id_categoria == 3">{{publicacion.pub_titulo}}</h2>
+                            -->
+                        </header>
+                        <!--
+                        <hr style="border: 1px solid black; border-radius: 3px;">
+                        -->
+                        <p style="text-align: center; text-decoration: solid;" *ngIf="publicacion.pub_id_categoria == 3"><strong>{{publicacion.pub_titulo}}</strong></p> 
+                        <div style="text-align: center;" [innerHTML]="publicacion.pub_texto" *ngIf="publicacion.pub_id_categoria == 3"></div>
+                    </section>
+                </div>
+            </ng-container>
+            <!-- Sidebar -->
+        
+        </div>
+    
+    </div>
+    <div class="divider">&nbsp;</div>
+
+    <div class="container" id="content">
+        <header>
+            <h2>Galería</h2>
+        </header>
+        <div class="row" class="text-center" style="padding-left: 100px;">    
+            <section>
+                <h2>{{titulo}}</h2>
+                <div class="fotorama"></div>
+            </section>
+        </div>
+    </div>
+
+    <div class="divider">&nbsp;</div>
+
+    <div class="container" id="content">
+        <header>
+            <h2>Noticias</h2>
+        </header>
+        <div>
+            <div class="tab">
+                <button #myButton class="tablinks" onclick="openCity(event, '0')" (click)="myButton.click()" id="defaultOpen">{{this.Titulox0}}</button>
+                <button class="tablinks" onclick="openCity(event, '1')">{{this.Titulox1}}</button>
+                <button class="tablinks" onclick="openCity(event, '2')">{{this.Titulox2}}</button>
+                <button class="tablinks" onclick="openCity(event, '3')">{{this.Titulox3}}</button>
+            </div>
+
+            <div id="0" class="tabcontent">
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="width:40%" rowspan="2">
+                            <a href="#/noticia/{{this.idx0}}">
+                                <img style="width: 50%; padding-top: 7px;" src="{{this.Rutax0}}" alt="">
+                            </a>
+                        </td>
+                        <td style="width:60%">
+                            <h3>{{this.Titulox0}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><div [innerHTML]="this.Textox0.substring(0,100)" style="text-align: justify;"></div></td>
+                    </tr>
+                </table>
+                
+                <a href="#/noticia/{{this.idx0}}" class="button">Leer más...</a>
+            </div>
+              
+            <div id="1" class="tabcontent">
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="width:40%" rowspan="2">
+                            <a href="#/noticia/{{this.idx1}}"><img  style="width: 50%; padding-top: 7px;" src="{{this.Rutax1}}" alt=""></a>
+                        </td>
+                        <td style="width:60%">
+                            <h3>{{this.Titulox1}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div [innerHTML]="this.Textox1.substring(0,100)" style="text-align: justify;"></div>
+                        </td>
+                    </tr>
+                </table>
+
+                <a href="#/noticia/{{this.idx1}}" class="button">Leer más...</a>
+            </div>
+              
+            <div id="2" class="tabcontent">
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="width:40%" rowspan="2">
+                            <a href="#/noticia/{{this.idx2}}"><img style="width: 50%; padding-top: 7px;" src="{{this.Rutax2}}" alt=""></a>
+                        </td>
+                        <td style="width:60%">
+                            <h3>{{this.Titulox2}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div [innerHTML]="this.Textox2.substring(0,100)" style="text-align: justify;"></div>
+                        </td>
+                    </tr>
+                </table>
+                
+                <a href="#/noticia/{{this.idx2}}" class="button">Leer más...</a>
+            </div>
+            <div id="3" class="tabcontent">
+                <table border="1" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td style="width:40%" rowspan="2">
+                            <a href="#/noticia/{{this.idx3}}"><img style="width: 50%; padding-top: 7px;" src="{{this.Rutax3}}" alt=""></a>
+                        </td>
+                        <td style="width:60%">
+                            <h3>{{this.Titulox3}}</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div [innerHTML]="this.Textox3.substring(0,100)" style="text-align: justify;"></div>
+                        </td>
+                    </tr>
+                </table>
+
+                <a href="#/noticia/{{this.idx3}}" class="button">Leer más...</a>
+            </div>
+        </div>
+    </div>
+
+<!--
+    <div class="container" id="content">
+        <header>
+            <h2>Noticias</h2>
+        </header>
+        <div class="row">
+            <ng-container *ngFor="let publicacion of this.publicaciones | slice : 0 : 4"> 
+                <div class="3u" *ngIf="publicacion.pub_id_categoria == 2">
+                    <section>
+                        <h2 style="text-align: center;">{{publicacion.pub_titulo.substring(0,35)}}</h2>
+                        <a href="#/noticia/{{publicacion.pub_id}}" class="image full"><img src="{{publicacion.pub_ruta}}" alt=""></a>
+                        <div [innerHTML]="publicacion.pub_texto.substring(0,100)" style="text-align: justify;"></div>
+                        <a href="#/noticia/{{publicacion.pub_id}}" class="button">Leer más...</a>
+                    </section>
+                </div>
+            </ng-container>
+        </div>
+        <br><br>
+    </div>
+</div>
+-->
+<!--Division-->
+<!-- Radio -->
+<div class="divider">&nbsp;</div>
+<section id="radio" style="padding: 50px 0; font-size: 35px; margin-bottom: 1em;">
+<div class="container">
+    <div class="text-center">
+        <img class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms" src="assets/images/radio/radio_universidad.png" alt="">
+    </div>
+    <div>
+        <div class="text-center">
+            <video class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms" controls="" name="media"><source src="http://200.23.125.55:8000/;?type=http&amp;nocache=156" type="audio/mpeg"></video>
+        </div>
+    </div>
+</div>
+</section>
+<!-- /Radio -->
+
+<div class="divider">&nbsp;</div>
+<!--background: #b7b7b7; color: #fff;-->
+<section style="padding: 50px 0; font-size: 35px; margin-bottom: 1em;">
+    <div class="container">
+        <div class="text-center">
+            <a href="https://sistemas.ujed.mx/PersonalUJED/" target="_blank" style="text-decoration: none;">
+                <img src="assets/images/banner_recibo_A.jpg" style="width: 98%;">
+              <!--   Imprime tu recibo de nomina -->
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<div class="divider">&nbsp;</div>
+<section style="font-size: 35px;">
+    <div class="container">
+        <div class="text-center">
+            <a href="#/loginbase" target="_blank" style="text-decoration: none;">
+                <img src="assets/images/banner-servicios.jpg" style="width: 98%;">
+            </a>
+        </div>
+
+    </div>
+</section>
+<div class="divider">&nbsp;</div>
+
+<app-integrantes></app-integrantes>
+
+<!-- Main -->
+
+
+<app-footer></app-footer>
+
+<div style="text-align: center; padding-top: 50px;">
+    <img src="https://counter1.stat.ovh/private/contadorvisitasgratis.php?c=63m2aafy3rgqrgygy43lbth1prjx12bh" border="0">
+</div>
+
+<app-copyright></app-copyright>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel">Debe de ingresar su matricula y password para descargar este archivo</h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+                <input type="hidden" name="ub_ruta" class="form-control" value="{{this.ruta}}">
+                <label for="ub_user" class="col-form-label">Matricula:</label>
+                <input type="text" [(ngModel)]="userbase.ub_user" name="ub_user" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="ub_password" class="col-form-label">Password:</label>
+                <input type="password" [(ngModel)]="userbase.ub_password" name="ub_password" class="form-control" autocomplete="off">
+              </div>
+          </form>
+          <small>Si no tienes una cuenta, ingresa al apartado de SERVICIOS para darse de alta</small>
+        </div>
+      <div class="modal-footer">   
+          <button type="button" class="btn btn-primary btn-lg" role="button" id="send" data-dismiss="modal" (click)='login()'>Descargar Documento</button>
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="social-bar">
+    <a href="https://www.facebook.com/Steujed" class="icon icon-facebook" target="_blank"><i class="fa fa-facebook-official"></i></a>
+    <a href="http://www.twitter.com/@steujedoficial" class="icon icon-twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+    <a href="https://www.youtube.com/watch?v=reIUTHUrsg0&t=3s&ab_channel=NoticiasGG" class="icon icon-youtube" target="_blank"><i class="fa fa-youtube-square"></i></a>
+    <a href="https://www.instagram.com/steujedoficial/" class="icon icon-instagram" target="_blank"><i class="fa fa-instagram"></i></a>
+  </div>
+<!--   <div class="social-bar">
+    <li><a href="https://www.facebook.com/Steujed" target="_blank" class="icon-facebook"><i class="fa fa-facebook-official"></i></a></li>
+    <li><a href="http://www.twitter.com/@steujedoficial" target="_blank" class="icon-twitter"><i class="fa fa-twitter"></i></a></li>
+    <li><a href="https://www.youtube.com/watch?v=reIUTHUrsg0&t=3s&ab_channel=NoticiasGG" target="_blank" class="icon-pinterest"><i class="fa fa-youtube-square"></i></a></li>
+    <li><a href="http://www.googleplus.com/@steujedoficial" target="_blank" class="icon-googleplus"><i class="fa fa-google-plus"></i></a></li>
+    <li><a href="http://www.pinterest.com/@steujedoficia" class="icon-mail"><i class="fa fa-pinterest-p"></i></a></li>
+  </div> -->
+
+<!--   <div class="social">
+    <ul>
+        <li><a href="https://www.facebook.com/Steujed" target="_blank" class="icon-facebook"><i class="fa fa-facebook-official"></i></a></li>
+        <li><a href="http://www.twitter.com/@steujedoficial" target="_blank" class="icon-twitter"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="https://www.youtube.com/watch?v=reIUTHUrsg0&t=3s&ab_channel=NoticiasGG" target="_blank" class="icon-pinterest"><i class="fa fa-youtube-square"></i></a></li>
+        <li><a href="http://www.googleplus.com/@steujedoficial" target="_blank" class="icon-googleplus"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="http://www.pinterest.com/@steujedoficia" class="icon-mail"><i class="fa fa-pinterest-p"></i></a></li>
+    </ul>
+</div> -->
+
+<style>
+
+.social-bar {
+	position: fixed;
+	right: 0;
+	top: 35%;
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+    z-index: 100;
+   
+}
+
+.icon {
+	color: white;
+	text-decoration: none;
+   /*  padding: .7rem; */
+    padding: 10px 15px;
+    width: 36px;
+    display: flex;
+    text-decoration: none;
+		-webkit-transition:all 500ms ease;
+		-o-transition:all 500ms ease;
+		transition:all 500ms ease;
+    /*  transition: all .5s;*/
+  
+}
+
+.icon-facebook {
+	background: #2E406E;
+}
+
+.icon-twitter {
+	background: #339DC5;
+}
+
+.icon-youtube {
+	background: #E83028;
+}
+
+.icon-instagram {
+	background: #3F60A5;
+}
+
+.icon:first-child {
+	border-radius: 1rem 0 0 0;
+}
+
+.icon:last-child {
+	border-radius: 0 0 0 1rem;
+}
+
+.icon:hover {
+	padding-right: 3rem;
+	border-radius: 1rem 0 0 1rem;
+	box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.42);
+}
+
+</style>
+<style>
+
+  /* use !important to prevent issues with browser extensions that change fonts 
+[class^="icon-"], [class*=" icon-"] {
+
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*/
+/* .icon-facebook:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+} */
+
+
+</style>
+
+
+
