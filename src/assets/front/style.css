@@ -1719,7 +1719,7 @@ hr.invis1 {
 }
 .our-team .pic{
     border-top: none;
-    border-bottom: 5px solid darkred;
+    /*border-bottom: 5px solid darkred;*/
     border-radius: 50% 50% 0 50%;
     overflow: hidden;
     transition: all 0.5s ease 0s;
@@ -1729,7 +1729,7 @@ hr.invis1 {
     border-radius: 0 50%;
 }
 .our-team .pic img{
-    width: 100%;
+    width: 25%;
     height: auto;
     transition: all 0.5s ease 0s;
 }

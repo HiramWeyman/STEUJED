@@ -46,7 +46,7 @@
     <div id="nosotros" class="section wb" style="text-align: justify;">
         <div class="container">
 			<ng-container *ngFor="let publicacion_p of public_principal">
-            <div class="row">
+            <div class="row" *ngIf="publicacion_p.pub_id_categoria == 1">
                 <div class="col-md-6">
                     <div class="message-box">                        
                         <h3 *ngIf="publicacion_p.pub_id_categoria == 1">{{publicacion_p.pub_titulo}}</h3>
@@ -82,7 +82,12 @@
 							</div>
 							<h2>{{ archivo.archivo_descrip }}</h2>
 							<!--<p>Pequeña descripción del archivo.</p>-->
+							<p><button class="get_btn hvr-bounce-to-top" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset();rutaArchivo(archivo.archivo_ruta, archivo.archivo_descrip);'>
+								Descargar archivo
+							</button> </p>
+							<!--
 							<p><a class="get_btn hvr-bounce-to-top" href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Descargar Archivo</a></p>
+							-->
 						</div>
 					</div>
 				</ng-container>
@@ -110,6 +115,22 @@
                 <h3>Noticias</h3>
             </div><!-- end title -->
 			
+			<div class="row" style="text-align: center;">
+				<div class="col-md-12 col-sm-12 col-lg-6">
+					<div class="post-box">
+						<br><br>
+						<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSteujed%2Fvideos%2F445640900123332%2F&show_text=false&width=560" width="500" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+
+						<div class="post-info">
+							<h4>Consulta de revisión contractual 2021</h4>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<br><br>
+
 			<div class="row">
 				<div class="col-md-4 col-sm-6 col-lg-4" *ngFor="let publicacion of this.publicaciones | slice : 0 : 6">
 					<div class="post-box" *ngIf="publicacion.pub_id_categoria == 2">
