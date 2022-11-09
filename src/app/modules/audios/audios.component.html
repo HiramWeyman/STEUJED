@@ -1,0 +1,80 @@
+<div  class="tablediv">
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Subir Audio</button>
+
+    <br><br>
+    <table  class="table table-bordered table-sm"  fixed-header>
+                  <thead>
+                    <tr class="table-head" fixed-header >
+                      <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Titulo</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Eliminar</b></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-txt-blue" >
+                    <tr *ngFor="let mp of this.msaapPlaylist">
+                      <td>{{ mp.id}}</td>
+                      <td>{{ mp.title }}</td>
+                      <td align="center">
+                        <button class="btn btn-danger btn-sm" (click)='delete(mp)'>Eliminar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+          </table>
+</div>
+
+<!--
+<angular-file-uploader
+      [config]="afuConfig">
+</angular-file-uploader>
+-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+              <label for="titulo" class="col-form-label">Titulo:</label>
+              <input [(ngModel)]="audio.title" name="titulo" class="form-control" autocomplete="off">
+            </div>
+          </form>
+        </div>
+
+        <div style="text-align:-webkit-center; margin-top: 20px; ">
+          <mat-card style="margin-top:10px; width: 50%;"> 
+              <mat-card-actions>  
+                  <input 
+                      style="display: none;" 
+                      type="file" 
+                      class="custom-file-input" 
+                      (change)="onFileSelected($event)" 
+                      accept="audio/mp3"
+                      #fileInput>
+                  <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar Audio</button> 
+              </mat-card-actions> 
+              <mat-card-content>
+                  <ul>  
+                      <li>  
+                          <mat-progress-bar [value]="this.progress"></mat-progress-bar>  
+                          <span id="file-label">{{this.mensaje}}</span>  
+                      </li>  
+                  </ul> 
+              </mat-card-content>
+          </mat-card>
+      </div>
+
+        <div class="modal-footer">
+          
+          <button class="btn btn-primary btn-lg" role="button" (click)='create();' id="send">Subir Audio</button>
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

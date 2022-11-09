@@ -1,0 +1,57 @@
+<h3><label><b>Solicitudes</b></label></h3> 
+<div  class="tablediv">
+     <table  class="tableFixHead" border="1">
+                    <thead>
+                      <tr class="table-head" fixed-header >
+                        <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Plaza</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Matricula</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Nombre</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Adscripción</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Categoria</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Función</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Situación</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Permanencia</b></th>
+                        <th class="table-head-font-weight-normal" ><b>F. Ingreso</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Permisos</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Antigüedad</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Insaluble</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Adscripcion Base</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Cat. Base</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Funcion Base</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Situacion Base</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Num. Contacto</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Observaciones</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Estatus</b></th>
+                        <th class="table-head-font-weight-normal" ><b>Acciones</b></th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-txt-blue" >
+                      <tr *ngFor="let x of administrativos">
+                        <td style="width: 10%;">{{ x.pad_id }}</td>
+                        <td style="width: 30%;">{{ x.catp_descrip }}</td>
+                        <td style="width: 10%;">{{ x.pad_mat }}</td>
+                        <td style="width: 10%;">{{ x.pad_nombre }}</td>
+                        <td style="width: 10%;">{{ x.pad_adscripcion }}</td>
+                        <td style="width: 10%;">{{ x.pad_categoria }}</td>
+                        <td style="width: 10%;">{{ x.pad_funcion }}</td>
+                        <td style="width: 10%;">{{ x.pad_situacion }}</td>
+                        <td style="width: 10%;">{{ x.pad_permanencia }}</td>
+                        <td style="width: 10%;">{{ x.pad_f_ingreso }}</td>
+                        <td style="width: 10%;">{{ x.pad_permisos }}</td>
+                        <td style="width: 10%;">{{ x.pad_f_antig }}</td>
+                        <td style="width: 10%;">{{ x.pad_n_insaluble }}</td>
+                        <td style="width: 10%;">{{ x.pad_adscrip_base }}</td>
+                        <td style="width: 10%;">{{ x.pad_catego_base }}</td>
+                        <td style="width: 10%;">{{ x.pad_funcion_base }}</td>
+                        <td style="width: 10%;">{{ x.pad_situacion_base }}</td>
+                        <td style="width: 10%;">{{ x.pad_num_contacto }}</td>
+                        <td style="width: 30%;">{{ x.pad_observaciones }}</td>
+                        <td style="width: 30%;background-color: #007bff;color:#fff;">{{ x.pla_desc_extendida }}</td>
+                        <td>
+                          <button type="button" class="btn btn-danger btn-sm" (click)='reporte(x.pad_id);'>Reimpresión</button>                
+                        </td>
+                      </tr>
+                    </tbody>
+            </table> 
+  </div>

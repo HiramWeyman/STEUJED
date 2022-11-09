@@ -1,0 +1,115 @@
+<form #myForm="ngForm" [formGroup]="forma">
+    <div  class="container">
+        
+        <div class="form-group">
+       <!--      <select formControlName="pad_plaza_id" class="form-control" (change)="buscaAdvo($event.target.value)">
+                <option value="" selected disabled> - Seleccione una plaza a concursar - </option>
+                <ng-container *ngFor="let a of catplazas">
+                <option *ngIf="a.catp_status == 'N'" value="{{ a.catp_id }}">{{ a.catp_descrip }}</option>
+            </ng-container>
+            </select> -->
+            <label for="nombre" class="col-form-label">Plaza:</label>
+            <select formControlName="pad_plaza_id" class="form-control" (change)="buscaAdvo($event.target.value)">
+                <option selected="selected" value="0">--Seleccione--</option>
+                <ng-container >
+                    <option *ngFor="let a of catplazas" value={{a.catp_id}}>
+                        {{a.catp_descrip}}
+                    </option>
+                </ng-container>
+               </select>
+            <div class="form-group">
+                <label for="nombre" class="col-form-label">Categoria:</label>
+                <input class="form-control" formControlName="categoria" value="" readonly>
+            </div>
+            <div class="form-group">
+                <label for="nombre" class="col-form-label">Función:</label>
+                <input class="form-control" formControlName="funcion" value="" readonly>
+            </div>
+            <div class="form-group">
+                <label for="nombre" class="col-form-label">Adscripción:</label>
+                <input class="form-control" formControlName="adscripcion" value="" readonly>
+            </div>
+        </div>
+        
+    </div>
+    <hr>
+    <div  class="container">
+        <h1>Solicitud</h1>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Nombre:</label>
+            <input class="form-control" formControlName="pad_nombre" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Adscripción:</label>
+            <input class="form-control" formControlName="pad_adscripcion" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Categoria:</label>
+            <input class="form-control" formControlName="pad_categoria" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Función:</label>
+            <input class="form-control" formControlName="pad_funcion" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Situación:</label>
+            <input class="form-control" formControlName="pad_situacion" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Permanencia:</label>
+            <input class="form-control" formControlName="pad_permanencia" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Fecha de ingreso:</label>
+            <input class="form-control" formControlName="pad_f_ingreso" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Permisos:</label>
+            <input class="form-control" formControlName="pad_permisos" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Antigüedad:</label>
+            <input class="form-control" formControlName="pad_f_antig" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Insaluble:</label>
+            <input class="form-control" formControlName="pad_n_insaluble" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Adscripción Base:</label>
+            <input class="form-control" formControlName="pad_adscrip_base" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Categoria Base:</label>
+            <input class="form-control" formControlName="pad_catego_base" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Función Base:</label>
+            <input class="form-control" formControlName="pad_funcion_base" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Situación Base:</label>
+            <input class="form-control" formControlName="pad_situacion_base" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Sueldo:</label>
+            <input class="form-control" formControlName="pad_sueldo" value="" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Numero de contacto:</label>
+            <input class="form-control" maxlength="20" formControlName="pad_num_contacto" value="">
+        </div>
+        <div class="form-group">
+            <label for="nombre" class="col-form-label">Observaciones:</label>
+            <input class="form-control" maxlength="500" formControlName="pad_observaciones" value="">
+        </div>
+        <p><strong>NOTA: La información que se muestra fue proporcionada por el departamento de Recursos Humanos.</strong></p>
+        <div class="col-sm-12">
+         
+            <button *ngIf="!isHiddenEnvio" class="btn btn-primary pr-2" role="button" (click)='enviarSolicitud()' [disabled]="!forma.valid">Enviar Solicitud</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button *ngIf="!isHidden" class="btn btn-danger pr-2" role="button" (click)='imprimirSolicitud()'>Imprimir Solicitud</button>
+        </div>
+    </div>
+</form>
+

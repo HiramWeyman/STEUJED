@@ -1,0 +1,122 @@
+
+<script type="text/javascript" src="bower_components/angular-fixed-table-header/src/fixed-table-header.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+<div class="col-center"><h4><b>Lista de Trabajadores del Padron Administrativo</b></h4></div>
+
+  <div  class="tablediv">
+    <br>
+
+
+    <div clasa="row">
+      <div class="col-sm-5">
+        <div class="input-group">
+          <input type="number" class="form-control sm" placeholder="Buscar por Matricula" [(ngModel)]="busca.matricula">
+          <span class="input-group-btn">
+            <button class="btn btn-primary sm" type="button"><i class="fa fa-search" aria-hidden="true"  (click)='buscar(busca.matricula,1)'></i></button>
+          </span>
+        </div><!-- /input-group -->
+      </div>
+
+      <div class="col-sm-5">
+        <div class="input-group">
+          <input type="text" class="form-control sm" placeholder="Buscar por nombre" [(ngModel)]="busca.nombre">
+          <span class="input-group-btn">
+            <button class="btn btn-primary sm" type="button"><i class="fa fa-search" aria-hidden="true" (click)='buscar(busca.nombre,2)'></i></button>
+          </span>
+        </div><!-- /input-group -->
+      </div>
+
+    </div>
+
+    <table class="table">
+      <tr>
+        <!-- <td><label><b>Busqueda por Nombre</b></label></td> -->
+      </tr>
+      <tr>
+        <td>
+<!--           <input [(ngModel)]="buscar.nombre" placeholder="&#xF002; Buscar" style="font-family:Arial, FontAwesome"  class="form-control" autocomplete="off" (blur)="buscarNom(buscar.nombre)" (keydown.enter)="buscarNom(buscar.nombre)"/>
+ -->        </td>
+      </tr>
+    </table>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+        
+            <th class="table-head-font-weight-normal" ><b>Matricula</b></th>
+            <th class="table-head-font-weight-normal" ><b>Nombre Completo</b></th>
+            <th class="table-head-font-weight-normal" ><b>Adscripcion</b></th>
+            <th class="table-head-font-weight-normal" ><b>Categoria</b></th>
+            <th class="table-head-font-weight-normal" ><b>Funcion</b></th>
+            <th class="table-head-font-weight-normal" ><b>Estatus</b></th>
+            <th class="table-head-font-weight-normal" ><b>Editar</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of this.usuarios">
+            <td  width=25px;>{{ usuario.pad_mat}}</td> 
+            <td>{{ usuario.pad_nombre}}</td>
+            <td>{{ usuario.pad_adscripcion }}</td>
+            <td>{{ usuario.pad_categoria }}</td>
+            <td>{{ usuario.pad_funcion }}</td>
+            <td>{{ usuario.pad_situacion }}</td>
+            <td align="center">
+             
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)='cargarUsuario(usuario.pad_mat)'>Editar</button>
+
+            </td>
+   
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar Trabajador</h5>
+     
+        </div>
+        <div class="modal-body">
+            
+            <div class="form-group">
+                <label for="matricula">Matricula</label>
+                <input type="text" [(ngModel)]="usuario.pad_mat" name="matricula" id="matricula" class="form-control"  disabled >
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" [(ngModel)]="usuario.pad_nombre" name="matricula" id="matricula" class="form-control"  disabled >
+            </div>
+            <div class="form-group">
+                <label for="curp">Adscripcion</label>
+                <input type="text" [(ngModel)]="usuario.pad_adscripcion" name="adscripcion" id="adscripcion" class="form-control"  disabled >
+            </div>
+            <div class="form-group">
+              <label for="rfc">Categiria</label>
+              <input type="text" [(ngModel)]="usuario.pad_categoria" name="categoria"  id="categoria" class="form-control"  disabled >
+            </div>
+            <div class="form-group">
+                <label for="rfc">Funcion</label>
+                <input type="text" [(ngModel)]="usuario.pad_funcion" name="funcion"  id="funcion" class="form-control"  disabled >
+            </div>
+            <div class="form-group">
+                <label for="rfc">Estatus</label>
+                <input type="text" [(ngModel)]="usuario.pad_situacion" name="estatus"  id="estatus" class="form-control"   placeholder="Estatus" maxlength="1" >
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrarmodal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)='update(usuario);'>Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

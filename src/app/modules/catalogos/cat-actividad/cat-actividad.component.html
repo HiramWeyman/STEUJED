@@ -1,0 +1,70 @@
+
+<script type="text/javascript" src="bower_components/angular-fixed-table-header/src/fixed-table-header.min.js"></script>
+
+
+<div class="col-center"><h4><b>Lista de Actividades</b></h4></div>
+  <div  class="tablediv">
+    <br>
+    <button type="button" class="btn btn-primary btn-sm col-xs-2" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Crear Actividad</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <br><br>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+            <th class="table-head-font-weight-normal " width=25px;><b>ID</b></th>
+            <th class="table-head-font-weight-normal" ><b>Descripción de actividad</b></th>
+            <th class="table-head-font-weight-normal" ><b>Editar</b></th>
+            <th class="table-head-font-weight-normal" ><b>Eliminar</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let actividad of actividades">
+            <td  width=25px;>{{ actividad.id}}</td> 
+            <td>{{ actividad.actividad_desc}}</td>
+            <td align="center">
+             
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarActividad(actividad.id)'>Editar</button>
+
+            </td>
+            <td align="center">
+              <button class="btn btn-danger btn-sm"  (click)='delete(actividad)'>Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="exampleModalLabel">Crear Actividad</h3>
+      </div>
+      <div class="modal-body">
+        <form #myForm="ngForm">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Descripción de la actividad:</label>
+            <input [(ngModel)]="actividad.actividad_desc" name="actividad_desc" class="form-control" maxlength="150" autocomplete="off">
+          </div>
+     
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-lg" role="button" (click)='create(actividad);LimpiarForm(myForm);' *ngIf="actividad.id==null else elseBlock" id="send" data-dismiss="modal">Crear Actividad</button>
+        <ng-template #elseBlock>
+          <button class="btn btn-primary btn-lg" role="button" (click)='update(actividad);' id="send" data-dismiss="modal">Editar</button>
+        </ng-template>
+        <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

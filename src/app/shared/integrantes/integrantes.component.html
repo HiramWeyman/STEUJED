@@ -1,0 +1,64 @@
+
+<div id="team" class="section wb">
+    <div class="container">
+        <div class="section-title text-center">
+           <h3>Comité Ejecutivo {{descripcion}}</h3>
+        </div><!-- end title -->
+    
+        <div class="row">
+
+            <div class="col-md-4 col-sm-6" *ngFor="let integrante of integrantes">
+                <div class="our-team">
+                    <div class="pic">
+                        <img src="{{integrante.int_ruta_imagen}}">
+                    </div>
+                    <div class="team-content">
+                        <h4 class="title">{{integrante.int_nombre}}</h4>
+                        <span class="post">{{integrante.int_puesto}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!--
+<div class="container" id="content">
+    <div style="text-align: center;">
+        <h1>Comité Ejecutivo 2021 - 2023</h1>
+    </div>
+    <div style="text-align: center;">
+        <ng-container *ngFor="let integrante of integrantes | slice : 0 : 1"> 
+                <div class="card" style="text-align: center;">
+                        <p>
+                            <img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt="">
+                        </p>
+                        <div class="card-body">
+                        <h4>{{integrante.int_nombre}}</h4>
+                        <h5>{{integrante.int_puesto}}</h5>
+                    </div>
+                </div>
+        </ng-container>
+    </div>
+
+    <div style="text-align: center;">
+        <ng-container *ngFor="let integrante of integrantes | slice : 1"> 
+            <div style="float: left; width: 50%;">
+                <div class="card" style="text-align: center;">
+                        <p>
+                            <img class="img-circle img-thumbnail" src="{{integrante.int_ruta_imagen}}" alt="">
+                        </p>
+                        <div class="card-body">
+                        <h4>{{integrante.int_nombre}}</h4>
+                        <h5>{{integrante.int_puesto}}</h5>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</div>
+-->

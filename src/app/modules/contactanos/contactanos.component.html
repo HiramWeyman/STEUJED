@@ -1,0 +1,85 @@
+<div  class="tablediv">
+    <!--
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Crear Noticia</button>
+    -->
+    <br><br>
+    <table  class="table table-bordered table-sm"  fixed-header>
+                  <thead>
+                    <tr class="table-head" fixed-header >
+                      <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Concepto</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Texto</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Link</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Visible</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Editar</b></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-txt-blue" > 
+                    <tr *ngFor="let contactano of this.contactanos">
+                      <td>{{ contactano.con_id }}</td>
+                      <td>{{ contactano.con_concepto }}</td>
+                      <td><div [innerHTML]="contactano.con_texto"></div></td>
+                      <td>{{ contactano.con_link }}</td>
+                      <td>{{ contactano.con_visible }}</td>
+                      <td align="center">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarContacto(contactano.con_id)'>Editar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+          </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+                <input [(ngModel)]="contactano.con_id" type="hidden" name="titulo" class="form-control" autocomplete="off">
+                <label for="titulo" class="col-form-label">Concepto:</label>
+                <input [(ngModel)]="contactano.con_concepto" name="titulo" class="form-control" autocomplete="off" readonly>
+            </div>
+            <div class="form-group" *ngIf="contactano.con_texto != null">
+              <label for="recipient-name" class="col-form-label">Texto:</label>
+              <textarea style="display: none;" [(ngModel)]='contactano.con_texto' rows="30" cols="77" name="message" #message='ngModel'></textarea>
+
+                <angular-editor [(ngModel)]="contactano.con_texto" [config]="config" [ngModelOptions]="{standalone: true}"></angular-editor>
+                <div class="html">
+                  {{ htmlContent }}
+                </div>
+
+            </div>
+
+            <div class="form-group" *ngIf="contactano.con_link != null">
+                <label for="titulo" class="col-form-label">Link:</label>
+                <input [(ngModel)]="contactano.con_link" name="titulo" class="form-control" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label for="titulo" class="col-form-label">Visible:</label>
+                <select class="form-control" [(ngModel)]="contactano.con_visible" name="cancelar" class="form-control">
+                    <option value="N">NO</option>
+                    <option value="S">SI</option>
+                </select>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          
+          <button class="btn btn-primary btn-lg" role="button" (click)='create(contactano);LimpiarForm(myForm);' *ngIf="!contactano.con_id else elseBlock" id="send" data-dismiss="modal">Crear Contacto</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary btn-lg" role="button" (click)='update(contactano);' id="send" data-dismiss="modal">Editar Contacto</button>
+          </ng-template>
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

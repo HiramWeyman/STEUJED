@@ -1,0 +1,26 @@
+
+    <div style="text-align:center; margin-top: 20px; ">
+        <mat-card style="margin-top:10px; width: 50%;"> 
+            <h1>Banner Principal</h1> 
+            <mat-card-actions>  
+                <input 
+                    style="display: none;" 
+                    type="file" 
+                    class="custom-file-input" 
+                    (change)="onFileSelected($event)" 
+                    accept="image/jpeg"
+                    #fileInput>
+                <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar Imagen</button> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="uploadButton" class="btn btn-primary" type="button" (click)="onUpload()" [disabled]="ToggleButton">Subir Imagen</button> 
+            </mat-card-actions> 
+            <mat-card-content>
+                <ul>  
+                    <li>  
+                        <mat-progress-bar [value]="this.progress"></mat-progress-bar>  
+                        <span id="file-label">{{this.mensaje}}</span>  
+                    </li>  
+                </ul> 
+            </mat-card-content>
+        </mat-card>
+    </div>

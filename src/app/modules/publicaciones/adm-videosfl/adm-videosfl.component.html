@@ -1,0 +1,73 @@
+<div  class="tablediv">
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Agregar Video</button>
+
+    <br><br>
+    <table  class="table table-bordered table-sm"  fixed-header>
+        <thead>
+        <tr class="table-head" fixed-header >
+            <th class="table-head-font-weight-normal" ><b>ID</b></th>
+            <th class="table-head-font-weight-normal" ><b>Titulo</b></th>
+            <th class="table-head-font-weight-normal" ><b>Largo</b></th>
+            <th class="table-head-font-weight-normal" ><b>Altura</b></th>
+            <th class="table-head-font-weight-normal" ><b>Editar</b></th>
+            <th class="table-head-font-weight-normal" ><b>Eliminar</b></th>
+        </tr>
+        </thead>
+        <tbody class="table-txt-blue" >
+        <tr *ngFor="let video of this.videos">
+            <td>{{video.vid_id}}</td>
+            <td>{{video.vid_titulo}}</td>
+            <td>{{video.vid_largo}}</td>
+            <td>{{video.vid_ancho}}</td>
+            <td align="center">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarPublicacion(video.vid_id)'>Editar</button>
+            </td>
+            <td align="center">
+                <button class="btn btn-danger btn-sm"  (click)='delete(video)'>Eliminar</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+                <input [(ngModel)]="video.vid_id" type="hidden" name="titulo" class="form-control" autocomplete="off">
+                <label for="titulo" class="col-form-label">Titulo:</label>
+                <input [(ngModel)]="video.vid_titulo" name="titulo" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="Link" class="col-form-label">Link del video:</label>
+                <input [(ngModel)]="video.vid_src" name="Link" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="Largo" class="col-form-label">Largo:</label>
+                <input [(ngModel)]="video.vid_largo" name="Largo" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="Altura" class="col-form-label">Altura:</label>
+                <input [(ngModel)]="video.vid_ancho" name="Altura" class="form-control" autocomplete="off">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary btn-lg" role="button" (click)='create();' *ngIf="!video.vid_id else elseBlock" id="send" data-dismiss="modal">Agregar Video</button>
+            <ng-template #elseBlock>
+                <button class="btn btn-primary btn-lg" role="button" (click)='update(video);' id="send" data-dismiss="modal">Editar Video</button>
+            </ng-template>
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

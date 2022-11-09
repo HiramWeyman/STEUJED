@@ -1,0 +1,168 @@
+<script type="text/javascript" src="bower_components/angular-fixed-table-header/src/fixed-table-header.min.js"></script>
+
+
+<div class="form-row align-items-center">
+
+  <div class="col-auto">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">Comité Ejecutivo</div>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="descripcion">
+    </div>
+  </div>
+
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3" (click)="ActualizaComite(descripcion)">Actualizar Comité</button>
+  </div>
+</div>
+<hr>
+<div  class="tablediv">
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Nuevo Integrante</button>
+
+    <br><br>
+    <table  class="table table-bordered table-sm"  fixed-header>
+                  <thead>
+                    <tr class="table-head" fixed-header >
+                      <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Nombre</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Puesto</b></th>
+                      <th class="table-head-font-weight-normal" ><b>EditarTextos</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Imagen</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Editar Imagen</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Eliminar</b></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-txt-blue" >
+                    <tr *ngFor="let integrante of this.integrantes">
+                      <td>{{ integrante.int_id}}</td>
+                      <td>{{ integrante.int_nombre }}</td>
+                      <td>{{ integrante.int_puesto }}</td>
+                      <td align="center">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarPublicacion(integrante.int_id)'>Editar Textos</button>
+                      </td>
+                      <td>
+                        <a target="_blank" href="{{integrante.int_ruta_imagen}}">
+                          <img src="{{integrante.int_ruta_imagen}}">
+                        </a>
+                      </td>
+                      <td align="center">
+                        <!--
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo">Editar Imagen</button>
+                        -->
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo" (click)='cargarPublicacion(integrante.int_id)'>Editar Imagen</button>
+                      </td>
+                      <!--
+                      <td>{{ integrante.int_cancelado }}</td>
+                      -->
+                      <td align="center">
+                        <button class="btn btn-danger btn-sm"  (click)='delete(integrante)'>Eliminar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+          </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form #myForm="ngForm">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          
+            <div class="form-group">
+              <input [(ngModel)]="integrante.int_id" type="hidden" name="titulo" class="form-control" autocomplete="off">
+              <label for="nombre" class="col-form-label">Nombre Completo:</label>
+              <input [(ngModel)]="integrante.int_nombre" name="nombre" class="form-control" autocomplete="off" oninput="this.value = this.value.toUpperCase()">
+            </div>
+            <div class="form-group">
+              <label for="puesto" class="col-form-label">Puesto:</label>
+              <input [(ngModel)]="integrante.int_puesto" name="puesto" class="form-control" autocomplete="off" oninput="this.value = this.value.toUpperCase()">
+            </div>
+        </div>
+
+        <div style="text-align:-webkit-center; margin-top: 20px; " *ngIf="!integrante.int_id">
+            <mat-card style="margin-top:10px; width: 50%;"> 
+                <mat-card-actions>  
+                    <input 
+                        style="display: none;" 
+                        type="file" 
+                        class="custom-file-input" 
+                        (change)="onFileSelected($event)" 
+                        accept="image/jpeg"
+                        #fileInput>
+                    <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar Imagen</button> 
+                </mat-card-actions> 
+                <mat-card-content>
+                    <ul>  
+                        <li>  
+                            <mat-progress-bar [value]="this.progress"></mat-progress-bar>  
+                            <span id="file-label">{{this.mensaje}}</span>  
+                        </li>  
+                    </ul> 
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary btn-lg" role="button" (click)='create()' *ngIf="!integrante.int_id else elseBlock" id="send" data-dismiss="modal">Nueno Integrante</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary btn-lg" role="button" (click)='update(integrante);' id="send" data-dismiss="modal">Editar Integrante</button>
+          </ng-template>
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="imagenUploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="imagenUploadModalLabel"></h3>
+        </div>
+
+        <input [(ngModel)]="integrante.int_id" type="text" name="titulo" class="form-control" autocomplete="off">
+
+        <div class="modal-body">
+          <div style="text-align:-webkit-center; margin-top: 20px; ">
+            <mat-card style="margin-top:10px; width: 50%;"> 
+                <h1>Subir Imagen</h1> 
+                <mat-card-actions>  
+                    <input 
+                        style="display: none;" 
+                        type="file" 
+                        class="custom-file-input" 
+                        (change)="onFileSelected($event)" 
+                        accept="image/jpeg"
+                        #fileInput>
+                    <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar Imagen</button> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="uploadButton" class="btn btn-primary" type="button" (click)="onUpload()" [disabled]="ToggleButton">Subir Imagen</button> 
+                </mat-card-actions> 
+                <mat-card-content>
+                    <ul>  
+                        <li>  
+                            <mat-progress-bar [value]="this.progress"></mat-progress-bar>  
+                            <span id="file-label">{{this.mensaje}}</span>  
+                        </li>  
+                    </ul> 
+                </mat-card-content>
+            </mat-card>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

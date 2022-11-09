@@ -1,0 +1,152 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Nueva Solicitud de Ingreso</button>
+&nbsp; &nbsp; &nbsp; 
+<a href="https://sistemas.ujed.mx/PersonalUJED/" class="btn btn-success" target="_blank" style="text-decoration: none;">
+    Imprime tu recibo de nomina
+</a>
+<br><br>
+
+<div class="tableFixHead border-primary">
+    <table>
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>Matricula</th>
+            <th>Nombre</th>
+            <!--<th>Adscripción</th>-->
+            <th>No. Cuenta / Tarjeta</th>
+            <th>Banco</th>
+            <th>Teléfono</th>
+            <th>Tipo</th>
+            <th>Ingreso</th>
+            <th>Modificación</th>
+            <th>T. Cheque</th>
+            <th>INE</th>
+            <th>Estatus</th>
+            <th>Recibo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let revolvente of this.revolventes">
+            <td>{{revolvente.pr_id}}</td>
+            <td>{{revolvente.pr_matricula}}</td>
+            <td>{{revolvente.pr_nombre}}</td>
+            <!--<td>{{revolvente.pr_adscripcioon}}</td>-->
+            <td>{{revolvente.pre_tarjeta_cuenta}}</td>
+            <td>{{revolvente.pre_banco}}</td>
+            <td>{{revolvente.pr_telefono}}</td>
+            <td>{{revolvente.pr_tipo}}</td>
+            <td>{{revolvente.pr_ingreso}}</td>
+            <td>{{revolvente.pr_modificacion}}</td>
+            <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo" (click)="valorID(revolvente.pr_id,'RECIBO')">Subir Recibo</button></td>
+            <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo" (click)="valorID(revolvente.pr_id,'INE')">Subir INE</button></td>
+            <td>{{revolvente.pr_estatus}}</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)='reporte(revolvente.pr_id,3);'>Imprimir</button></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form #myForm="ngForm">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">Solicitud de Ingreso</span>
+            </button>
+            <h3 class="modal-title" id="exampleModalLabel"></h3>
+            </div>
+            <div class="modal-body">
+            
+                <div class="form-group">
+                    <label for="Matricula" class="col-form-label">Matricula</label>
+                    <input name="pr_matricula" class="form-control" value="{{this.matricula}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="Nombre" class="col-form-label">Nombre</label>
+                    <input name="pr_nombre" class="form-control" value="{{this.nombre}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Adscripción</label>
+                    <input name="pre_adscripcioon" class="form-control" value="{{this.adscripcion}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">No. Cuenta / Tarjeta</label>
+                    <input [(ngModel)]="revolvente.pre_tarjeta_cuenta" name="pre_tarjeta_cuenta" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Banco</label>
+                    <input [(ngModel)]="revolvente.pre_banco" name="pre_banco" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="Telefono" class="col-form-label">Telefono</label>
+                    <input [(ngModel)]="revolvente.pr_telefono" name="Telefono" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="Tipo" class="col-form-label">Tipo</label>
+                    <select [(ngModel)]="revolvente.pr_tipo" class="form-control" name="pr_tipo" (change)="inputCantidad($event.target.value)">
+                        <option> - Seleccione una opción - </option>
+                        <option [selected]="revolvente.pr_tipo=='ALTA'" value="ALTA">ALTA</option>
+                        <option [selected]="revolvente.pr_tipo=='BAJA'" value="BAJA">BAJA</option>
+                        <option [selected]="revolvente.pr_tipo=='MODIFICACION'" value="MODIFICACION">MODIFICACION</option>
+                    </select>
+                   
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Ingreso ($)</label>
+                    <input type="number" [(ngModel)]="revolvente.pr_ingreso" (keydown)="noPuntoComa($event);"name="pr_ingreso" class="form-control" autocomplete="off" [readonly]="ToggleButtonA">
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Modificación ($)</label>
+                    <input type="number" [(ngModel)]="revolvente.pr_modificacion" (keydown)="noPuntoComa($event);" name="pr_modificacion" class="form-control" autocomplete="off" [readonly]="ToggleButtonM">
+                </div>
+            
+            </div>
+            <div class="modal-footer">  
+                <button class="btn btn-primary btn-lg" (click)='createRevolvente();' data-dismiss="modal">Mandar Solicitud</button>
+                <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="imagenUploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="imagenUploadModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <div style="text-align:-webkit-center; margin-top: 20px; ">
+            <mat-card style="margin-top:10px; width: 50%;"> 
+                <h1>Subir Imagen</h1> 
+                <mat-card-actions>  
+                    <input 
+                        style="display: none;" 
+                        type="file" 
+                        class="custom-file-input" 
+                        (change)="onFileSelected($event)" 
+                        accept="image/jpeg,image/jpg,image/png,application/pdf"
+                        #fileInput>
+                    <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar Imagen</button> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="uploadButton" class="btn btn-primary" type="button" (click)="onUpload()" [disabled]="ToggleButton">Subir Archivo</button> 
+                </mat-card-actions> 
+                <mat-card-content>
+                    <ul>  
+                        <li>  
+                            <mat-progress-bar [value]="this.progress"></mat-progress-bar>  
+                            <span id="file-label">{{this.mensaje}}</span>  
+                        </li>  
+                    </ul> 
+                </mat-card-content>
+            </mat-card>
+        </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+
+  <div  class="tablediv">
+    <!--
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'>Crear Noticia</button>
+    -->
+    <br><br>
+    <table  class="table table-bordered table-sm"  fixed-header>
+                  <thead>
+                    <tr class="table-head" fixed-header >
+                      <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Titulo</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Subtitulo</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Texto</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Editar Textos</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Imagen</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Editar Imagen</b></th>
+                      <!--
+                      <th class="table-head-font-weight-normal" ><b>U. Publica</b></th>
+                      <th class="table-head-font-weight-normal" ><b>F. Publica</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Cancelado</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Eliminar</b></th>
+                      -->
+                    </tr>
+                  </thead>
+                  <tbody class="table-txt-blue" >
+                    <ng-container *ngFor="let publicacion of this.publicaciones">  
+                    <tr *ngIf="publicacion.pub_id_categoria == 1">
+                      <td>{{ publicacion.pub_id}}</td>
+                      <td>{{ publicacion.pub_titulo }}</td>
+                      <td>{{ publicacion.pub_subtitulo }}</td>
+                      <td><div [innerHTML]="publicacion.pub_texto"></div></td>
+                      <td align="center">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)='cargarPublicacion(publicacion.pub_id)'>Editar Textos</button>
+                      </td>
+                      <td>
+                        <a target="_blank" href="{{publicacion.pub_ruta}}">
+                          <img src="{{publicacion.pub_ruta}}">
+                        </a>
+                      </td>
+                      <td align="center">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#imagenUploadModal" data-whatever="@mdo">Editar Imagen</button>
+                      </td>
+                      <!--
+                      <td>{{ publicacion.pub_u_publica }}</td>
+                      <td>{{ publicacion.pub_f_publica }}</td>
+                      <td>{{ publicacion.pub_cancela }}</td>
+                      <td align="center">
+                        <button class="btn btn-danger btn-sm"  (click)='delete(publicacion)'>Eliminar</button>
+                      </td>
+                      -->
+                    </tr>
+                    </ng-container>
+                  </tbody>
+          </table>
+</div>
+
+<!--
+<div class="container">
+  <angular-editor [(ngModel)]="htmlContent" [config]="config"></angular-editor>
+  <div class="html">
+    {{ htmlContent }}
+  </div>
+</div>
+-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm">
+            <div class="form-group">
+              <label for="titulo" class="col-form-label">Titulo:</label>
+              <input [(ngModel)]="publicacion.pub_titulo" name="titulo" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="subtitulo" class="col-form-label">Subtitulo:</label>
+              <input [(ngModel)]="publicacion.pub_subtitulo" name="subtitulo" class="form-control" autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Texto:</label>
+              <textarea style="display: none;" [(ngModel)]='publicacion.pub_texto' rows="30" cols="77" name="message" #message='ngModel'></textarea>
+              
+
+                <angular-editor [(ngModel)]="publicacion.pub_texto" [config]="config" [ngModelOptions]="{standalone: true}"></angular-editor>
+                <div class="html">
+                  {{ htmlContent }}
+                </div>
+
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          
+          <button class="btn btn-primary btn-lg" role="button" (click)='create(usuario);LimpiarForm(myForm);' *ngIf="!publicacion.pub_texto else elseBlock" id="send" data-dismiss="modal">Crear Noticia</button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary btn-lg" role="button" (click)='update(usuario);' id="send" data-dismiss="modal">Editar Noticia</button>
+          </ng-template>
+          <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="imagenUploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="imagenUploadModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <div style="text-align:-webkit-center; margin-top: 20px; ">
+            <mat-card style="margin-top:10px; width: 50%;"> 
+                <h1>Subir Imagen</h1> 
+                <mat-card-actions>  
+                    <input 
+                        style="display: none;" 
+                        type="file" 
+                        class="custom-file-input" 
+                        (change)="onFileSelected($event)" 
+                        accept="image/jpeg"
+                        #fileInput>
+                    <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar Imagen</button> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="uploadButton" class="btn btn-primary" type="button" (click)="onUpload()" [disabled]="ToggleButton">Subir Imagen</button> 
+                </mat-card-actions> 
+                <mat-card-content>
+                    <ul>  
+                        <li>  
+                            <mat-progress-bar [value]="this.progress"></mat-progress-bar>  
+                            <span id="file-label">{{this.mensaje}}</span>  
+                        </li>  
+                    </ul> 
+                </mat-card-content>
+            </mat-card>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

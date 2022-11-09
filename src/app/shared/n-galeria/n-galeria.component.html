@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<div id="main" class="row">
+    <ng-container *ngFor="let galeria of this.galerias | paginate: { itemsPerPage: 6, currentPage: p }"> 
+        <div class="4u">
+            <section>
+                <h2>{{galeria.gal_titulo}}</h2>
+                <a href="#/vn_galeria/{{galeria.gal_id}}" class="image full"><img src={{galeria.gal_ruta}} alt=""></a>
+                <a href="#/vn_galeria/{{galeria.gal_id}}" class="button">Ver galería...</a>
+            </section>
+        </div>
+    </ng-container>
+</div>
+<div style="text-align: center;">
+    <pagination-controls 
+        (pageChange)="p = $event"
+        responsive="true"
+        previousLabel="Anterior"
+        nextLabel="Siguiente">
+    </pagination-controls>
+</div>
+    <app-footer></app-footer>
+    <app-copyright></app-copyright>

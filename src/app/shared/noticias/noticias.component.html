@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<div id="main" class="row">
+    <ng-container *ngFor="let publicacion of this.publicaciones | paginate: { itemsPerPage: 7, currentPage: p }"> 
+        <div class="4u" *ngIf="publicacion.pub_id_categoria == 2">
+            <section>
+                    <h2>{{publicacion.pub_titulo}}</h2>
+                <a href="#/noticia/{{publicacion.pub_id}}" class="image full"><img src={{publicacion.pub_ruta}} alt=""></a>
+                <div [innerHTML]="publicacion.pub_texto"></div>
+                <a href="#/noticia/{{publicacion.pub_id}}" class="button">Leer más...</a>
+            </section>
+        </div>
+    </ng-container>
+</div>
+<div style="text-align: center;">
+    <pagination-controls 
+        (pageChange)="p = $event"
+        responsive="true"
+        previousLabel="Anterior"
+        nextLabel="Siguiente">
+    </pagination-controls>
+</div>
+    <app-footer></app-footer>
+    <app-copyright></app-copyright>

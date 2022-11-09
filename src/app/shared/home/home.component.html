@@ -1,0 +1,262 @@
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+			<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">
+				<img class="img-fluid" src="assets/images/COMITE_STEUJED_17-23-TRASPARENCIA_RED.png" alt="" />
+				<!-- <img class="img-fluid" src="assets/images/logo_header.png" alt="" /> -->
+			</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa fa-bars"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav text-uppercase ml-auto">
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger active" href="#home">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#nosotros">Nosotros</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#galeria">Galería</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#blog">Noticias</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#radio">Radio Universidad</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#team">Comité</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#/audioteca">Audioteca</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#/videosFL">Videoconferencias</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#contact">Contáctanos</a>
+				</li>
+				</ul>
+			</div>
+			</div>
+		</nav>
+
+		<app-header></app-header>
+
+    <div id="nosotros" class="section wb" style="text-align: justify;">
+        <div class="container">
+			<ng-container *ngFor="let publicacion_p of public_principal">
+            <div class="row" *ngIf="publicacion_p.pub_id_categoria == 1">
+                <div class="col-md-6">
+                    <div class="message-box">                        
+                        <h3 *ngIf="publicacion_p.pub_id_categoria == 1">{{publicacion_p.pub_titulo}}</h3>
+						<span style="text-align: center;" class="byline" *ngIf="publicacion_p.pub_id_categoria == 1"><b>{{publicacion_p.pub_subtitulo}}</b></span>
+                        <div [innerHTML]="publicacion_p.pub_texto" *ngIf="publicacion_p.pub_id_categoria == 1"></div>
+                    </div><!-- end messagebox -->
+                </div><!-- end col -->
+
+                <div class="col-md-6">
+                    <div class="right-box-pro wow fadeIn" *ngIf="publicacion_p.pub_id_categoria == 1">
+                        <img src={{publicacion_p.pub_ruta}} alt="" class="img-fluid img-rounded">
+                    </div><!-- end media -->
+                </div><!-- end col -->
+			</div><!-- end row -->
+		</ng-container>
+        </div><!-- end container -->
+    </div><!-- end section -->
+	
+    <div id="archivos" class="section lb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Archivos</h3>
+				<!--
+                <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus.</p>
+				-->
+            </div><!-- end title -->
+            <div class="row">
+				<ng-container *ngFor="let archivo of archivos">
+					<div class="col-md-4" *ngIf="archivo.archivo_seccion == '1'">
+						<div class="services-inner-box">
+							<div class="ser-icon">
+								<i class="flaticon-seo"></i>
+							</div>
+							<h2>{{ archivo.archivo_descrip }}</h2>
+							<!--<p>Pequeña descripción del archivo.</p>-->
+							<p><button class="get_btn hvr-bounce-to-top" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset();rutaArchivo(archivo.archivo_ruta, archivo.archivo_descrip);'>
+								Descargar archivo
+							</button> </p>
+							<!--
+							<p><a class="get_btn hvr-bounce-to-top" href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Descargar Archivo</a></p>
+							-->
+						</div>
+					</div>
+				</ng-container>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+	
+	<div id="galeria" class="section lb">
+		<div class="container">
+			<div class="section-title text-center">
+				<h3>Galería</h3>
+			</div>
+			<div class="row" class="text-center">    
+				<section>
+					<h2>{{titulo}}</h2>
+					<div class="fotorama"></div>
+				</section>
+			</div>
+		</div>
+	</div>
+
+	<div id="blog" class="section lb">
+		<div class="container">
+			<div class="section-title text-center">
+                <h3>Noticias</h3>
+            </div><!-- end title -->
+			
+			<div class="row" style="text-align: center;">
+				<div class="col-md-12 col-sm-12 col-lg-6">
+					<div class="post-box">
+						<br><br>
+						<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FSteujed%2Fvideos%2F445640900123332%2F&show_text=false&width=560" width="500" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+
+						<div class="post-info">
+							<h4>Consulta de revisión contractual 2021</h4>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<br><br>
+
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-lg-4" *ngFor="let publicacion of this.publicaciones | slice : 0 : 6">
+					<div class="post-box" *ngIf="publicacion.pub_id_categoria == 2">
+						<a href="#/noticia/{{publicacion.pub_id}}">
+						<div class="post-thumb">
+							
+								<img src="{{publicacion.pub_ruta}}" class="img-fluid" alt="post-img" />
+							
+							<div class="date">
+								<span>{{publicacion.pub_f_publica | date: 'dd'}}</span>
+								<span>{{publicacion.pub_f_publica | date: 'MMM' | uppercase }}</span>
+							</div>
+						</div>
+						</a>
+						<div class="post-info">
+							<h4>{{publicacion.pub_titulo}}</h4>
+							<ul>
+                                <li>Por {{publicacion.pub_u_publica}}</li>
+                            </ul>
+							<div [innerHTML]="publicacion.pub_texto.substring(0,100)" style="text-align: justify;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-lg-4">
+					<br>
+					<a href="#/noticiasall" class="btn btn-danger mr-5">Ver más</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<!--end blog-->
+
+	<!--radio-->
+	<div id="radio" class="copyrights">
+        <div class="container">
+            <div class="footer-distributed">
+                <div class="footer-center">
+                    <div class="row text-center">
+						<div class="col-md-12">
+							<a href="http://200.23.125.55:8000/;?type=http&amp;nocache=156" target="_blank"><img src="assets/images/radio/radio_universidad.png"></a>
+							<!-- <img src="assets/images/radio/radio_universidad.png"> -->
+						</div>
+					</div>            
+					<div class="row text-center">
+						<div class="col-md-12 mb-4">
+							<!--  <video class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="100ms" controls="" name="media"><source src="http://200.23.125.55:8000/;?type=http&amp;nocache=156" type="audio/mpeg"></video>  -->
+ 						</div>
+					</div>
+                </div>
+            </div>
+        </div><!-- end container -->
+    </div><!-- end copyrights -->
+	<!--end radio-->
+
+	<div class="section wb">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<a href="https://sistemas.ujed.mx/PersonalUJED/" target="_blank" style="text-decoration: none;">
+						<img src="assets/images/banner_recibo_A.jpg" class="img-fluid img-rounded">
+					</a>
+				</div>
+			</div>  
+		</div>
+	</div>
+
+	<div class="section wb">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<a href="https://escalafon.steujed.org.mx/socios/?campus=1001" target="_blank" style="text-decoration: none;">
+						<img src="assets/images/banerEscalafon.jpeg" class="img-fluid img-rounded">
+					</a>
+				</div>
+			</div>  
+		</div>
+	</div>
+
+	<div id="servicios" class="section wb">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<a href="#/loginbase" target="_blank" style="text-decoration: none;">
+						<img src="assets/images/banner-servicios.jpg" class="img-fluid img-rounded">
+					</a>
+				</div>
+			</div>  
+		</div>
+	</div>
+	
+	<app-integrantes></app-integrantes>
+
+	
+	<app-footer></app-footer>
+
+	<app-copyright></app-copyright>
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  	<div class="modal-content">
+				<div class="modal-header">
+			  		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+			  		</button>
+			  		<h3 class="modal-title" id="exampleModalLabel">Debe de ingresar su matricula y password para descargar este archivo</h3>
+				</div>
+				<div class="modal-body">
+			  		<form #myForm="ngForm">
+						<div class="form-group">
+							<input type="hidden" name="ub_ruta" class="form-control" value="{{this.ruta}}">
+							<label for="ub_user" class="col-form-label">Matricula:</label>
+							<input type="text" [(ngModel)]="userbase.ub_user" name="ub_user" class="form-control" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label for="ub_password" class="col-form-label">Password:</label>
+							<input type="password" [(ngModel)]="userbase.ub_password" name="ub_password" class="form-control" autocomplete="off">
+						</div>
+			  		</form>
+			  		<small>Si no tienes una cuenta, ingresa al apartado de SERVICIOS para darse de alta</small>
+				</div>
+				<div class="modal-footer">   
+					<button type="button" class="btn btn-primary btn-lg" role="button" id="send" data-dismiss="modal" (click)='login()'>Descargar Documento</button>
+					<button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+				</div>
+		  	</div>
+		</div>
+	</div>

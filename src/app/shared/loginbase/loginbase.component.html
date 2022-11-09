@@ -1,0 +1,156 @@
+<app-header></app-header>
+<br><br><br>
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <form>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input [(ngModel)]="userbase.ub_user" name="ub_user" class="form-control" autocomplete="off" placeholder="Matricula">
+                <input type="password" [(ngModel)]="userbase.ub_password" name="ub_password" class="form-control" autocomplete="off" placeholder="Password"><br><br>
+                <div class="col-sm-12">
+                   <button class="btn btn-primary" role="button" (click)='login()' ><i class="fa fa-key"></i> Ingresar</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)= 'myForm.reset()'><i class="fa fa-pencil"></i> Registarse</button><br><br>
+                     <!-- Button trigger modal -->
+                   <a href="" data-toggle="modal" data-target="#exampleModalCenter">Olvidaste tu password?</a>
+                   <a href="" data-toggle="modal" data-target="#myModal" id="openModalButton" ></a>
+                   <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="openModalButton">Open Modal</button> -->
+                </div>
+              </div>
+            </div>
+      
+          </form>
+         
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+<br><br><br>
+<app-footer></app-footer>
+<app-copyright></app-copyright>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="modal-title" id="exampleModalLabel"></h3>
+        </div>
+        <div class="modal-body">
+          <form #myForm="ngForm" [formGroup]="forma"> 
+            <div class="form-group">
+                <label for="Matricula" class="col-form-label">Matricula:</label>
+                <input maxlength="50" formControlName="ub_user" class="form-control" autocomplete="off" placeholder="Matricula" [class.is-invalid]="userNovalido">
+                <small *ngIf="userNovalido" class="text-danger">
+                    Debe de ingresar su matricula
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="Nombre" class="col-form-label">Nombre completo:</label>
+                <input maxlength="250" formControlName="ub_nombre" class="form-control" autocomplete="off" placeholder="Nombre" oninput="this.value = this.value.toUpperCase()" [class.is-invalid]="nombreNovalido">
+                <small *ngIf="nombreNovalido" class="text-danger">
+                    Ingrese su nombre completo
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="Nombre" class="col-form-label">CURP:</label>
+                <input maxlength="250" formControlName="ub_curp" class="form-control" autocomplete="off" placeholder="Nombre" oninput="this.value = this.value.toUpperCase()" [class.is-invalid]="curpNovalido">
+                <small *ngIf="curpNovalido" class="text-danger">
+                    Ingrese su CURP
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="Nombre" class="col-form-label">RFC:</label>
+                <input maxlength="250" formControlName="ub_rfc" class="form-control" autocomplete="off" placeholder="Nombre" oninput="this.value = this.value.toUpperCase()" [class.is-invalid]="rfcNovalido">
+                <small *ngIf="rfcNovalido" class="text-danger">
+                    Ingrese su RFC
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="col-form-label">Password:</label>
+                <input type="password" formControlName="ub_password" class="form-control" autocomplete="off" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="Confirmar" class="col-form-label">Confirmar Password:</label>
+                <input type="password" formControlName="conf_password" class="form-control" autocomplete="off" placeholder="Confirmar Password" [class.is-invalid]="repasswordNovalido">
+                <small *ngIf="repasswordNovalido" class="text-danger">
+                    El password y la confirmación, no coinciden
+                </small>
+                <br><br>
+          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary btn-lg" [disabled]="!forma.valid" (click)="create()" data-dismiss="modal">Registrar</button>
+            <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ingrse sus datos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="form-group">
+          <label for="matricula">Matricula</label>
+          <input type="text" [(ngModel)]="datos.matricula" name="matricula" id="matricula" class="form-control"  placeholder="Ingrese su matricula" >
+      </div>
+      <div class="form-group">
+          <label for="curp">CURP</label>
+          <input type="text" [(ngModel)]="datos.curp" name="curp" id="curp" class="form-control"  placeholder="Ingrese su curp" >
+      </div>
+      <div class="form-group">
+        <label for="rfc">RFC</label>
+        <input type="text" [(ngModel)]="datos.rfc" name="rfc"  id="rfc" class="form-control"   placeholder="Ingrese su rfc" >
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"  id="cierraComp">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)='probarGet()'>Comprobar datos</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cambiar Password</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="pass1">Nuevo Password</label>
+          <input type="password" [(ngModel)]="contra.pass1" name="pass1" id="pass1" class="form-control"  placeholder="Nuevo Password" >
+      </div>
+      <div class="form-group">
+        <label for="pass2">Confirmar Password</label>
+        <input type="password" [(ngModel)]="contra.pass2" name="pass2"  id="pass2" class="form-control"   placeholder="Confirmar Password" >
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="cierraPass">Cerrar</button>
+        <button type="button" class="btn btn-primary"  (click)='cambiaPass(contra,datos.matricula)'>Cambiar password</button>
+      </div>
+    </div>
+
+  </div>
+</div>

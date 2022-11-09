@@ -1,0 +1,20 @@
+<app-encabezado (toggleSideBarForMe)="sideBarToggler()"></app-encabezado>
+<!--
+<app-encabezado (toggleSideBarForMe)="sideBarToggler($event)"></app-encabezado>
+-->
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<app-pie></app-pie>
+
+
+
+
+
+

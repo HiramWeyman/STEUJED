@@ -1,0 +1,168 @@
+<ng-container *ngFor="let usuario of usuarios">
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+            <h2>STEUJED</h2>
+        </div>
+        <a routerLink="" target="_blank">
+          <img src="../../../assets/images/adentro5.png" alt="STEUJED">
+       <!--    <img src="../../../assets/images/logo45.png" alt="STEUJED"> -->
+        </a>
+        
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Secciones</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/inicio"><mat-icon>dashboard</mat-icon>Inicio</a>
+    
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5 || usuario.role_id === 11"  mat-list-item routerLinkActive="list-item-active" routerLink="/uploadbanner"><mat-icon>image</mat-icon>Baner Principal</a>
+    
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5 || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/menu"><mat-icon>menu</mat-icon>Menu</a>
+    
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/archivos"><mat-icon> insert_drive_file</mat-icon>Archivos (PDF)</a>
+
+    <mat-expansion-panel *ngIf="usuario.role_id === 1  || usuario.role_id === 11">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>move_to_inboxd</mat-icon>Archivos
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/archivoscompartidos"><mat-icon>label_important</mat-icon>Archivos Compartidos</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/descarchivos"><mat-icon>label_important</mat-icon>Archivos Descargados</a>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 7  || usuario.role_id === 11">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>account_balance_wallet</mat-icon>Solicitud de prestamos 
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/AdmPrestamo"><mat-icon>label_important</mat-icon>Caja de ahorro</a>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/AdmRetiro"><mat-icon>label_important</mat-icon>Retiro de ahorro</a>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/AdmRevolvente"><mat-icon>label_important</mat-icon>Solicitud de Ingreso</a>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/AdmRevolvente2"><mat-icon>label_important</mat-icon>Revolvente</a>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 8  || usuario.role_id === 11">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>assignment_ind</mat-icon>Eventuales
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/usuarios"><mat-icon>label_important</mat-icon>Lista de Empleados Eventuales</a>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/asistencia"><mat-icon>label_important</mat-icon>Reporte de Asistencia</a>
+  </mat-expansion-panel>
+  <a *ngIf="usuario.role_id === 1||usuario.role_id === 8" mat-list-item routerLinkActive="list-item-active" routerLink="/usuariosbase"><mat-icon>supervisor_account</mat-icon>Trabajadores de base</a>
+
+  <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 8">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>person_pin_circle</mat-icon>Plazas
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/concursopla"><mat-icon>label_important</mat-icon> Concurso de Plazas</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/plazas-canceladas"><mat-icon>label_important</mat-icon>Plazas canceladas</a>
+</mat-expansion-panel>
+    
+    
+    <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 8  || usuario.role_id === 11">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>supervised_user_circle</mat-icon>Sustituciones
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/actividades"><mat-icon>label_important</mat-icon>Nueva Sustitucion</a>
+      <a mat-list-item routerLinkActive="list-item-active" routerLink="/perfil"><mat-icon>label_important</mat-icon>Reporte de Sutituciones</a>
+  </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="usuario.role_id === 1  || usuario.role_id === 11">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>folder_open</mat-icon>Catalogos
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/actividades"><mat-icon>label_important</mat-icon>Catalogo de Actividades</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/perfil"><mat-icon>label_important</mat-icon>Catalogo de Perfiles</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/catplazas"><mat-icon>label_important</mat-icon>Catalogo de Plazas</a>
+        <!--
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/catservicios"><mat-icon>label_important</mat-icon>Catalogo de Servicios</a>
+        -->
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel *ngIf="usuario.role_id === 1 || usuario.role_id === 5 || usuario.role_id === 6  || usuario.role_id === 11">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>folder_open</mat-icon>Publicaciones
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/adm-galeria"><mat-icon>label_important</mat-icon>Galeria</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/principal"><mat-icon>label_important</mat-icon>Nota Principal</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/notas"><mat-icon>label_important</mat-icon>Notas</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/notificacion"><mat-icon>label_important</mat-icon>Notificacion</a>
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/admvideosfl"><mat-icon>label_important</mat-icon>Videos Facebook</a>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="usuario.role_id === 1 || usuario.role_id === 5 ||usuario.role_id === 8  || usuario.role_id === 11">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>perm_identity</mat-icon>Integrantes (STEUJED)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5 ||usuario.role_id === 8 || usuario.role_id === 11"mat-list-item routerLinkActive="list-item-active" routerLink="/integrantes"><mat-icon>label_important</mat-icon>Integrantes (STEUJED)</a>
+      <a *ngIf="usuario.role_id === 1 || usuario.role_id === 8 || usuario.role_id === 11"mat-list-item routerLinkActive="list-item-active" routerLink="/integrantes-user"><mat-icon>label_important</mat-icon>Crear Usuario</a>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngIf="usuario.role_id === 1||usuario.role_id === 8  || usuario.role_id === 11">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>assignment</mat-icon>Padron Administrativo 
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5||usuario.role_id === 8  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/padron-advo"><mat-icon>assignment_ind</mat-icon>Subir archivo Excel </a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5||usuario.role_id === 8  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/lista-padron"><mat-icon>list_alt</mat-icon>Lista de padron administrativo </a>
+
+</mat-expansion-panel>
+  <!--
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5" mat-list-item routerLinkActive="list-item-active" routerLink="/integrantes"><mat-icon>perm_identity</mat-icon>Integrantes (STEUJED)</a>
+    -->
+    
+   
+    <mat-divider></mat-divider>
+    
+    <!--
+    <h2 matSubheader>Tools</h2>
+    -->
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/audios"><mat-icon>audiotrack</mat-icon> Audios</a>
+    <a *ngIf="usuario.role_id === 1 || usuario.role_id === 5  || usuario.role_id === 11" mat-list-item routerLinkActive="list-item-active" routerLink="/contactanos"><mat-icon>import_contacts</mat-icon> Contactanos</a>
+    
+</mat-nav-list>
+
+</ng-container>
+
+<ng-container *ngIf="this.rol_user === 4">
+  <mat-nav-list>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/inicio"><mat-icon>dashboard</mat-icon>Inicio</a>
+    <a *ngIf="this.situacion_user == 'A'" mat-list-item routerLinkActive="list-item-active" routerLink="/servicios"><mat-icon>import_contacts</mat-icon> Concurso a plazas</a>
+    <a *ngIf="this.situacion_user == 'A'" mat-list-item routerLinkActive="list-item-active" routerLink="/reimpresionsol"><mat-icon>print</mat-icon> Reimpresión de Solicitud</a>
+    <a *ngIf="this.situacion_user == 'A'||this.situacion_user == 'J'" mat-list-item routerLinkActive="list-item-active" routerLink="/cambiapassword">	<mat-icon>lock</mat-icon>Cambiar password</a>
+    <a *ngIf="this.situacion_user == 'A'||this.situacion_user == 'J'" mat-list-item routerLinkActive="list-item-active" routerLink="/actualiza-datos">	<mat-icon>face</mat-icon>Actualizar datos</a>
+
+    
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>account_balance_wallet</mat-icon>Solicitud de prestamos
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <a *ngIf="this.situacion_user == 'A'||this.situacion_user == 'J'" mat-list-item routerLinkActive="list-item-active" routerLink="/prestamo"><mat-icon>label_important</mat-icon>Solicitud de préstamo de Caja de Ahorro</a>
+      <a *ngIf="this.situacion_user == 'A'||this.situacion_user == 'J'"mat-list-item routerLinkActive="list-item-active" routerLink="/revolvente"><mat-icon>label_important</mat-icon>Solicitud de Ingreso</a>
+      <a *ngIf="this.situacion_user == 'A'||this.situacion_user == 'J'" mat-list-item routerLinkActive="list-item-active" routerLink="/retiro"><mat-icon>label_important</mat-icon>Retiro de Ahorro</a>
+      <a *ngIf="this.situacion_user == 'A'||this.situacion_user == 'J'" mat-list-item routerLinkActive="list-item-active" routerLink="/revolvente2"><mat-icon>label_important</mat-icon>Revolvente</a>
+    </mat-expansion-panel>
+
+  </mat-nav-list>
+</ng-container>

@@ -1,0 +1,67 @@
+<div class="card bg-dark text-white">
+
+    <div class="card-body">
+        <h3 class="card-title">Archivos (PDF)</h3>
+  
+      <form>
+  
+        <div class="form-group row">
+          <label for="descripcion" class="col-form-label col-sm-2">Descripción</label>
+          <div class="col-sm-6">
+            <input [(ngModel)]="archivos.archivo_descrip" name="descripcion" class="form-control" autocomplete="off" oninput="this.value = this.value.toUpperCase()">
+          </div>
+        </div>
+  
+  
+        <!--
+        <div class="form-group row">
+          <label for="ruta" class="col-form-label col-sm-2">Archivo</label>
+          <div class="col-sm-6">
+            <input [(ngModel)]="archivos.archivo_ruta" name="ruta" class="form-control" autocomplete="off" oninput="this.value = this.value.toUpperCase()">
+          </div>
+        </div>
+        -->
+        <div style="text-align:center; margin-top: 20px; ">
+          <mat-card style="margin-top:10px; width: 50%;"> 
+              <mat-card-actions>  
+                  <input
+                      style="display: none;" 
+                      type="file" 
+                      class="custom-file-input" 
+                      (change)="onFileSelected($event)" 
+                      accept="application/pdf"
+                      #fileInput>
+                  <button class="btn btn-success ml-2" type="button" (click)="fileInput.click()">Buscar PDF</button> 
+              </mat-card-actions> 
+              <mat-card-content>
+                  <ul>  
+                      <li>  
+                          <mat-progress-bar [value]="this.progress"></mat-progress-bar>  
+                          <span id="file-label">{{this.mensaje}}</span>  
+                      </li>  
+                  </ul> 
+              </mat-card-content>
+          </mat-card>
+      </div>
+  
+
+      <br>
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <button class="btn btn-primary" role="button" (click)="onUpload()" *ngIf="!archivos.archivo_id else elseBlock">Crear Registro</button>
+            <ng-template #elseBlock>
+              <button class="btn btn-primary" role="button" (click)='update()'>Guardar Cambios</button>
+            </ng-template>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-danger" role="button" (click)='regresar()'>Regresar</button>
+          </div>
+        </div>
+
+      </form>
+  
+  
+  
+    </div>
+  
+  </div>

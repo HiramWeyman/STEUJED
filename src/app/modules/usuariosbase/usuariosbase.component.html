@@ -1,0 +1,112 @@
+
+<script type="text/javascript" src="bower_components/angular-fixed-table-header/src/fixed-table-header.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+<div class="col-center"><h4><b>Lista de Trabajadores de Base</b></h4></div>
+  <div  class="tablediv">
+    <br>
+
+
+    <div clasa="row">
+      <div class="col-sm-5">
+        <div class="input-group">
+          <input type="number" class="form-control sm" placeholder="Buscar por Matricula" [(ngModel)]="busca.matricula">
+          <span class="input-group-btn">
+            <button class="btn btn-primary sm" type="button"><i class="fa fa-search" aria-hidden="true"  (click)='buscar(busca.matricula,1)'></i></button>
+          </span>
+        </div><!-- /input-group -->
+      </div>
+
+      <div class="col-sm-5">
+        <div class="input-group">
+          <input type="text" class="form-control sm" placeholder="Buscar por nombre" [(ngModel)]="busca.nombre">
+          <span class="input-group-btn">
+            <button class="btn btn-primary sm" type="button"><i class="fa fa-search" aria-hidden="true" (click)='buscar(busca.nombre,2)'></i></button>
+          </span>
+        </div><!-- /input-group -->
+      </div>
+
+    </div>
+
+    <table class="table">
+      <tr>
+        <!-- <td><label><b>Busqueda por Nombre</b></label></td> -->
+      </tr>
+      <tr>
+        <td>
+<!--           <input [(ngModel)]="buscar.nombre" placeholder="&#xF002; Buscar" style="font-family:Arial, FontAwesome"  class="form-control" autocomplete="off" (blur)="buscarNom(buscar.nombre)" (keydown.enter)="buscarNom(buscar.nombre)"/>
+ -->        </td>
+      </tr>
+    </table>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+        
+            <th class="table-head-font-weight-normal" ><b>Matricula</b></th>
+            <th class="table-head-font-weight-normal" ><b>Nombre Completo</b></th>
+            <th class="table-head-font-weight-normal" ><b>CURP</b></th>
+            <th class="table-head-font-weight-normal" ><b>RFC</b></th>
+            <th class="table-head-font-weight-normal" ><b>Editar</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of this.usuarios">
+            <td  width=25px;>{{ usuario.ub_user}}</td> 
+            <td>{{ usuario.ub_nombre}}</td>
+            <td>{{ usuario.ub_curp }}</td>
+            <td>{{ usuario.ub_rfc }}</td>
+            <td align="center">
+             
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)='cargarUsuario(usuario.ub_user)'>Editar</button>
+
+            </td>
+   
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar Trabajador</h5>
+     
+        </div>
+        <div class="modal-body">
+            
+            <div class="form-group">
+                <label for="matricula">Matricula</label>
+                <input type="text" [(ngModel)]="x.ub_user" name="matricula" id="matricula" class="form-control"  disabled >
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" [(ngModel)]="x.ub_nombre" name="matricula" id="matricula" class="form-control"  placeholder="Ingrese su matricula" >
+            </div>
+            <div class="form-group">
+                <label for="curp">CURP</label>
+                <input type="text" [(ngModel)]="x.ub_curp" name="curp" id="curp" class="form-control"  placeholder="Ingrese su curp" >
+            </div>
+            <div class="form-group">
+              <label for="rfc">RFC</label>
+              <input type="text" [(ngModel)]="x.ub_rfc" name="rfc"  id="rfc" class="form-control"   placeholder="Ingrese su rfc" >
+            </div>
+            <div class="form-group">
+                <label for="rfc">Password</label>
+                <input type="password" [(ngModel)]="x.ub_password" name="rfc"  id="rfc" class="form-control"   placeholder="Ingrese su nuevo password" >
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cerrarmodal">Cerrar</button>
+          <button type="button" class="btn btn-primary" (click)='update(x);'>Guardar Cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

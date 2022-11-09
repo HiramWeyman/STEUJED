@@ -1,0 +1,35 @@
+<div class="copyrights">
+  <div class="container">
+      <div class="footer-distributed">
+  <a href="#"><img src="assets/images/COMITE_STEUJED_17-23-TRASPARENCIA_RED.png" alt="" /></a>
+          <div class="footer-center">
+              <div class="row text-center">
+      <div class="col-md-12">
+        <img _ngcontent-btb-c46="" src="https://counter1.stat.ovh/private/contadorvisitasgratis.php?		c=63m2aafy3rgqrgygy43lbth1prjx12bh" border="0">
+      </div>
+    </div>            
+    <div class="row mt-5 text-center">
+      <div class="col-md-12">
+        <div class="mb-4">
+          <ng-container *ngFor="let contacto of this.contactanos"> 
+          <a href="{{contacto.con_link}}" target="_blank" *ngIf="contacto.con_concepto == 'Facebook' && contacto.con_visible == 'S'" class="pl-0 pr-3"><span class="fa fa-facebook" style="color: white;"></span></a>
+          <a href="{{contacto.con_link}}" target="_blank" *ngIf="contacto.con_concepto == 'Twitter' && contacto.con_visible == 'S'" class="pl-0 pr-3"><span class="fa fa-twitter" style="color: white;"></span></a>
+          <a href="{{contacto.con_link}}" target="_blank" *ngIf="contacto.con_concepto == 'Instagram' && contacto.con_visible == 'S'" class="pl-0 pr-3"><span class="fa fa-instagram" style="color: white;"></span></a>
+          <a href="{{contacto.con_link}}" target="_blank" *ngIf="contacto.con_concepto == 'Youtube' && contacto.con_visible == 'S'" class="pl-0 pr-3"><span class="fa fa-youtube" style="color: white;"></span></a>
+          </ng-container>
+        </div>
+        <p>Todos los derechos reservados a <a [routerLink]="['/adminLogin']" style="color: gray;">STEUJED.</a></p>
+      </div>
+    </div>
+          </div>
+      </div>
+  </div><!-- end container -->
+</div><!-- end copyrights -->
+
+<!--
+<div id="copyright">
+  <div class="container" style="color: black;">
+      Todos los derechos reservados a <a [routerLink]="['/adminLogin']" style="color: black;">STEUJED.</a>
+  </div>
+</div>
+-->

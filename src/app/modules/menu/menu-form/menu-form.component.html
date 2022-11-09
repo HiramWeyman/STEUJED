@@ -1,0 +1,64 @@
+<div class="card bg-dark text-white">
+
+    <div class="card-body">
+        <h3 class="card-title">Menu</h3>
+  
+      <form>
+  
+        <div class="form-group row">
+          <label for="nombre" class="col-form-label col-sm-2">Nombre del link</label>
+          <div class="col-sm-6">
+          
+            <input [(ngModel)]="menu.menu_descrip" name="nombre" class="form-control" autocomplete="off" oninput="this.value = this.value.toUpperCase()">
+          </div>
+        </div>
+  
+  
+  
+        <div class="form-group row">
+          <label for="orden" class="col-form-label col-sm-2">No. Orden</label>
+          <div class="col-sm-6">
+            <select  [(ngModel)]="menu.menu_orden" name="orden" class="form-control">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+            </select>
+
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="cancelar" class="col-form-label col-sm-2">Cancelado</label>
+          <div class="col-sm-6">
+            <select  [(ngModel)]="menu.menu_cancelar" name="cancelar" class="form-control">
+                <option value="N">NO</option>
+                <option value="S">SI</option>
+            </select>
+
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <!-- esta árte si funciona pero hasta a fecha solo se piensa editar
+            <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!menu.menu_id else elseBlock">Crear Link</button>
+            <ng-template #elseBlock>
+              <button class="btn btn-primary" role="button" (click)='update()'>Guardar cambios</button>
+            </ng-template>
+            -->
+            <button class="btn btn-primary" role="button" (click)='update()'>Guardar cambios</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-danger" role="button" (click)='regresar()'>Regresar</button>
+          </div>
+        </div>
+
+      </form>
+  
+  
+  
+    </div>
+  
+  </div>

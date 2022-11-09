@@ -1,0 +1,68 @@
+
+<div class="col-center"><h4><b>Lista de Asistencia de Trabajadores Eventuales</b></h4></div>
+
+<div class="col-center2">
+   <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample" (click)='recibeValores(1);'>
+         Lista de asistencia por dia
+      </a>
+    </p>
+    <div class="collapse" id="collapseExample1">
+      <div class="card card-body">
+         <input id="d" type="date" name="fec" class="form-control" [(ngModel)]="fec.fecha1"><br>
+      </div>
+    </div>
+
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample" (click)='recibeValores(2);'>
+         Lista de asistencia por mes
+      </a>
+    </p>
+    <div class="collapse" id="collapseExample2">
+      <div class="card card-body">
+         <input id="m1" type="date" name="fec1" class="form-control" [(ngModel)]="fec.fecha1">
+         <input id="m2" type="date" name="fec2" class="form-control" [(ngModel)]="fec.fecha2"><br>
+      </div>
+    </div>
+
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample" (click)='recibeValores(3);'>
+         Lista de asistencia por dia y trabajador
+      </a>
+    </p>
+    <div class="collapse" id="collapseExample3">
+      <div class="card card-body">
+         <input id="m1" type="date" name="fec1" class="form-control" [(ngModel)]="fec.fecha1">
+         <select  [(ngModel)]="fec.trabajador" name="trabaja" class="form-control" >
+            <option *ngFor="let a of usuarios" value={{a.matricula}}>
+                {{a.nombre_completo}}
+            </option>
+        </select><br>
+      </div>
+    </div>
+
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false" aria-controls="collapseExample" (click)='recibeValores(4);'>
+         Lista de asistencia por mes y trabajador
+      </a>
+    </p>
+    <div class="collapse" id="collapseExample4">
+      <div class="card card-body">
+         <input id="m1" type="date" name="fec1" class="form-control" [(ngModel)]="fec.fecha1">
+         <input id="m2" type="date" name="fec2" class="form-control" [(ngModel)]="fec.fecha2">
+         <select  [(ngModel)]="fec.trabajador" name="trabaja" class="form-control" >
+            <option *ngFor="let a of usuarios" value={{a.matricula}}>
+                {{a.nombre_completo}}
+            </option>
+        </select><br>
+      </div>
+    </div>
+
+
+
+</div>
+
+
+<div class="col-center3">
+    <button class="btn btn-success" (click)='reporte(fec);'>Generar Reporte</button>
+ </div>

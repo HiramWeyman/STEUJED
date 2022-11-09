@@ -1,0 +1,102 @@
+<div  class="tablediv">
+  <select class="form-control" (change)="cargarConcursoPlazas($event.target.value)">
+    <option selected="selected" value="0">-- Seleccione una plaza --</option>
+    <option *ngFor="let cp of catplazas" value="{{ cp.catp_id }}">{{cp.catp_descrip}}</option>
+   </select>
+   <br>
+   <input type="hidden" [(ngModel)]="valplaza">
+   <label><b>Cantidad de Solicitudes: {{count}}</b></label>
+   <br>
+    <button type="button" class="btn btn-success btn-sm" (click)='ExportarExcel();'>Exportar a Excel</button>  
+
+ 
+    <table class="table table-striped table-fixed" border="1">
+                  <thead>
+                    <tr  >
+                      <th class="table-head-font-weight-normal" ><b>Número</b></th>
+                      <th class="table-head-font-weight-normal" ><b>ID</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Matricula</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Nombre</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Adscripcion</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Categoria</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Funcion</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Situacion</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Permanencia</b></th>
+                      <th class="table-head-font-weight-normal" ><b>F. Ingreso</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Sueldo</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Permisos</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Antigüedad</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Insaluble</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Adscripcion Base</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Cat. Base</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Funcion Base</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Situacion Base</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Num. Contacto</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Observaciones</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Estatus</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Comentarios</b></th>
+                      <th class="table-head-font-weight-normal" ><b>Acciones</b></th>
+                    </tr>
+                  </thead>
+                  <tbody  >
+                    <tr *ngFor="let administrativo of this.administrativos;index as i">
+                      <td >{{ i+1 }}</td>
+                      <td >{{ administrativo.pad_id }}</td>
+                      <td >{{ administrativo.pad_mat }}</td>
+                      <td >{{ administrativo.pad_nombre }}</td>
+                      <td >{{ administrativo.pad_adscripcion }}</td>
+                      <td >{{ administrativo.pad_categoria }}</td>
+                      <td >{{ administrativo.pad_funcion }}</td>
+                      <td >{{ administrativo.pad_situacion }}</td>
+                      <td >{{ administrativo.pad_permanencia }}</td>
+                      <td >{{ administrativo.pad_f_ingreso }}</td>
+                      <td >{{ administrativo.pad_sueldo }}</td>
+                      <td >{{ administrativo.pad_permisos }}</td>
+                      <td >{{ administrativo.pad_f_antig }}</td>
+                      <td >{{ administrativo.pad_n_insaluble }}</td>
+                      <td >{{ administrativo.pad_adscrip_base }}</td>
+                      <td >{{ administrativo.pad_catego_base }}</td>
+                      <td >{{ administrativo.pad_funcion_base }}</td>
+                      <td >{{ administrativo.pad_situacion_base }}</td>
+                      <td >{{ administrativo.pad_num_contacto }}</td>
+                      <td >{{ administrativo.pad_observaciones }}</td>
+                      <td >{{ administrativo.pla_desc_corta }}</td>
+                      <td >{{ administrativo.pad_comentarios }}</td>
+                      <td>
+                        <div class="span2">
+                          <p><button class="btn btn-danger btn-block btn-sm" (click)='reporte(administrativo.pad_id);'>Reimpresión</button></p> 
+                          <p><button class="btn btn-success btn-block btn-sm" (click)='CancelarSol(administrativo);'>Cancelar Solicitud</button></p> 
+                          <p><button class="btn btn-primary btn-block btn-sm" (click)='Promovido(administrativo.pad_id,1);'>Promovido</button></p> 
+                          <p><button class="btn btn-primary btn-block btn-sm" (click)='Promovido(administrativo.pad_id,2);'>No promovido</button></p> 
+                          <P><button type="button" class="btn btn-primary btn-block btn-sm" data-toggle="modal" data-target="#exampleModal" (click)='Comentarios(administrativo.pad_id,administrativo.pad_comentarios);'>Comentarios</button></P>
+                        </div>
+                   <!-- <button type="button" class="btn btn-danger btn-sm" (click)='reporte(administrativo.pad_id);'>Reimpresión</button>
+                        <button type="button" class="btn btn-success btn-sm" (click)='CancelarSol(administrativo);'>Cancelar Solicitud</button>  -->                 
+                      </td>
+                    </tr>
+                  </tbody>
+          </table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><b>Agregar Comentarios</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" [(ngModel)]="ids">
+        <textarea class="form-control" rows="10" cols="20" [(ngModel)]="comentarios"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)='GuardarComentarios(ids,comentarios)'>Guardar comentario</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+
+    <div id="contact" class="section db">
+        <div class="container">
+			<div class="section-title text-center">
+				<h3>Contáctanos</h3>
+			</div><!-- end title -->
+
+            <ng-container *ngFor="let contacto of this.contactanos">
+                <div class="row mb-4" *ngIf="contacto.con_concepto == 'Telefono' && contacto.con_visible == 'S'">
+                    <div class="col-12 text-center">
+                        <span [innerHTML]="contacto.con_texto"></span>
+                    </div>
+                </div>
+            </ng-container>
+
+			<ng-container *ngFor="let contacto of this.contactanos">
+                <div class="row mb-4" *ngIf="contacto.con_concepto == 'Email' && contacto.con_visible == 'S'">
+                    <div class="col-12 text-center">
+                        <span [innerHTML]="contacto.con_texto"></span>
+                    </div>
+                </div>
+            </ng-container>
+
+			<ng-container *ngFor="let contacto of this.contactanos">
+                <div class="row" *ngIf="contacto.con_concepto == 'Direccion' && contacto.con_visible == 'S'">
+                    <div class="col-12 text-center">
+                        <span [innerHTML]="contacto.con_texto"></span>
+                    </div>
+                </div>
+            </ng-container>
+
+		</div><!-- end container -->
+	</div><!-- end section -->
+
+<!--
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="footer">
+  <div class="container">
+      <div class="row">
+          <div class="12u" style="text-align: center;">
+              <section>
+                  <header>
+                      <h2>Contáctanos</h2>
+                  </header>
+                  <ul class="default" *ngFor="let contacto of this.contactanos">
+                      <li *ngIf="contacto.con_concepto == 'Telefono' && contacto.con_visible == 'S'"> <i class="fa fa-phone"></i>&nbsp;&nbsp;<span [innerHTML]="contacto.con_texto"></span></li>
+                      <li *ngIf="contacto.con_concepto == 'Email' && contacto.con_visible == 'S'"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<span [innerHTML]="contacto.con_texto"></span></li>
+                      <li *ngIf="contacto.con_concepto == 'Direccion' && contacto.con_visible == 'S'"><i class="fa fa-address-card"></i>&nbsp;&nbsp;<span [innerHTML]="contacto.con_texto"></span></li>
+                  </ul>
+              </section>
+          </div>
+      </div>
+  </div>
+</div>
+-->

@@ -1,0 +1,26 @@
+.tableFixHead          { overflow-y: auto; height: 330px; }
+.tableFixHead thead th { position: sticky; top: 0; }
+
+/* Just common table stuff. Really. */
+table  { border-collapse: collapse; width: 100%; font-size: 12px;}
+th, td { padding: 8px 16px; }
+th     { background:#eee; }
+button{margin-right: 13px;}
+.col-center{
+    float: none;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+
+  .box {
+    float: left;
+    width: 200px;
+    height: 30px;
+    margin: 1em;
+  }
+  .after-box {
+    clear: left;
+  }
+  input{
+    text-transform: uppercase;
+}

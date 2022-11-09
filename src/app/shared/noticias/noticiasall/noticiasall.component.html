@@ -1,0 +1,64 @@
+
+<div id="main" class="row" style="text-align: center;">
+    <div class="container">
+        <div class="section-title text-center">
+       <!--      <h2>{{publicaciones.pub_titulo}}</h2> -->
+                 <h2>Todas las noticias</h2>
+        </div>
+        <section>
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-lg-4" *ngFor="let publicacion of this.publicaciones">
+					<div class="post-box" *ngIf="publicacion.pub_id_categoria == 2">
+						<a href="#/noticia/{{publicacion.pub_id}}">
+						<div class="post-thumb">
+							
+								<img src="{{publicacion.pub_ruta}}" class="img-fluid" alt="post-img" />
+							
+							<div class="date">
+								<span>{{publicacion.pub_f_publica | date: 'dd'}}</span>
+								<span>{{publicacion.pub_f_publica | date: 'MMM' | uppercase }}</span>
+							</div>
+						</div>
+						</a>
+						<div class="post-info">
+							<h4>{{publicacion.pub_titulo}}</h4>
+							<ul>
+                                <li>Por {{publicacion.pub_u_publica}}</li>
+                            </ul>
+							<div [innerHTML]="publicacion.pub_texto.substring(0,100)" style="text-align: justify;"></div>
+						</div>
+					</div>
+				</div>
+<!-- 				<div class="col-md-4 col-sm-6 col-lg-4">
+					<br>
+					<a href="#/noticiasall" class="btn btn-danger mr-5">Ver más</a>
+				</div> -->
+			</div>
+        </section>
+
+    </div>
+</div>
+<div id="main" class="row" style="text-align: center;">
+    <div class="container">
+        <button type="button" class="btn btn-secondary btn-lg" [routerLink]="['']">Regresar</button>
+    </div>
+</div>
+<app-footer></app-footer>
+<app-copyright></app-copyright>
+<!--
+    <div id="main" class="row" style="text-align: center;">
+    <div class="3u">&nbsp;</div>
+        <div class="6u">
+            <section>
+                <h2>{{publicaciones.pub_titulo}}</h2>
+                <div class="fotorama"></div>
+                <div [innerHTML]="publicaciones.pub_texto" style="text-align: justify;"></div>
+            </section>
+
+        </div>
+    
+    <div class="3u">&nbsp;</div>
+</div>
+-->
+
+

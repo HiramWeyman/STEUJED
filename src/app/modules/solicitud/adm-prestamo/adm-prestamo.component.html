@@ -1,0 +1,159 @@
+<h2>Solicitud de Caja de ahorro</h2>
+<br>
+
+  <br><br>
+<div class="tableFixHead border-primary">
+    <div clasa="row">
+        <div class="col-sm-4">
+          <div class="input-group">
+            <input type="number" class="form-control sm" placeholder="Buscar por Matricula" [(ngModel)]="busca.matricula">
+            <span class="input-group-btn">
+              <button class="btn btn-primary sm" type="button" id="busca1"><i class="fa fa-search" aria-hidden="true"  (click)='buscar(busca.matricula,1)'></i></button>
+            </span>
+          </div><!-- /input-group -->
+        </div>
+    
+        <div class="col-sm-8">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td> <input type="number" class="form-control sm" placeholder="Buscar por Matricula" [(ngModel)]="busca.matricula2"></td>
+                        <td>
+                            <select class="form-control sm" [(ngModel)]="busca.estatus">
+                                <option value="1">--Seleccionar Estatus--</option>
+                                <option value="ACEPTADA">ACEPTADA</option>
+                                <option value="ATENDIDA">ATENDIDA</option>
+                                <option value="PENDIENTE">PENDIENTE</option>
+                                <option value="RECHAZADA">RECHAZADA</option>
+                            </select>
+                            
+                        </td>
+                        <td><button class="btn btn-primary sm" type="button" id="busca2"><i class="fa fa-search" aria-hidden="true" (click)='buscar(busca,2)'></i></button></td>
+                    </tr>
+                  </tbody>
+            </table>
+        </div>
+      </div>
+    <table>
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>Matricula</th>
+            <th>Nombre</th>
+            <th>Adscripción</th>
+            <th>No. Cuenta / Tarjeta</th>
+            <th>Banco</th>
+            <th>Teléfono</th>
+            <th>Monto</th>
+            <th>Recibo</th>
+            <th>INE</th>
+            <th>Solicitud</th>
+            <th>Estatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cajaAhorro of this.cajaAhorros">
+            <td>{{cajaAhorro.pre_id}}</td>
+            <td>{{cajaAhorro.pre_matricula}}</td>
+            <td>{{cajaAhorro.pre_nombre}}</td>
+            <td>{{cajaAhorro.pre_adscripcioon}}</td>
+            <td>{{cajaAhorro.pre_tarjeta_cuenta}}</td>
+            <td>{{cajaAhorro.pre_banco}}</td>
+            <td>{{cajaAhorro.pre_telefono}}</td>
+            <td>{{cajaAhorro.pre_cantidad}}</td>
+            <td>
+                <ng-container *ngIf="cajaAhorro.pre_recibo != null">
+                    <a href="{{cajaAhorro.pre_recibo}}" target="_blank">
+                        <button type="button" class="btn btn-primary btn-sm">
+                        Ver Archivo
+                        </button>
+                    </a>
+                </ng-container>
+            </td>
+            <td>
+                <ng-container *ngIf="cajaAhorro.pre_ine != null">
+                    <a href="{{cajaAhorro.pre_ine}}" target="_blank">
+                        <button type="button" class="btn btn-primary btn-sm">
+                        Ver Archivo
+                        </button>
+                    </a>
+                </ng-container>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" (click)='reporte(cajaAhorro.pre_id,1);'>
+                    Ver Solicitud
+                    </button>
+            </td>
+            <td>
+                <select class="form-control" (change)="update($event.target.value,cajaAhorro.pre_id)">
+                    <option [selected]="cajaAhorro.pre_estatus=='ACEPTADA'" value="ACEPTADA">ACEPTADA</option>
+                    <option [selected]="cajaAhorro.pre_estatus=='ATENDIDA'" value="ATENDIDA">ATENDIDA</option>
+                    <option [selected]="cajaAhorro.pre_estatus=='PENDIENTE'" value="PENDIENTE">PENDIENTE</option>
+                    <option [selected]="cajaAhorro.pre_estatus=='RECHAZADA'" value="RECHAZADA">RECHAZADA</option>
+                </select>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<!--
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form #myForm="ngForm">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">Solicitud de Préstamo</span>
+            </button>
+            <h3 class="modal-title" id="exampleModalLabel"></h3>
+            </div>
+            <div class="modal-body">
+            
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Matricula</label>
+                    <input name="pre_matricula" class="form-control" value="{{this.matricula}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Nombre</label>
+                    <input name="pre_nombre" class="form-control" value="{{this.nombre}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Adscripción</label>
+                    <input name="pre_adscripcioon" class="form-control" value="{{this.adscripcion}}" readonly>
+                </div>
+                <div class="form-group">
+                <label for="titulo" class="col-form-label">No. Cuenta / Tarjeta</label>
+                <input [(ngModel)]="cajaAhorro.pre_tarjeta_cuenta" name="pre_tarjeta_cuenta" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Banco</label>
+                    <input [(ngModel)]="cajaAhorro.pre_banco" name="pre_banco" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Telefono</label>
+                    <input [(ngModel)]="cajaAhorro.pre_telefono" name="pre_telefono" class="form-control" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="titulo" class="col-form-label">Cantidad ($)</label>
+                    <input [(ngModel)]="cajaAhorro.pre_cantidad" name="pre_cantidad" class="form-control" autocomplete="off">
+                </div>
+            
+            </div>
+            <div class="modal-footer">  
+                <button class="btn btn-primary btn-lg" (click)='create();' data-dismiss="modal">Mandar Solicitud</button>
+                <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Cerrar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+-->
