@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 export const environment = {
   production: false,
-  	  rutaAPI: 'https://api.steujed.org.mx/api',
+  	
 	  //rutaAPI: 'https://localhost:44354/api',
 
   getHeadersPOST(): HttpHeaders {
