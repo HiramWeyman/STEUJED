@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  rutaAPI: 'http://api.steujed.org.mx/api',
+ rutaAPI: 'https://localhost:44354/api
 };
 
 export const _TOKEN = 'tknSTEUJED';
